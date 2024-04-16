@@ -1,21 +1,16 @@
-<section>
+<section class="subscribeContainer">
+
 	<div>
 		<h2>Inscrivez-vous</h2>
 	</div>
 
 	<div>
-		<form action="/subscribe" method="post">
-			<p>{{error.errors.name}}</p>
+		<form action="./subscribe" method="post">
 			<input id="name" type="text" name="name" placeholder="Nom">
-			<p>{{error.errors.firstName}}</p>
 			<input id="firstName" type="text" name="firstName" placeholder="Prénom">
-			<p>{{error.errors.userName}}</p>
 			<input id="userName" type="text" name="userName" placeholder="Nom d'utilisateur">
-			<p>{{error.errors.mail}}</p>
 			<input id="mail" type="text" name="mail" placeholder="Entrez votre Email">
-            <p>{{error.errors.password}}</p>
-			<input id="password" type="text" name="password" placeholder="Saisissez un mot de passe">
-			<p>{{error.confirmPassword}}</p>
+            <input id="password" type="text" name="password" placeholder="Saisissez un mot de passe">
 			<input or.id="confirmPassword" type="text" name="confirmPassword" placeholder="Confirmer le mot de passe">
 			<button type="submit">Enregistrer</button>
 		</form>
