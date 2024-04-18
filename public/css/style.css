@@ -131,7 +131,7 @@ button {
 .subscribeContainer div {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
   width: 300px;
   padding: 20px;
   background-color: rgba(0, 0, 0, 0.662);
@@ -140,7 +140,6 @@ button {
 }
 
 .subscribeContainer h2 {
-  margin-bottom: 20px;
   text-align: center;
   color: #0EEBCA;
   font-weight: 300;
@@ -154,7 +153,6 @@ button {
 .subscribeContainer input {
   width: 100%;
   padding: 10px;
-  margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 3px;
   box-sizing: border-box;

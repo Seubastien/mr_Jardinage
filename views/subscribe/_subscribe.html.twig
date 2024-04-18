@@ -1,43 +1,44 @@
 <section class="subscribeContainer">
+	
+		<div>
+			<h2>Inscrivez-vous</h2>
+		</div>
 
-	<div>
-		<h2>Inscrivez-vous</h2>
-	</div>
-
-	<div>
-		<form action="./subscribe" method="post">
-			<div id="inputSubscribe">
-			{% if error %}
-					<p class="error">{{error.errors.name}}</p>
-				{% endif %}
-				<input id="name" type="text" name="name" placeholder="Nom">
-				{% if error %}
-					<p class="error">{{error.errors.firstName}}</p>
-				{% endif %}
-				<input id="firstName" type="text" name="firstName" placeholder="Prénom">
-				{% if error %}
-					<p class="error">{{error.errors.userName}}</p>
-				{% endif %}
-				<input id="userName" type="text" name="userName" placeholder="Nom d'utilisateur">
-				{% if error %}
-					<p class="error">{{error.errors.mail}}</p>
-				{% endif %}
-				<input id="mail" type="text" name="mail" placeholder="Entrez votre Email">
-				{% if error %}
-					<p class="error">{{error.errors.password}}</p>
-				{% endif %}
-				<input id="password" type="password" name="password" placeholder="Saisissez un mot de passe">
-				{% if error %}
-					<p class="error">{{error.confirmPassword}}</p>
-				{% endif %}
-				<input id="confirmPassword" type="password" name="confirmPassword" placeholder="Confirmer le mot de passe">
-				<input id="imgEmployee" type="file" name="image" >
-			</div>
-				
-				
-			<button type="submit">Enregistrer</button>
-		</form>
+		<div>
+			<form action="./subscribe" method="post">
+				<div id="inputSubscribe">
+					{% if error %}
+						<p class="error">{{error.errors.name}}</p>
+					{% endif %}
+					<input id="name" type="text" name="name" placeholder="Nom">
+					{% if error %}
+						<p class="error">{{error.errors.firstName}}</p>
+					{% endif %}
+					<input id="firstName" type="text" name="firstName" placeholder="Prénom">
+					{% if error %}
+						<p class="error">{{error.errors.userName}}</p>
+					{% endif %}
+					<input id="userName" type="text" name="userName" placeholder="Nom d'utilisateur">
+					{% if error %}
+						<p class="error">{{error.errors.mail}}</p>
+					{% endif %}
+					<input id="mail" type="text" name="mail" placeholder="Entrez votre Email">
+					{% if error %}
+						<p class="error">{{error.errors.password}}</p>
+					{% endif %}
+					<input id="password" type="password" name="password" placeholder="Saisissez un mot de passe">
+					{% if error %}
+						<p class="error">{{error.confirmPassword}}</p>
+					{% endif %}
+					<input id="confirmPassword" type="password" name="confirmPassword" placeholder="Confirmer le mot de passe">
+					<input id="imgEmployee" type="file" name="image">
+				</div>
 
 
-	</div>
+				<button type="submit">Enregistrer</button>
+			</form>
+
+
+		</div>
+	
 </section>

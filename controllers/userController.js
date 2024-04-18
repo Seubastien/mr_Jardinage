@@ -2,7 +2,7 @@ const userModel = require('../models/userModel')
 const bcrypt = require('bcrypt')
 
 exports.createUser = async (req, res) => {
-    
+
     try {
         const confirmpassword = req.body.password
         if (confirmpassword === req.body.confirmPassword) {
@@ -11,7 +11,7 @@ exports.createUser = async (req, res) => {
                 if (req.multerError) {
                     throw { errorUpload: "le fichier n'est pas valide" }
                 }
-                
+
                 req.body.picture = req.file.filename
                 newUser.picture = req.file.filename
             }

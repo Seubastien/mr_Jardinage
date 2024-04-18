@@ -6,52 +6,72 @@ body {
 .dashboardContainer {
     display: flex;
     justify-content: space-around;
-    align-items: flex-start;
+    align-items: center;
     
 }
 
 /* Style pour chaque colonne dans dashboardContainer */
-.dashboardContainer > div {
+.underDashboardContainer {
     display: flex;
     flex-direction: column;
-    background-color: #000000b0;
+    background-color: #000000ac;
+    width: 60%;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 3px;
+    gap: 20px;
+    
 }
-
+.dashboardContainer form{
+    display: flex;
+}
 /* Style pour le formulaire de recherche */
 #searchBarr {
+    
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 3px;
     font-size: 16px;
     margin-bottom: 10px;
+
 }
 
 .searchButton {
-    background-color: #4caf50;
-    border: none;
+    
     padding: 10px 15px;
-    border-radius: 5px;
+    box-shadow: 3px 3px 3px #ffffff42;
+    background-color: transparent;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
     cursor: pointer;
+
 }
 
 .searchButton .imgButton {
     width: 20px;
-}
+    height: 20px;
+    
 
+}
+.articleContainer{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
 /* Style pour chaque article */
 article {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #00000098;
+    border-radius: 3px;
     padding: 20px;
     margin-bottom: 20px;
 }
 
 article h3 {
     font-size: 24px;
-    color: #333;
+    color: #ffffff;
     margin-top: 0;
     margin-bottom: 10px;
 }
@@ -59,7 +79,7 @@ article h3 {
 article p {
     margin: 5px 0;
     font-size: 16px;
-    color: #555;
+    color: #ffffff;
 }
 
 #imgContainer {
@@ -73,10 +93,14 @@ article p {
     border-radius: 50%;
     object-fit: cover;
 }
-
+.checkButtoncontainer{
+margin-top: 10px;
+}
 .deleteButton {
-    background-color: #ff4d4d;
-    color: #fff;
+    background-color: #000000b4;
+    color:#0EEBCA;
+    box-shadow: -3px -3px 8px #0EEBCA;
+    text-decoration: none;
     border: none;
     border-radius: 5px;
     padding: 8px 16px;
@@ -91,12 +115,12 @@ article p {
 
 /* Style pour la section aside */
 .aside {
-    height: 100vh;
-    background-color: #000000ac;
-    padding: 20px;
-    border-radius: 10px;
     display: flex;
     flex-direction: column;
+    height: 100vh;
+    width: 12%;
+    background-color: #000000ac;
+    padding: 20px;
     
 }
 
@@ -112,12 +136,12 @@ article p {
     width: 70%;
     height: fit-content;
     padding: 2px;
-    background-color: #004a3fb7;
+    background-color: #000000b4;
     box-shadow: -3px -3px 8px #0EEBCA;
-    color: #fff;
+    color:#0EEBCA;
     font-size: 1em;
     border: none;
-    border-radius: 8px;
+    border-radius: 5px;
     cursor: pointer;
 }
 

@@ -1,13 +1,13 @@
 <section class="dashboardContainer">
 	<div></div>
-	<div>
+	<div class="underDashboardContainer">
 		<div>
 			<form action="/dashBoard" method="GET">
 				<input id="searchBarr" type="search" name="search" placeholder="Chercher">
 				<button class="searchButton" type="submit"><img class="imgButton" src="images/magnifier.png" alt="search"></button>
 			</form>
 		</div>
-		<div>
+		<div class="articleContainer">
 			{% for user in users %}
 				<article>
 					<div>
@@ -29,7 +29,7 @@
 						{{user.is_admin}}
 					</p>
 
-					<div>
+					<div class="checkButtoncontainer">
 						{# <a href="/employeeUpdate/{{employee.id}}">Modifier</a> #}
 						<a class="deleteButton" href="">Supprimer</a>
 
@@ -41,6 +41,6 @@
 	</div>
 	<aside class="aside">
 		<p>Bienvenue{{users.userName}}</p>
-		<a href="">Logout</a>
+		<a href="">Déconnexion</a>
 	</aside>
 </section>
