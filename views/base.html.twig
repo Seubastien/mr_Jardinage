@@ -5,10 +5,11 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Mr_green_thumb</title>
 		<link rel="stylesheet" href="/css/style.css">
+		{% block style %}{% endblock %}
 	</head>
 	<body>
 		{% include "./globalPartials/_header.html.twig" %}
-		<p>{{ currentPath }}</p>
+		
 		<main>
 			{% block main %}{% endblock %}
 		</main>

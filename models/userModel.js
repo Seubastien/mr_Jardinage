@@ -23,7 +23,7 @@ const userSchema = mongoose.Schema({
             validator: function(v){
                 return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/g.test(v)
             },
-            message : "Entrez unmail valide"
+            message : "Entrez un mail valide"
         }
     },
     password:{
@@ -33,8 +33,24 @@ const userSchema = mongoose.Schema({
     is_admin:{
         type: Boolean,
         default: false
+    },
+    picture: {
+        type: String,
+        default: ""
     }
 
+})
+
+userSchema.pre("validate",async function (next){
+    try {
+        const existingUser =await this.constructor.findOne({mail:this.mail})
+        if(existingUser){
+            this.invalidate("mail", "Cet email est déjà enregistré")
+        }
+        next()
+    } catch (error) {
+        next(error)
+    }
 })
 
 userSchema.pre("save", function (next){

@@ -6,12 +6,35 @@
 
 	<div>
 		<form action="./subscribe" method="post">
-			<input id="name" type="text" name="name" placeholder="Nom">
-			<input id="firstName" type="text" name="firstName" placeholder="Prénom">
-			<input id="userName" type="text" name="userName" placeholder="Nom d'utilisateur">
-			<input id="mail" type="text" name="mail" placeholder="Entrez votre Email">
-            <input id="password" type="text" name="password" placeholder="Saisissez un mot de passe">
-			<input or.id="confirmPassword" type="text" name="confirmPassword" placeholder="Confirmer le mot de passe">
+			<div id="inputSubscribe">
+			{% if error %}
+					<p class="error">{{error.errors.name}}</p>
+				{% endif %}
+				<input id="name" type="text" name="name" placeholder="Nom">
+				{% if error %}
+					<p class="error">{{error.errors.firstName}}</p>
+				{% endif %}
+				<input id="firstName" type="text" name="firstName" placeholder="Prénom">
+				{% if error %}
+					<p class="error">{{error.errors.userName}}</p>
+				{% endif %}
+				<input id="userName" type="text" name="userName" placeholder="Nom d'utilisateur">
+				{% if error %}
+					<p class="error">{{error.errors.mail}}</p>
+				{% endif %}
+				<input id="mail" type="text" name="mail" placeholder="Entrez votre Email">
+				{% if error %}
+					<p class="error">{{error.errors.password}}</p>
+				{% endif %}
+				<input id="password" type="password" name="password" placeholder="Saisissez un mot de passe">
+				{% if error %}
+					<p class="error">{{error.confirmPassword}}</p>
+				{% endif %}
+				<input id="confirmPassword" type="password" name="confirmPassword" placeholder="Confirmer le mot de passe">
+				<input id="imgEmployee" type="file" name="image" >
+			</div>
+				
+				
 			<button type="submit">Enregistrer</button>
 		</form>
 

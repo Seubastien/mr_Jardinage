@@ -1,7 +1,8 @@
-<footer>
-	<p>
-		Copyright Sébastien Bourrelly MrGreenThumb
-	</p>
-    <img src="/images/icons8-copyright-50.png" alt="copyright">
-
-</footer>
+{% if not headerFooter %}
+	<footer>
+		<p>
+			Copyright by Mr Jardinage
+		</p>
+		<img src="/images/icons8-copyright-50.png" alt="copyright">
+	</footer>
+{% endif %}

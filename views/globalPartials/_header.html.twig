@@ -1,9 +1,11 @@
+{% if  not headerFooter %}
 <header>
 	<div class="headerTitleContainer">
 		<p class="headerTitle">Mr Jardinage
 		</p>
-		{% if action != "home" %}
-			<a href="/home"><img src="/images/Bouton rond 1.png" alt=""></a>
+		{% if not homeButton %}
+			<a href="/home"><img src="/images/Bouton rond 1.png" alt="home_button"></a>
 		{% endif %}
 	</div>
 </header>
+{% endif %}

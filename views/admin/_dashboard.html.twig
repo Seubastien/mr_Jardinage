@@ -1,0 +1,46 @@
+<section class="dashboardContainer">
+	<div></div>
+	<div>
+		<div>
+			<form action="/dashBoard" method="GET">
+				<input id="searchBarr" type="search" name="search" placeholder="Chercher">
+				<button class="searchButton" type="submit"><img class="imgButton" src="images/magnifier.png" alt="search"></button>
+			</form>
+		</div>
+		<div>
+			{% for user in users %}
+				<article>
+					<div>
+						<h3>{{user.userName}}</h3>
+					</div>
+					<div id="imgContainer">
+						<img id="img" src="/images/uploads/{{users.picture}}" alt="user_picture">
+					</div>
+					<p>Nom:
+						{{user.name}}
+					</p>
+					<p>Prénom:
+						{{user.firstName}}
+					</p>
+					<p>E-mail:
+						{{user.mail}}
+					</p>
+					<p>Rôle:
+						{{user.is_admin}}
+					</p>
+
+					<div>
+						{# <a href="/employeeUpdate/{{employee.id}}">Modifier</a> #}
+						<a class="deleteButton" href="">Supprimer</a>
+
+					</div>
+				</article>
+			{% endfor %}
+		</div>
+
+	</div>
+	<aside class="aside">
+		<p>Bienvenue{{users.userName}}</p>
+		<a href="">Logout</a>
+	</aside>
+</section>

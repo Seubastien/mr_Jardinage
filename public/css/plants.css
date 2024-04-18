@@ -1,0 +1,126 @@
+body {
+    background-image: url("/images/plant_pepiniere.png");
+}
+/* DASHBOARD */
+/* Style général pour la section dashboardContainer */
+.dashboardContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    
+}
+
+/* Style pour chaque colonne dans dashboardContainer */
+.dashboardContainer > div {
+    display: flex;
+    flex-direction: column;
+    background-color: #000000b0;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Style pour le formulaire de recherche */
+#searchBarr {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.searchButton {
+    background-color: #4caf50;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.searchButton .imgButton {
+    width: 20px;
+}
+
+/* Style pour chaque article */
+article {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+article h3 {
+    font-size: 24px;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+article p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #555;
+}
+
+#imgContainer {
+    text-align: center;
+    margin-top: 10px;
+}
+
+#img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.deleteButton {
+    background-color: #ff4d4d;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.deleteButton:hover {
+    background-color: #e60000;
+}
+
+/* Style pour la section aside */
+.aside {
+    height: 100vh;
+    background-color: #000000ac;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.aside p {
+    font-size: 1em;
+    color: #0EEBCA;
+    margin: 10px 0;
+}
+
+.aside a {
+    text-decoration: none;
+    text-align: center;
+    width: 70%;
+    height: fit-content;
+    padding: 2px;
+    background-color: #004a3fb7;
+    box-shadow: -3px -3px 8px #0EEBCA;
+    color: #fff;
+    font-size: 1em;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.aside a:hover {
+    color: #666;
+}
