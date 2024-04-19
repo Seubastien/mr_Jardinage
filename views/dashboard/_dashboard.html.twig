@@ -14,7 +14,7 @@
 						<h3>{{user.userName}}</h3>
 					</div>
 					<div id="imgContainer">
-						<img id="img" src="/images/uploads/{{users.picture}}" alt="user_picture">
+						<img id="img" src="/images/uploads/{{user.picture}}" alt="user_picture">
 					</div>
 					<p>Nom:
 						{{user.name}}
@@ -30,8 +30,8 @@
 					</p>
 
 					<div class="checkButtoncontainer">
-						{# <a href="/employeeUpdate/{{employee.id}}">Modifier</a> #}
-						<a class="deleteButton" href="">Supprimer</a>
+						<a class="updateButton" href="/userUpdate/{{user.id}}">Modifier</a>
+						<a class="deleteButton" href="/userDelete/{{user.id}}">Supprimer</a>
 
 					</div>
 				</article>
@@ -41,6 +41,6 @@
 	</div>
 	<aside class="aside">
 		<p>Bienvenue{{users.userName}}</p>
-		<a href="">Déconnexion</a>
+		<a href="/logout">Déconnexion</a>
 	</aside>
 </section>

@@ -33,7 +33,7 @@ exports.displayPlants = (req, res) => {
 }
 exports.displayDashboard = async (req, res) => {
     try {
-        res.render("./admin/index.html.twig", {
+        res.render("./dashboard/index.html.twig", {
             users: await userModel.find(),
             homeButton: true,
             headerFooter: true,

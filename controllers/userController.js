@@ -1,6 +1,6 @@
 const userModel = require('../models/userModel')
 const bcrypt = require('bcrypt')
-
+const fs = require('fs')//permet de supprimer des fichiers 
 exports.createUser = async (req, res) => {
 
     try {
@@ -24,8 +24,72 @@ exports.createUser = async (req, res) => {
         res.render('subscribe/index.html.twig', {
             error: error,
             title: "Inscription"
+           
 
         })
+      
+    }
+}
+exports.deleteUser = async (req, res) => {
+    try {
+        const user = await userModel.findById({ _id: req.params.userid })
+        await userModel.deleteOne({ _id: req.params.userid })
+        if (user.picture) {
+            fs.unlink('public/images/uploads/' + user.picture, (err) => {
+                if (err) throw err;
+
+            });
+        }
+        res.redirect("/dashboard")
+
+    } catch (error) {
+        res.render('admin/index.html.twig'), {
+            errorDelete: "un probleme est survenue pendant la suppression",
+        }
+    }
+}
+exports.findToUpdate = async (req, res) => {
+    try {
+        const user = await userModel.findById(req.params.userid)
+        res.render('subscribe/index.html.twig',
+            {
+                // enterprise: await enterpriseModel.findById(req.session.enterprise._id),
+                user: user
+            })
+
+    } catch (error) {
+        res.render('dashBoard/_dashBoard.html.twig',
+            {
+                errorMessage: "L'utilisateur' souhaitez modifier n'existe pas",
+                // enterprise: await enterpriseModel.findById(req.session.enterprise._id)
+            })
+
+    }
+}
+exports.updatedUser = async (req, res) => {
+    try {
+        const user = await userModel.findById({ _id: req.params.userid })
+
+        if (req.file && user.picture) {
+            fs.unlink('public/images/uploads/' + user.picture, (err) => {
+                if (err) throw err;
+            });
+            if (req.multerError) {
+                throw { errorUpload: "le fichier n'est pas valide" }
+            }
+            req.body.picture = req.file.filename
+
+        }
+        await userModel.updateOne({ _id: req.params.userid }, req.body)
+        res.redirect("/dashboard")
+
+    } catch (error) {
+        res.render('dashBoard/index.html.twig',
+            {
+                errorDelete: "probleme survenue",
+                // enterprise: await enterpriseModel.findById(req.session.enterprise._id)
+            })
+
     }
 }
 
@@ -36,7 +100,12 @@ exports.loginUser = async (req, res) => {
         if (user) {
             if (await bcrypt.compare(req.body.password, user.password)) {
                 req.session.user = user._id
-                res.redirect("/plants")
+                if (user.is_admin == true) {
+                    res.redirect("/dashboard")
+                } else {
+                    res.redirect("/plants")
+                }
+
             } else {
                 throw { password: "Mauvais mot de passe" }
             }
@@ -53,4 +122,15 @@ exports.loginUser = async (req, res) => {
         console.log(error)
     }
 
+}
+exports.logOut = (req, res) => {
+    try {
+        delete req.session.user
+
+        res.redirect("/home")
+
+    } catch (error) {
+
+        res.send(error.message)
+    }
 }

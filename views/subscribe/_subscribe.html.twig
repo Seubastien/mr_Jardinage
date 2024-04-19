@@ -1,11 +1,43 @@
 <section class="subscribeContainer">
-	
+	{% if user %}
+		<div>
+			<h2>Modification</h2>
+		</div>
+
+		<div>
+			<form action="/userUpdate/{{user.id}}" method="post" enctype="multipart/form-data">
+				<div id="inputSubscribe">
+					{% if error %}
+						<p class="error">{{error.errors.name}}</p>
+					{% endif %}
+					<input id="name" type="text" name="name" placeholder="Nom" value="{{user.name}}">
+					{% if error %}
+						<p class="error">{{error.errors.firstName}}</p>
+					{% endif %}
+					<input id="firstName" type="text" name="firstName" placeholder="firstName" value="{{user.firstName}}">
+					{% if error %}
+						<p class="error">{{error.errors.userName}}</p>
+					{% endif %}
+					<input id="userName" type="text" name="userName"placeholder="userName"  value="{{user.userName}}">
+					{% if error %}
+						<p class="error">{{error.errors.mail}}</p>
+					{% endif %}
+					<input id="mail" type="text" name="mail"placeholder="mail" value="{{user.mail}}">
+					
+					<input id="imgEmployee" type="file" name="image">
+				</div>
+
+
+				<button type="submit">Modifier</button>
+			</form>
+		</div>
+	{% else %}
 		<div>
 			<h2>Inscrivez-vous</h2>
 		</div>
 
 		<div>
-			<form action="./subscribe" method="post">
+			<form action="./subscribe" method="post" enctype="multipart/form-data">
 				<div id="inputSubscribe">
 					{% if error %}
 						<p class="error">{{error.errors.name}}</p>
@@ -40,5 +72,5 @@
 
 
 		</div>
-	
+	{% endif %}
 </section>
