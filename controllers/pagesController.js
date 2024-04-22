@@ -20,17 +20,24 @@ exports.displaySubscribe = (req, res) => {
         res.send(error)
     }
 }
-exports.displayPlants = (req, res) => {
+exports.displayPlants = async (req, res) => {
     try {
+        const data = await fetch("https://perenual.com/api/species-list?key=sk-36pu66263ce98512c5214&page=1")
+        const response = await data.json()
+        console.log(response.data)
+      
         res.render("./plants/index.html.twig", {
             homeButton: true,
             headerFooter: true,
-            title: "Plants"
+            title: "Plants",
+            data: response.data
+            
         })
     } catch (error) {
         res.send(error)
     }
 }
+// .data[0].default_image.original_url
 exports.displayDashboard = async (req, res) => {
     try {
         res.render("./dashboard/index.html.twig", {

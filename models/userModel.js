@@ -60,7 +60,25 @@ const userSchema = mongoose.Schema({
     picture: {
         type: String,
         default: ""
-    }
+    },
+    plants_collection: [{
+
+        type: mongoose.Schema.Types.ObjectId,
+        ref:'Plants'
+        }],
+        
+    rooms_collection: [{
+
+        type: mongoose.Schema.Types.ObjectId,
+        ref:'Rooms'
+        }],
+        
+    posts_collection: [{
+
+        type: mongoose.Schema.Types.ObjectId,
+        ref:'Posts'
+        }]
+        
 
 })
 

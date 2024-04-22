@@ -5,7 +5,7 @@ require ('dotenv').config()
 
 const pagesRouter = require('./routers/pagesRouter')
 const userRouter = require('./routers/userRouter')
-const apiRouter = require('./routers/apiExternalRouter')
+// const apiRouter = require('./routers/apiExternalRouter')
 
 const app = express()
 app.use(express.json())
@@ -19,7 +19,7 @@ app.use(session({
 
 app.use(pagesRouter)
 app.use(userRouter)
-app.use(apiRouter)
+// app.use(apiRouter)
 
 app.listen(process.env.PORT, (err) => {
 

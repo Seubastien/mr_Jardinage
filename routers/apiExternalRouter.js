@@ -1,7 +1,7 @@
-const apiTest  = require('../controllers/apiExternalController')
+// const apiController  = require('../controllers/apiExternalController')
 
-const apiRouter = require('express').Router()
+// const apiRouter = require('express').Router()
 
-apiRouter.get("/test" , apiTest.apiTest)
+// apiRouter.get("/test" , apiController.apiTest)
 
-module.exports = apiRouter
+// module.exports = apiRouter

@@ -1,9 +1,66 @@
-<section>
-	<div>
-		<div>
-        <button></button>
-        </div>
-	</div>
+<section class="gardenContainer">
 	<div></div>
-	<aside></aside>
+	<div class="underGardenContainer">
+		<div>
+			<div>
+				<select name="expo" id="expo-select">exposition
+					<option value="">choisissez une exposition</option>
+					<option value="full sun">Full sun</option>
+					<option value="part sun">Part sun</option>
+					<option value="part shade">Part shade</option>
+				</select>
+				<select name="water" id="water-select">exposition
+					<option value="">choisissez une fréquence d'arrosage</option>
+					<option value="full sun">average</option>
+					<option value="part sun">frequent</option>
+					
+				</select>
+
+			</div>
+			<form action="/plants" method="GET">
+				<input id="searchBarrPlant" type="search" name="search" placeholder="Chercher">
+				<button class="searchButton" type="submit"><img class="imgButton" src="images/magnifier.png" alt="search"></button>
+			</form>
+		</div>
+		<div class="articlePlantContainer">
+			{% for plant in data %}
+				<article>
+					<div>
+						<h3>{{plant.common_name}}</h3>
+					</div>
+					<div id="imgPlant">
+						<img id="plant" src="{{plant.default_image.thumbnail}}" alt="plant_picture">
+					</div>
+					<p>Nom scientifique:
+						{{plant.scientific_name[0]}}
+					</p>
+					<p>Autre Nom:
+						{{plant.other_name[0]}}
+					</p>
+					<p>Besoin en eau:
+						{{plant.watering}}
+					</p>
+					<p>Exposition:
+						{{plant.sunlight}}
+					</p>
+
+					<div class="checkButtoncontainer">
+						<a class="getButton" href="">Ajouter à ma collection
+						</a>
+
+					</div>
+				</article>
+			{% endfor %}
+		</div>
+
+	</div>
+	<aside class="aside">
+		<p id="sideBarTitle">Mr Green
+			<br>Thumb</p>
+		<p>Bienvenue{{users.userName}}</p>
+		<div class="sideButtonContainer">
+			<a href="/logout">Déconnexion</a>
+			<a href="">Mes plantes</a>
+		</div>
+	</aside>
 </section>
