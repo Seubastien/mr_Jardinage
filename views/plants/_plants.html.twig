@@ -1,19 +1,28 @@
 <section class="gardenContainer">
 	<div></div>
 	<div class="underGardenContainer">
-		<div>
+		<div class="uperGardenContainer">
 			<div>
 				<select name="expo" id="expo-select">exposition
 					<option value="">choisissez une exposition</option>
 					<option value="full sun">Full sun</option>
 					<option value="part sun">Part sun</option>
 					<option value="part shade">Part shade</option>
+					<option value="filtered shade">Filter shade</option>
 				</select>
 				<select name="water" id="water-select">exposition
 					<option value="">choisissez une fréquence d'arrosage</option>
-					<option value="full sun">average</option>
-					<option value="part sun">frequent</option>
+					<option value="minimum">Minimum</option>
+					<option value="average">Average</option>
+					<option value="frequent">Frequent</option>
 					
+
+				</select>
+				<select name="millieu" id="env-select">exposition
+					<option value="">choisissez un de vos millieux</option>
+					<option value="envOne">Env 1</option>
+					<option value="envTwo">Env 2</option>
+
 				</select>
 
 			</div>
@@ -29,7 +38,8 @@
 						<h3>{{plant.common_name}}</h3>
 					</div>
 					<div id="imgPlant">
-						<img id="plant" src="{{plant.default_image.thumbnail}}" alt="plant_picture">
+						<img id="plant" {% if plant.default_image.thumbnail %} src="{{plant.default_image.thumbnail}}" {% else %} src="/images/mr_green_thumb.jpg"{% endif %}
+					 alt="plant_picture">
 					</div>
 					<p>Nom scientifique:
 						{{plant.scientific_name[0]}}
@@ -43,12 +53,16 @@
 					<p>Exposition:
 						{{plant.sunlight}}
 					</p>
+					{% if session.user %}
+						<div class="checkButtoncontainer">
+							<a class="getButton" href="/addPlantToCollection/{{plant.id}}">Ajouter à ma collection</a>
+							<a class="getButton" href="">Ajouter à une pièce</a>
+							
 
-					<div class="checkButtoncontainer">
-						<a class="getButton" href="">Ajouter à ma collection
-						</a>
 
-					</div>
+						</div>
+					{% endif %}
+
 				</article>
 			{% endfor %}
 		</div>
@@ -57,10 +71,17 @@
 	<aside class="aside">
 		<p id="sideBarTitle">Mr Green
 			<br>Thumb</p>
-		<p>Bienvenue{{users.userName}}</p>
-		<div class="sideButtonContainer">
-			<a href="/logout">Déconnexion</a>
-			<a href="">Mes plantes</a>
-		</div>
+
+		{% if session.user %}
+			<p>Bienvenue
+				{{session.user.userName}}</p>
+			<div class="sideButtonContainer">
+				<a href="/logout">Déconnexion</a>
+				<a href="">Mes plantes</a>
+			</div>
+		{% else %}
+			<a id="homeButton" href="/home">Accueil</a>
+		{% endif %}
+
 	</aside>
 </section>

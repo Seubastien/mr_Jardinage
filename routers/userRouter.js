@@ -9,6 +9,7 @@ userRouter.post('/plants', userController.loginUser)
 userRouter.get('/logout', userController.logOut)
 userRouter.get('/userDelete/:userid', authguard(true), userController.deleteUser)
 userRouter.get('/userUpdate/:userid', authguard(true), userController.findToUpdate)
+userRouter.get('/addPlantToCollection/:plantid', authguard(), userController.addPlantToCollection)
 userRouter.post('/userUpdate/:userid',multer.single('image'), authguard(true),userController.updatedUser)
 
 

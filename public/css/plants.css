@@ -1,5 +1,5 @@
 body {
-    background-image: url("/images/rice-5135589_1920.jpg");
+    background-image: url("/images/barley-field-1684052_1920.jpg");
 }
 /* PLANTS */
 .gardenContainer {
@@ -18,9 +18,10 @@ body {
     border-radius: 3px;
     gap: 20px;
     
-    
-   
-
+}
+.uperGardenContainer{
+    display: flex;
+    gap: 20px;
 }
 
 .gardenContainer form {
@@ -48,6 +49,10 @@ body {
     border: none;
     cursor: pointer;
 
+}
+select{
+    color: #0EEBCA;
+    background-color: #00000094;
 }
 
 .searchButton .imgButton {
@@ -126,7 +131,7 @@ article p {
 }
 
 .getButton:hover {
-    background-color: #e60000;
+    background-color: #000000a8;
 }
 
 
@@ -171,7 +176,9 @@ article p {
     border-radius: 5px;
     cursor: pointer;
 }
-
+#homeButton{
+    align-self: center;
+}
 .aside a:hover {
     color: #666;
 }

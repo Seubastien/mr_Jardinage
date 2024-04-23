@@ -63,8 +63,7 @@ const userSchema = mongoose.Schema({
     },
     plants_collection: [{
 
-        type: mongoose.Schema.Types.ObjectId,
-        ref:'Plants'
+        type: Number,
         }],
         
     rooms_collection: [{

@@ -5,21 +5,24 @@ require ('dotenv').config()
 
 const pagesRouter = require('./routers/pagesRouter')
 const userRouter = require('./routers/userRouter')
-// const apiRouter = require('./routers/apiExternalRouter')
 
 const app = express()
 app.use(express.json())
 app.use(express.static("./public"))
 app.use(express.urlencoded({extented:true}))
+
 app.use(session({
     secret: process.env.SECRET,
-    resave: true,
+    resave: false,
     saveUninitialized: true,
 }))
-
+app.use((req,res,next)=>{
+    res.locals.session = req.session;
+    next()
+})
 app.use(pagesRouter)
 app.use(userRouter)
-// app.use(apiRouter)
+
 
 app.listen(process.env.PORT, (err) => {
 

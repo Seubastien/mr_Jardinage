@@ -1,5 +1,6 @@
 const userModel = require('../models/userModel')
 const bcrypt = require('bcrypt')
+const e = require('express')
 const fs = require('fs')//permet de supprimer des fichiers 
 exports.createUser = async (req, res) => {
 
@@ -99,7 +100,10 @@ exports.loginUser = async (req, res) => {
         let user = await userModel.findOne({ mail: req.body.mail })//1er mail objet du modele et 2eme mail c'est le name dans form login
         if (user) {
             if (await bcrypt.compare(req.body.password, user.password)) {
-                req.session.user = user._id
+                
+                req.session.user = user
+                req.session.user.password = null
+               console.log(req.session.user);
                 if (user.is_admin == true) {
                     res.redirect("/dashboard")
                 } else {
@@ -131,6 +135,18 @@ exports.logOut = (req, res) => {
 
     } catch (error) {
 
+        res.send(error.message)
+    }
+}
+exports.addPlantToCollection = async (req, res)=>{
+    try {
+
+       let test = await userModel.updateOne(
+            {_id : req.session.user._id},
+            {$addToSet: {plants_collection : req.params.plantid}}
+        )
+        res.redirect('/plants')
+    } catch (error) {
         res.send(error.message)
     }
 }

@@ -13,6 +13,7 @@
 					<div>
 						<h3>{{user.userName}}</h3>
 					</div>
+					
 					<div id="imgContainer">
 						<img id="img" src="/images/uploads/{{user.picture}}" alt="user_picture">
 					</div>
@@ -40,7 +41,9 @@
 
 	</div>
 	<aside class="aside">
-		<p>Bienvenue{{users.userName}}</p>
+		<p>Bienvenue
+			{{session.user.userName}}</p>
 		<a href="/logout">Déconnexion</a>
+
 	</aside>
 </section>

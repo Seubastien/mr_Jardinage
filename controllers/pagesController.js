@@ -22,18 +22,35 @@ exports.displaySubscribe = (req, res) => {
 }
 exports.displayPlants = async (req, res) => {
     try {
-        const data = await fetch("https://perenual.com/api/species-list?key=sk-36pu66263ce98512c5214&page=1")
-        const response = await data.json()
-        console.log(response.data)
-      
+        if (req.query.search) {
+            
+        const response = await fetch(`https://perenual.com/api/species-list?key=sk-36pu66263ce98512c5214&q=${req.query.search}`)
+        const data = await response.json()
+       
         res.render("./plants/index.html.twig", {
             homeButton: true,
             headerFooter: true,
             title: "Plants",
-            data: response.data
-            
+            data: data.data,
         })
+        
+        }else{
+            const randomPage = Math.floor(Math.random() * (300 - 1 + 1)) + 1;
+
+            const response = await fetch(`https://perenual.com/api/species-list?key=sk-36pu66263ce98512c5214&page=${randomPage}`)
+            const data = await response.json()
+           
+            res.render("./plants/index.html.twig", {
+                homeButton: true,
+                headerFooter: true,
+                title: "Plants",
+                data: data.data,
+            }) 
+        }  
+            
+      
     } catch (error) {
+        console.log(error);
         res.send(error)
     }
 }
