@@ -1,5 +1,5 @@
 body {
-    background-image: url("/images/barley-field-1684052_1920.jpg");
+    background-image: url("/images/buttercups-6225833_1920.jpg");
 }
 /* PLANTS */
 .gardenContainer {
@@ -19,7 +19,7 @@ body {
     gap: 20px;
     
 }
-.uperGardenContainer{
+#uperGardenContainer{
     display: flex;
     gap: 20px;
 }
@@ -52,7 +52,12 @@ body {
 }
 select{
     color: #0EEBCA;
-    background-color: #00000094;
+    background-color: #0000008e;
+}
+select option{
+    background-color: rgb(255, 255, 255);
+    color: #004A3F;
+    
 }
 
 .searchButton .imgButton {
@@ -131,7 +136,7 @@ article p {
 }
 
 .getButton:hover {
-    background-color: #000000a8;
+    background-color: #004A3F;
 }
 
 

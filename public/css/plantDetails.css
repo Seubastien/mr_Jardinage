@@ -1,0 +1,175 @@
+body {
+    background-image: url("/images/wall-managed1168145_1920 1.png");
+}
+
+/* PLANTDETAILS */
+.plantDetailsContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+.articleContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #004a3f;
+    background-color: #004a3f37;
+    border-radius: 3px;
+    gap: 40px;
+
+}
+
+.articleContainer img {
+    width: 400px;
+    /* Largeur de l'image */
+    border-radius: 50%;
+    /* Forme ronde */
+    object-fit: cover;
+    /* Redimensionnement de l'image pour remplir le conteneur */
+    margin-bottom: 10px;
+    /* Marge en bas de l'image */
+}
+
+.articleContainer p {
+    font-size: 1.03em;
+    line-height: 1.5;
+    /* Hauteur de ligne */
+    color: #ffffff;
+    /* Couleur du texte */
+    max-width: 500px;
+    padding: 40px;
+    background-color: #000000ac;
+}
+
+#postContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+    width: 17%;
+    background-color: #000000ac;
+    padding: 20px;
+    gap: 10px;
+    align-items: center;
+}
+
+#postTilte {
+    font-size: 2em;
+    letter-spacing: 0.2em;
+    text-align: center;
+    color: #0EEBCA;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+}
+
+.AddPost {
+    background-color: #000000b4;
+    color: #0EEBCA;
+    box-shadow: -3px -3px 8px #0EEBCA;
+    text-decoration: none;
+    border: none;
+    text-align: center;
+    border-radius: 5px;
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 50%;
+}
+
+.AddPost:hover {
+    background-color: #004A3F;
+
+}
+
+.checkButtoncontainer {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+    align-self: center;
+}
+
+.getButton {
+    background-color: #000000b4;
+    color: #0EEBCA;
+    box-shadow: -3px -3px 8px #0EEBCA;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.getButton:hover {
+    background-color: #004A3F;
+}
+
+.itemsContainer {
+    display: flex;
+    align-items: center;
+    color: #0EEBCA;
+
+}
+
+.items {
+    width: 25px;
+}
+
+.aside {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 12%;
+    background-color: #000000ac;
+    padding: 20px;
+    gap: 10px;
+
+}
+
+#sideBarTitle {
+    font-size: 2em;
+    letter-spacing: 0.2em;
+    text-align: center;
+}
+
+.aside p {
+    font-size: 1em;
+    color: #0EEBCA;
+    margin: 10px 0;
+}
+
+.sideButtonContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.aside a {
+    text-decoration: none;
+    text-align: center;
+    width: 70%;
+    height: fit-content;
+    padding: 2px;
+    background-color: #000000b4;
+    box-shadow: -3px -3px 8px #0EEBCA;
+    color: #0EEBCA;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.disconnectedButton {
+    align-self: center;
+}
+
+.aside a:hover {
+    color: #666;
+}

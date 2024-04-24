@@ -22,33 +22,56 @@ exports.displaySubscribe = (req, res) => {
 }
 exports.displayPlants = async (req, res) => {
     try {
-        if (req.query.search) {
-            
-        const response = await fetch(`https://perenual.com/api/species-list?key=sk-36pu66263ce98512c5214&q=${req.query.search}`)
-        const data = await response.json()
-       
-        res.render("./plants/index.html.twig", {
-            homeButton: true,
-            headerFooter: true,
-            title: "Plants",
-            data: data.data,
-        })
-        
-        }else{
-            const randomPage = Math.floor(Math.random() * (300 - 1 + 1)) + 1;
-
-            const response = await fetch(`https://perenual.com/api/species-list?key=sk-36pu66263ce98512c5214&page=${randomPage}`)
+        if (req.query.water) {
+            const response = await fetch(`https://perenual.com/api/species-list?key=sk-36pu66263ce98512c5214&watering=${req.query.water}`)
             const data = await response.json()
-           
+
             res.render("./plants/index.html.twig", {
                 homeButton: true,
                 headerFooter: true,
                 title: "Plants",
                 data: data.data,
-            }) 
-        }  
-            
-      
+            })
+
+        } else if (req.query.expo) {
+
+            const response = await fetch(`https://perenual.com/api/species-list?key=sk-36pu66263ce98512c5214&sunlight=${req.query.expo}`)
+            const data = await response.json()
+
+            res.render("./plants/index.html.twig", {
+                homeButton: true,
+                headerFooter: true,
+                title: "Plants",
+                data: data.data,
+            })
+
+        } else if (req.query.search) {
+
+            const response = await fetch(`https://perenual.com/api/species-list?key=sk-36pu66263ce98512c5214&q=${req.query.search}`)
+            const data = await response.json()
+
+            res.render("./plants/index.html.twig", {
+                homeButton: true,
+                headerFooter: true,
+                title: "Plants",
+                data: data.data,
+            })
+
+        } else {
+            const randomPage = Math.floor(Math.random() * (50 - 1 + 1)) + 1;
+
+            const response = await fetch(`https://perenual.com/api/species-list?key=sk-36pu66263ce98512c5214&page=${randomPage}`)
+            const data = await response.json()
+          
+            res.render("./plants/index.html.twig", {
+                homeButton: true,
+                headerFooter: true,
+                title: "Plants",
+                data: data.data,
+            })
+        }
+
+
     } catch (error) {
         console.log(error);
         res.send(error)
@@ -63,6 +86,23 @@ exports.displayDashboard = async (req, res) => {
             headerFooter: true,
             title: "Dashboard"
         })
+    } catch (error) {
+        res.send(error)
+    }
+}
+exports.displayPlantDetails = async (req, res) => {
+    try {
+        
+        const response = await fetch(`https://perenual.com/api/species/details/${req.params.plantid}?key=sk-36pu66263ce98512c5214`)
+        const data = await response.json()
+       
+        res.render("./plantDetails/index.html.twig", {
+            homeButton: true,
+            headerFooter: true,
+            data: data,
+            title: "PlantDetails"
+        })
+       
     } catch (error) {
         res.send(error)
     }

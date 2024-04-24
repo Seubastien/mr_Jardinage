@@ -1,35 +1,38 @@
 <section class="gardenContainer">
 	<div></div>
 	<div class="underGardenContainer">
-		<div class="uperGardenContainer">
-			<div>
-				<select name="expo" id="expo-select">exposition
+		<div id="uperGardenContainer">
+
+			<form action="/plants" method="GET">
+
+				<select name="expo" id="expo-select">
 					<option value="">choisissez une exposition</option>
-					<option value="full sun">Full sun</option>
-					<option value="part sun">Part sun</option>
-					<option value="part shade">Part shade</option>
-					<option value="filtered shade">Filter shade</option>
+					<option value="full_sun">Full sun</option>
+
+					<option value="part_shade">Part shade</option>
+					<option value="full_shade">Full shade</option>
 				</select>
-				<select name="water" id="water-select">exposition
+				<select name="water" id="water-select">
+
 					<option value="">choisissez une fréquence d'arrosage</option>
 					<option value="minimum">Minimum</option>
 					<option value="average">Average</option>
 					<option value="frequent">Frequent</option>
-					
+
 
 				</select>
-				<select name="millieu" id="env-select">exposition
+				<select name="millieu" id="env-select">
 					<option value="">choisissez un de vos millieux</option>
 					<option value="envOne">Env 1</option>
 					<option value="envTwo">Env 2</option>
 
 				</select>
-
-			</div>
-			<form action="/plants" method="GET">
 				<input id="searchBarrPlant" type="search" name="search" placeholder="Chercher">
 				<button class="searchButton" type="submit"><img class="imgButton" src="images/magnifier.png" alt="search"></button>
+
 			</form>
+
+
 		</div>
 		<div class="articlePlantContainer">
 			{% for plant in data %}
@@ -37,10 +40,9 @@
 					<div>
 						<h3>{{plant.common_name}}</h3>
 					</div>
-					<div id="imgPlant">
-						<img id="plant" {% if plant.default_image.thumbnail %} src="{{plant.default_image.thumbnail}}" {% else %} src="/images/mr_green_thumb.jpg"{% endif %}
-					 alt="plant_picture">
-					</div>
+					<a href="/plantDetails/{{plant.id}}" id="imgPlant">
+						<img id="plant" {% if plant.default_image.thumbnail %} src="{{plant.default_image.thumbnail}}" {% else %} src="/images/mr_green_thumb.jpg" {% endif %} alt="plant_picture">
+					</a>
 					<p>Nom scientifique:
 						{{plant.scientific_name[0]}}
 					</p>
@@ -56,8 +58,7 @@
 					{% if session.user %}
 						<div class="checkButtoncontainer">
 							<a class="getButton" href="/addPlantToCollection/{{plant.id}}">Ajouter à ma collection</a>
-							<a class="getButton" href="">Ajouter à une pièce</a>
-							
+							<a class="getButton" href="/addPlantToRoom/{{plant.id}}">Ajouter à une pièce</a>
 
 
 						</div>
