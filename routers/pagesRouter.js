@@ -8,5 +8,6 @@ pagesRouter.get('/subscribe', pagesController.displaySubscribe)
 pagesRouter.get('/plants', pagesController.displayPlants)
 pagesRouter.get('/dashboard', authguard(true), pagesController.displayDashboard)
 pagesRouter.get('/plantDetails/:plantid', pagesController.displayPlantDetails)
+pagesRouter.get('/collection', authguard(), pagesController.displayCollection )
 
 module.exports = pagesRouter

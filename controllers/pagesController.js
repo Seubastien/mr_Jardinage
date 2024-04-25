@@ -62,7 +62,7 @@ exports.displayPlants = async (req, res) => {
 
             const response = await fetch(`https://perenual.com/api/species-list?key=sk-36pu66263ce98512c5214&page=${randomPage}`)
             const data = await response.json()
-          
+            console.log(data)
             res.render("./plants/index.html.twig", {
                 homeButton: true,
                 headerFooter: true,
@@ -92,38 +92,46 @@ exports.displayDashboard = async (req, res) => {
 }
 exports.displayPlantDetails = async (req, res) => {
     try {
-        
+
         const response = await fetch(`https://perenual.com/api/species/details/${req.params.plantid}?key=sk-36pu66263ce98512c5214`)
         const data = await response.json()
-       
+
         res.render("./plantDetails/index.html.twig", {
             homeButton: true,
             headerFooter: true,
             data: data,
             title: "PlantDetails"
         })
-       
+
     } catch (error) {
         res.send(error)
     }
 }
-// exports.displayDashboard = async (req, res) => {
+exports.displayCollection = async (req, res) => {
+    try {
+        const user = await userModel.findOne({ _id: req.session.user._id })//va chercher dans _id l'id
+        let collections = user.plants_collection.map(async (plantid) => {//on utilise map car probleme au niveau de l'asyncronicité avec une foreach
+            let response = await fetch(`https://perenual.com/api/species/details/${plantid}?key=sk-36pu66263ce98512c5214`)
+            let data = await response.json()
+            return data
+        });
+        collections = await Promise.all(collections)
+        res.render("./collection/index.html.twig", {
+            collection: collections,
+            homeButton: true,
+            headerFooter: true,
+            title: "Collection"
+        })
+    } catch (error) {
+        res.send(error)
+    }
+}
+// exports.displayRoom = async (req, res) =>{
 //     try {
-//         if (req.query.search) {
-//             const employeeQuery = { name: { $regex: new RegExp(req.query.search, 'i') } }
-//             res.render("./dashBoard/dashBoard.html.twig", {
-//                 enterprise: await enterpriseModel.findById(req.session.enterprise).populate({ path: "employeeCollection", match: employeeQuery })
-//             })
-//         } else {
-//             res.render("./dashBoard/dashBoard.html.twig", {
-//                 enterprise: await enterpriseModel.findById(req.session.enterprise).populate("employeeCollection")
-//             })
-
-//         }
-
-
-//     } catch (error) {
-
-//         res.send(error.message)
+        
+//     } catch (
+        
+//     ) {
+        
 //     }
 // }

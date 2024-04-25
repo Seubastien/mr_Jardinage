@@ -13,7 +13,6 @@
 	<aside class="aside">
 		<p id="sideBarTitle">Mr Green
 			<br>Thumb</p>
-
 		{% if session.user %}
 			<p>Bienvenue
 				{{session.user.userName}}</p>
@@ -21,25 +20,24 @@
 				<a href="/logout">Déconnexion</a>
 				<a href="">Mes plantes</a>
 				<a href="/plants">Notre Jardin</a>
+				<h2 class="sideUnderTitle">{{data.common_name}}</h2>
 				<div class="checkButtoncontainer">
 					<a class="getButton" href="/addPlantToCollection/{{plant.id}}">Ajouter à ma collection</a>
 					<a class="getButton" href="/addPlantToRoom/{{plant.id}}">Ajouter à une pièce</a>
 				</div>
 			</div>
-            <div class="itemsContainer"><img class="items" src="/images/sun.png" alt="sunlight">{{data.sunlight}}
-			</div>
-			<div class="itemsContainer"><img class="items" src="/images/drop.png" alt="watering">{{data.watering}}
-			</div>
-
-		{% else %}
-			<a class="disconnectedButton" href="/home">Accueil</a>
-			<a class="disconnectedButton" href="/plants">Notre Jardin</a>
 			<div class="itemsContainer"><img class="items" src="/images/sun.png" alt="sunlight">{{data.sunlight}}
 			</div>
 			<div class="itemsContainer"><img class="items" src="/images/drop.png" alt="watering">{{data.watering}}
 			</div>
-
+		{% else %}
+			<a class="disconnectedButton" href="/home">Accueil</a>
+			<a class="disconnectedButton" href="/plants">Notre Jardin</a>
+			<h2 class="sideUnderTitle">{{data.common_name}}</h2>
+			<div class="itemsContainer"><img class="items" src="/images/sun.png" alt="sunlight">{{data.sunlight}}
+			</div>
+			<div class="itemsContainer"><img class="items" src="/images/drop.png" alt="watering">{{data.watering}}
+			</div>
 		{% endif %}
-
 	</aside>
 </section>

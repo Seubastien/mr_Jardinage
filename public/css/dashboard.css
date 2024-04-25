@@ -67,18 +67,19 @@ body {
 article {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+     gap:10px;
     background-color: #000000;
     border-radius: 3px;
     padding: 20px;
     margin-bottom: 20px;
 }
 
+
 article h3 {
     font-size: 24px;
     color: #ffffff;
     margin-top: 0;
-    margin-bottom: 10px;
+   
 }
 
 article p {

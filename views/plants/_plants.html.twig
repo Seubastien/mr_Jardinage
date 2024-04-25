@@ -74,14 +74,18 @@
 			<br>Thumb</p>
 
 		{% if session.user %}
-			<p>Bienvenue
+
+			<p>Bienvenue dans notre jardin
 				{{session.user.userName}}</p>
+
 			<div class="sideButtonContainer">
 				<a href="/logout">Déconnexion</a>
-				<a href="">Mes plantes</a>
+				<a href="/collection">Mes plantes</a>
 			</div>
+			
 		{% else %}
 			<a id="homeButton" href="/home">Accueil</a>
+			<h2 class="sideUnderTitle">Notre Jardin</h2>
 		{% endif %}
 
 	</aside>

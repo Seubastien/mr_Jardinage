@@ -1,0 +1,41 @@
+<section class="collectionContainer">
+	<div></div>
+	<div class="underCollectionContainer">
+
+		<h2>Ma collection</h2>
+		<div class="articleCollectionContainer">
+			{% for plant in collection %}
+				<article>
+					<div class="articleTitle">
+						<h3>{{plant.common_name}}</h3>
+						<a href="/plantDelete/{{plant.id}}"><img src="/images/compost.png" alt="plant_delete"></a>
+					</div>
+					<a id="imgContainer" href=""><img id="plant" src="{{plant.default_image.thumbnail}}" alt="plant_picture"></a>
+					<form action="/room" method="GET">
+						<select name="room" id="room">
+                        <option value="">Choisissez une pièce</option>
+							<option value="">salon</option>
+							<option value="">chambre</option>
+							<option value="">cuisine</option>
+						</select>
+					</form>
+				</article>
+			{% endfor %}
+		</div>
+
+	</div>
+	<aside class="aside">
+		<p id="sideBarTitle">Mr Green
+			<br>Thumb
+		</p>
+
+		<p>Bienvenue
+			{{session.user.userName}}</p>
+		<div class="sideButtonContainer">
+			<a href="/logout">Déconnexion</a>
+			<a href="/plants">Notre Jardin</a>
+		</div>
+		<a class="AddRoom" href="/room">Créer une pièce</a>
+
+	</aside>
+</section>

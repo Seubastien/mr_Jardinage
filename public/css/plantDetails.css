@@ -1,5 +1,5 @@
 body {
-    background-image: url("/images/wall-managed1168145_1920 1.png");
+    background-image: url("/images/wall-one-managed.png");
 }
 
 /* PLANTDETAILS */
@@ -116,7 +116,12 @@ body {
     color: #0EEBCA;
 
 }
+/* .sideUnderTitle{
+    background-color: #004a3fb7;
+    color: #0EEBCA;
+    letter-spacing: 0.1em;
 
+} */
 .items {
     width: 25px;
 }

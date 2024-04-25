@@ -1,5 +1,5 @@
 body {
-    background-image: url("/images/buttercups-6225833_1920.jpg");
+    background-image: url("/images/buttercups-managed.png");
 }
 /* PLANTS */
 .gardenContainer {
@@ -148,13 +148,20 @@ article p {
     width: 12%;
     background-color: #000000ac;
     padding: 20px;
-    gap: 10px;
+    gap: 20px;
 
 }
 #sideBarTitle{
     font-size:2em;
     letter-spacing: 0.2em;
     text-align: center;
+}
+
+.sideUnderTitle{
+    background-color: #004a3fb7;
+    color: #0EEBCA;
+    letter-spacing: 0.1em;
+
 }
 .aside p {
     font-size: 1em;

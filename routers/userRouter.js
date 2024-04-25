@@ -11,6 +11,6 @@ userRouter.get('/userDelete/:userid', authguard(true), userController.deleteUser
 userRouter.get('/userUpdate/:userid', authguard(true), userController.findToUpdate)
 userRouter.get('/addPlantToCollection/:plantid', authguard(), userController.addPlantToCollection)
 userRouter.post('/userUpdate/:userid',multer.single('image'), authguard(true),userController.updatedUser)
-
+userRouter.get('/plantDelete/:plantid', authguard(), userController.deletePlantCollection)
 
 module.exports = userRouter
