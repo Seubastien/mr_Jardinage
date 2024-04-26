@@ -1,10 +1,18 @@
 {% extends "base.html.twig" %}
+
 {% block style %}
-<link rel="stylesheet" href="/css/room.css">
+	<link rel="stylesheet" href="/css/room.css">
 {% endblock %}
 
 {% block main %}
+	{% if room %}
+		{% include "room/_room.html.twig" %}
 
-{% include "room/_room.html.twig" %}
+	{% elseif error %}
+
+		{% include "room/_editRoom.html.twig" %}
+	{% else %}
+		{% include "room/_editRoom.html.twig" %}
+	{% endif %}
 
 {% endblock %}

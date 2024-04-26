@@ -5,6 +5,7 @@ require ('dotenv').config()
 
 const pagesRouter = require('./routers/pagesRouter')
 const userRouter = require('./routers/userRouter')
+const roomRouter = require('./routers/roomRouter')
 
 const app = express()
 app.use(express.json())
@@ -22,7 +23,7 @@ app.use((req,res,next)=>{
 })
 app.use(pagesRouter)
 app.use(userRouter)
-
+app.use(roomRouter)
 
 app.listen(process.env.PORT, (err) => {
 

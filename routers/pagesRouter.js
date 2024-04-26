@@ -9,5 +9,6 @@ pagesRouter.get('/plants', pagesController.displayPlants)
 pagesRouter.get('/dashboard', authguard(true), pagesController.displayDashboard)
 pagesRouter.get('/plantDetails/:plantid', pagesController.displayPlantDetails)
 pagesRouter.get('/collection', authguard(), pagesController.displayCollection )
+pagesRouter.get('/room',authguard(), pagesController.displayRoom)//ne pas oublier le authguard
 
 module.exports = pagesRouter

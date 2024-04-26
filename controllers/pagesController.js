@@ -62,7 +62,7 @@ exports.displayPlants = async (req, res) => {
 
             const response = await fetch(`https://perenual.com/api/species-list?key=sk-36pu66263ce98512c5214&page=${randomPage}`)
             const data = await response.json()
-            console.log(data)
+           
             res.render("./plants/index.html.twig", {
                 homeButton: true,
                 headerFooter: true,
@@ -126,12 +126,14 @@ exports.displayCollection = async (req, res) => {
         res.send(error)
     }
 }
-// exports.displayRoom = async (req, res) =>{
-//     try {
-        
-//     } catch (
-        
-//     ) {
-        
-//     }
-// }
+exports.displayRoom = async (req, res) =>{
+    try {
+
+        res.render("./room/index.html.twig", {
+            homeButton: true,//Permet de donner des conditions selon les éléments que l'on veut afficher dans notre vue
+            title: "Accueil"
+        })
+    } catch (error) {
+        res.send(error)
+    }
+}

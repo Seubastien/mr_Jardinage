@@ -1,13 +1,13 @@
 const userModel = require('../models/userModel')
 const bcrypt = require('bcrypt')
-const e = require('express')
 const fs = require('fs')//permet de supprimer des fichiers 
-exports.createUser = async (req, res) => {
 
+exports.createUser = async (req, res) => {
     try {
         const confirmpassword = req.body.password
         if (confirmpassword === req.body.confirmPassword) {
             const newUser = new userModel(req.body)
+       
             if (req.file) {
                 if (req.multerError) {
                     throw { errorUpload: "le fichier n'est pas valide" }
@@ -121,7 +121,7 @@ exports.loginUser = async (req, res) => {
             homeButton: true,
             error: error
         })
-        console.log(error)
+        
     }
 
 }

@@ -14,7 +14,8 @@ body {
   flex-direction: column;
   justify-content: space-between;
   height: 100vh;
-  overflow-y: scroll;
+  
+
 }
 
 /* HEADER */
@@ -61,8 +62,6 @@ body {
   background-color: rgba(0, 0, 0, 0.662);
   border-radius: 3px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  
-  
 }
 
 .homeContent h2 {
@@ -179,6 +178,7 @@ button {
   gap: 15px;
 }
 
+
 /* FOOTER */
 footer {
   display: flex;
@@ -187,7 +187,10 @@ footer {
   height: 80px;
   background-color: rgba(0, 0, 0, 0.712);
 }
-
+footer img{
+  width: 100px;
+  align-self: end;
+}
 footer p {
   font-size: 1em;
   color: #0EEBCA;
