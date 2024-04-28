@@ -13,7 +13,7 @@
 					<a id="imgContainer" href=""><img id="plant" src="{{plant.default_image.thumbnail}}" alt="plant_picture"></a>
 					<form action="/room" method="GET">
 						<select name="room" id="room">
-                        <option value="">Choisissez une pièce</option>
+							<option value="">Choisissez une pièce</option>
 							<option value="">salon</option>
 							<option value="">chambre</option>
 							<option value="">cuisine</option>
@@ -29,13 +29,23 @@
 			<br>Thumb
 		</p>
 
-		<p>Bienvenue
+		<p id="welcome">Bienvenue
 			{{session.user.userName}}</p>
-		<div class="sideButtonContainer">
-			<a href="/logout">Déconnexion</a>
-			<a href="/plants">Notre Jardin</a>
+		<div id="allSideButton">
+			<div class="sideButtonContainer">
+				<a href="/logout">Déconnexion</a>
+				<a href="/plants">Notre Jardin</a>
+			</div>
+			<div class="roomContainer">
+				{% for room in user.rooms_collection %}
+					<div class="linkContainer">
+						<a href="/room/{{room.id}}" id="roomLink">{{room.name}}</a>
+						<a href="/roomDelete/{{room.id}}" id="deleteLink"><img id="deleteLinkImg" src="/images/delete.png" alt="delete_picture"></a>
+					</div>
+				{% endfor %}
+			</div>
+			<a id="AddRoom" href="/room">+ pièce</a>
 		</div>
-		<a class="AddRoom" href="/room">Créer une pièce</a>
-
 	</aside>
 </section>
+

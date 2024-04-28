@@ -41,6 +41,11 @@ roomSchema.pre("save", async function (next) {
    
     next();
 })
+roomSchema.post("deleteOne", async function(doc,next){// ne pas oublier doc, meme si non utilisé.
+    const deletedRoomId = this.getQuery()._id;
+    await userModel.updateOne({rooms_collection: {$in:[deletedRoomId]}}, {$pull: {rooms_collection: deletedRoomId}});
+    next();
+})
 
 const roomModel = mongoose.model('Rooms', roomSchema)
 module.exports = roomModel

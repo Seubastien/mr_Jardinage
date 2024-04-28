@@ -1,3 +1,4 @@
+const roomModel = require("../models/roomModel")
 const userModel = require("../models/userModel")
 
 exports.displayHome = (req, res) => {
@@ -62,7 +63,7 @@ exports.displayPlants = async (req, res) => {
 
             const response = await fetch(`https://perenual.com/api/species-list?key=sk-36pu66263ce98512c5214&page=${randomPage}`)
             const data = await response.json()
-           
+
             res.render("./plants/index.html.twig", {
                 homeButton: true,
                 headerFooter: true,
@@ -109,7 +110,7 @@ exports.displayPlantDetails = async (req, res) => {
 }
 exports.displayCollection = async (req, res) => {
     try {
-        const user = await userModel.findOne({ _id: req.session.user._id })//va chercher dans _id l'id
+        const user = await userModel.findOne({ _id: req.session.user._id }).populate('rooms_collection')//va chercher dans _id l'id
         let collections = user.plants_collection.map(async (plantid) => {//on utilise map car probleme au niveau de l'asyncronicité avec une foreach
             let response = await fetch(`https://perenual.com/api/species/details/${plantid}?key=sk-36pu66263ce98512c5214`)
             let data = await response.json()
@@ -117,22 +118,25 @@ exports.displayCollection = async (req, res) => {
         });
         collections = await Promise.all(collections)
         res.render("./collection/index.html.twig", {
+            user: user,
             collection: collections,
             homeButton: true,
             headerFooter: true,
             title: "Collection"
         })
+        console.log(user.rooms_collection);
     } catch (error) {
         res.send(error)
     }
 }
-exports.displayRoom = async (req, res) =>{
+exports.displayRoom = async (req, res) => {
     try {
-
         res.render("./room/index.html.twig", {
             homeButton: true,//Permet de donner des conditions selon les éléments que l'on veut afficher dans notre vue
-            title: "Accueil"
+            title: "Room",
+
         })
+       
     } catch (error) {
         res.send(error)
     }

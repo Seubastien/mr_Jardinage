@@ -1,6 +1,7 @@
-body{
+body {
     background-image: url("/images/brick-wall-managed.png");
 }
+
 .collectionContainer {
     display: flex;
     justify-content: space-around;
@@ -18,23 +19,27 @@ body{
     padding: 20px;
     border-radius: 3px;
     gap: 20px;
-    
+
 }
-.underCollectionContainer h2{
+
+.underCollectionContainer h2 {
     margin-bottom: 20px;
     text-align: center;
     color: #0EEBCA;
     font-weight: 300;
     letter-spacing: 0.1em;
 }
+
 .articleCollectionContainer {
     display: flex;
     flex-wrap: wrap;
     max-height: 80vh;
     gap: 20px;
     overflow-y: scroll;
-    scrollbar-width: none; /* Masquer la barre de défilement Firefox */
-    -ms-overflow-style: none; /* Masquer la barre de défilement IE/Edge */
+    scrollbar-width: none;
+    /* Masquer la barre de défilement Firefox */
+    -ms-overflow-style: none;
+    /* Masquer la barre de défilement IE/Edge */
 }
 
 /* Style pour chaque article */
@@ -49,16 +54,19 @@ article {
     padding: 20px;
     margin-bottom: 20px;
 }
-.articleTitle{
+
+.articleTitle {
     display: flex;
     align-items: center;
     gap: 10px;
 }
+
 article h3 {
     text-align: center;
-   
+
     color: #ffffff;
 }
+
 #imgPlant {
     text-align: center;
     margin-top: 10px;
@@ -78,32 +86,44 @@ article h3 {
     height: 100vh;
     width: 12%;
     background-color: #000000ac;
-    padding: 20px;
     gap: 20px;
 }
-#sideBarTitle{
-    font-size:2em;
+
+#sideBarTitle {
+    color: #0EEBCA;
+    font-size: 2em;
     letter-spacing: 0.2em;
     text-align: center;
-}
-
-.sideUnderTitle{
-    background-color: #004a3fb7;
-    color: #0EEBCA;
-    letter-spacing: 0.1em;
-
-}
-.aside p {
-    font-size: 1em;
-    color: #0EEBCA;
     margin: 10px 0;
 }
-.sideButtonContainer{
+
+#welcome {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #004a3fb7;
+    color: #0EEBCA;
+    font-size: 1em;
+    letter-spacing: 0.1em;
+    height: 30px;
+    width: 100%;
+    margin: 10px 0;
+
+}
+
+#allSideButton {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.sideButtonContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap:10px;
+    gap: 10px;
 }
+
 .aside a {
     text-decoration: none;
     text-align: center;
@@ -118,12 +138,54 @@ article h3 {
     border-radius: 5px;
     cursor: pointer;
 }
-#homeButton{
+
+#homeButton {
     align-self: center;
 }
+
 .aside a:hover {
     color: #666;
 }
-.AddRoom{
+
+#AddRoom {
     align-self: center;
+}
+
+#AddRoom:hover {
+    color: #0EEBCA;
+    background-color: #004A3F;
+}
+
+.roomContainer {
+
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.linkContainer {
+    display: flex;
+    align-items: center;
+}
+
+#roomLink {
+    display: flex;
+    height: 29px;
+    align-items: center;
+    width: 100%;
+    border-radius: unset;
+    background-color: #004A3F;
+    box-shadow: none;
+}
+
+#deleteLink {
+    width: unset;
+    height: unset;
+    box-shadow: unset;
+    border-radius: unset;
+    background-color: #004A3F;
+}
+
+#deleteLinkImg {
+    width: 25px;
 }
