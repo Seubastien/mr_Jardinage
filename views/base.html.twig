@@ -4,16 +4,15 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<title>Mr_green_thumb</title>
-		<link rel="stylesheet" href="/css/style.css">
-		{% block style %}{% endblock %}
-	</head>
-	<body>
-		{% include "./globalPartials/_header.html.twig" %}
-		
-		<main>
-			{% block main %}{% endblock %}
-		</main>
-		{% include "./globalPartials/_footer.html.twig" %}
+		<link rel="stylesheet" href="/css/style.css"> {% block style %}{% endblock %}
+		</head>
+		{#Modifier le back ground en fonction de la pièce choisie #}
+		<body {% if title == 'Room' %} class="{{room.type}}" {% endif %}>
+			{% include "./globalPartials/_header.html.twig" %}
+			<main>
+				{% block main %}{% endblock %}
+			</main>
+			{% include "./globalPartials/_footer.html.twig" %}
 
-	</body>
-</html>
+		</body>
+	</html>

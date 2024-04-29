@@ -35,25 +35,27 @@ exports.deleteRoom = async (req, res) => {
         console.log(error);
     }
 }
-// exports.addPlantToRoom = async (req, res) => {
-//     try {
-
-//         let addPlant = await user.updateOne(
-//             { _id: req.session.user._id },
-//             { $addToSet: { plants_collection: req.params.plantid } }
-//         )
-//         res.redirect('/plants')
-//     } catch (error) {
-//         res.send(error.message)
-//     }
-// }
-// exports.deletePlantCollection = async (req, res) => {
-//     try {
-//         const deletePlant = await userModel.updateOne(
-//             { _id: req.session.user._id },
-//             { $pull: { plants_collection: req.params.plantid }});
-//         res.redirect('/collection')
-//     } catch (error) {
-//         res.send(error.message)
-//     }
-// }
+exports.addPlantToRoom = async (req, res) => {
+    try {
+        
+        let addPlant = await roomModel.updateOne(
+           
+            { _id: req.body.room },
+            { $addToSet: { plants_collection: req.params.plantid } }
+        )
+        console.log(addPlant);
+        res.redirect('/collection')
+    } catch (error) {
+        res.send(error.message)
+    }
+}
+exports.deletePlantRoom = async (req, res) => {
+    try {
+        const deletePlant = await roomModel.updateOne(
+            { _id: req.body.room._id },
+            { $pull: { plants_collection: req.params.plantid }});
+        res.redirect('/collection')
+    } catch (error) {
+        res.send(error.message)
+    }
+}

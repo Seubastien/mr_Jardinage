@@ -124,20 +124,46 @@ exports.displayCollection = async (req, res) => {
             headerFooter: true,
             title: "Collection"
         })
-        console.log(user.rooms_collection);
+        
     } catch (error) {
         res.send(error)
     }
 }
-exports.displayRoom = async (req, res) => {
+exports.displayAddRoom = async (req, res) => {
     try {
         res.render("./room/index.html.twig", {
             homeButton: true,//Permet de donner des conditions selon les éléments que l'on veut afficher dans notre vue
-            title: "Room",
-
+            title: "AddRoom",
+            
         })
        
     } catch (error) {
         res.send(error)
     }
+}
+
+exports.displayRoom = async (req, res) => {
+    try {
+        const room = await roomModel.findById({ _id: req.params.roomid })//.populate('plante_collection')
+        let collections = room.plants_collection.map(async (plantid) => {//on utilise map car probleme au niveau de l'asyncronicité avec une foreach
+            let response = await fetch(`https://perenual.com/api/species/details/${plantid}?key=sk-36pu66263ce98512c5214`)
+            let data = await response.json()
+            return data
+        });
+        collections = await Promise.all(collections)
+        
+        res.render("./room/index.html.twig", {
+            homeButton: true,//Permet de donner des conditions selon les éléments que l'on veut afficher dans notre vue
+            headerFooter: true,
+            title: "Room",
+            room : room,
+            collection: collections,
+            
+        })
+        console.log(collections);
+    } catch (error) {
+        res.send(error)
+
+    }
+   
 }

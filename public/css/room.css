@@ -1,75 +1,205 @@
-/* body{
-} */
-/* FORMULAIRE EDIT ROOM */
-.editRoomContainer {
-    margin: auto;
-    padding: 15px;
-    justify-content: center;
+.living{
+    background-image: url("/images/saloon-managed.png");
+}
+.room{
+    background-image: url("/images/saloon-managed.png");
+}
+.kitchen{
+    background-image: url("/images/saloon-managed.png");
+}
+.bathroom{
+    background-image: url("/images/saloon-managed.png");
+}
+.parking{
+    background-image: url("/images/saloon-managed.png");
+}
+.outSide{
+    background-image: url("/images/saloon-managed.png");
+}
+.collectionContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+/* Style pour chaque colonne dans dashboardContainer */
+.underCollectionContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    max-width: 400px;
+    background-color: #000000ac;
+    width: 60%;
+    max-height: 80%;
+    padding: 20px;
+    border-radius: 3px;
     gap: 20px;
-    background-color: #000000ab;
+
 }
 
-.editRoomContainer h2 {
-
+.underCollectionContainer h2 {
+    margin-bottom: 20px;
     text-align: center;
     color: #0EEBCA;
     font-weight: 300;
     letter-spacing: 0.1em;
 }
-#editRoomForm form{
+
+.articleCollectionContainer {
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 80vh;
+    gap: 20px;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    /* Masquer la barre de défilement Firefox */
+    -ms-overflow-style: none;
+    /* Masquer la barre de défilement IE/Edge */
+}
+
+/* Style pour chaque article */
+article {
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #0000009c;
+    border-radius: 3px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.articleTitle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+article h3 {
+    text-align: center;
+
+    color: #ffffff;
+}
+
+#imgPlant {
+    text-align: center;
+    margin-top: 10px;
+}
+
+#plant {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Style pour la section aside */
+.aside {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 12%;
+    background-color: #000000ac;
+    gap: 20px;
+}
+
+#sideBarTitle {
+    color: #0EEBCA;
+    font-size: 2em;
+    letter-spacing: 0.2em;
+    text-align: center;
+    margin: 10px 0;
+}
+
+#welcome {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #004a3fb7;
+    color: #0EEBCA;
+    font-size: 1em;
+    letter-spacing: 0.1em;
+    height: 30px;
+    width: 100%;
+    margin: 10px 0;
+
+}
+
+#allSideButton {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.sideButtonContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
 }
-#editRoomFormcontent{
+
+.aside a {
+    text-decoration: none;
+    text-align: center;
+    width: 70%;
+    height: fit-content;
+    padding: 2px;
+    background-color: #000000b4;
+    box-shadow: -3px -3px 8px #0EEBCA;
+    color: #0EEBCA;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#homeButton {
+    align-self: center;
+}
+
+.aside a:hover {
+    color: #666;
+}
+
+#AddRoom {
+    align-self: center;
+}
+
+#AddRoom:hover {
+    color: #0EEBCA;
+    background-color: #004A3F;
+}
+
+.roomContainer {
+
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
 
-fieldset {
+.linkContainer {
     display: flex;
-    flex-direction: column;
-    border: 1px solid #ccc;
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 3px;
-    gap: 10px;
-    background-color: rgba(0, 0, 0, 0.642);
-
+    align-items: center;
 }
 
-fieldset label {
+#roomLink {
+    display: flex;
+    height: 29px;
+    align-items: center;
     width: 100%;
-    background-color: white;
-}
-
-legend {
-    color: #fff;
-    font-size: 1.2em;
-    font-weight: bold;
-}
-
-input[type="radio"] {
-    display: none;
-}
-
-input[type="radio"]+label {
-    display: inline-block;
-    cursor: pointer;
-    padding: 5px 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-input[type="radio"]:checked+label {
+    border-radius: unset;
     background-color: #004A3F;
-    color: #0EEBCA;
-    border-color: #0EEBCA;
+    box-shadow: none;
 }
 
+#deleteLink {
+    width: unset;
+    height: unset;
+    box-shadow: unset;
+    border-radius: unset;
+    background-color: #004A3F;
+}
+
+#deleteLinkImg {
+    width: 25px;
+}

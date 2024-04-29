@@ -2,7 +2,7 @@
 	<div></div>
 	<div class="underCollectionContainer">
 
-		<h2>Ma collection</h2>
+		<h2>{{room.name}}</h2>
 		<div class="articleCollectionContainer">
 			{% for plant in collection %}
 				<article>
@@ -10,7 +10,7 @@
 						<h3>{{plant.common_name}}</h3>
 						<a href="/plantDelete/{{plant.id}}"><img src="/images/compost.png" alt="plant_delete"></a>
 					</div>
-					<a id="imgContainer" href=""><img id="plant" src="{{plant.default_image.thumbnail}}" alt="plant_picture"></a>
+					<a id="imgContainer" href="/plantUserData"><img id="plant" src="{{plant.default_image.thumbnail}}" alt="plant_picture"></a>
 				</article>
 			{% endfor %}
 		</div>
@@ -27,17 +27,27 @@
 			<div class="sideButtonContainer">
 				<a href="/logout">Déconnexion</a>
 				<a href="/plants">Notre Jardin</a>
+				<a href="/collection">Ma collection</a>
 			</div>
 			<div class="roomContainer">
-				{% for room in user.rooms_collection %}
-					<div class="linkContainer">
-						<a href="/room" id="roomLink">{{room.name}}</a>
-						<a href="/delete" id="deleteLink"><img id="deleteLinkImg" src="/images/delete.png" alt="delete_picture"></a>
-					</div>
-				{% endfor %}
-			</div>
-			<a id="AddRoom" href="/room">+ pièce</a>
-		</div>
-	</aside>
-</section>
+				<form action="/plantAddToRoom/{{plant.id}}" method="POST">
+					<select name="plant" id="plant">
+						<option value="">Ma collection</option>
+						{% for plant in collection %}
+							<option value="{{plant._id}}">{{plant.common_name}}</option>
+						{% endfor %}
+					</select>
+					<button type="submit">Ajouter à la pièce</button>
+				</form>
 
+				<a id="update" href="">Modifier pièce</a>
+			</div>
+		</aside>
+		<div class="popup">
+		fucckkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+		
+		</div>
+{% block script %}
+<script src="/script/main.js"></script>
+{% endblock %}
+	</section>

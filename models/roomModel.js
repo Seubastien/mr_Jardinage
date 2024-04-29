@@ -6,6 +6,10 @@ const roomSchema = mongoose.Schema({
         type: String,
         required: [true, "le nom est requis"]
     },
+    type:{
+        type: String,
+        required:[true, "Le type de la pièce est requis"]
+    },
     sunlight: {
         type: String,
         required: [true, "Le niveau de luminosité de la pièce est requis"]

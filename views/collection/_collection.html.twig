@@ -10,14 +10,16 @@
 						<h3>{{plant.common_name}}</h3>
 						<a href="/plantDelete/{{plant.id}}"><img src="/images/compost.png" alt="plant_delete"></a>
 					</div>
+
 					<a id="imgContainer" href=""><img id="plant" src="{{plant.default_image.thumbnail}}" alt="plant_picture"></a>
-					<form action="/room" method="GET">
+					<form action="/plantAddToRoom/{{plant.id}}" method="POST">
 						<select name="room" id="room">
-							<option value="">Choisissez une pièce</option>
-							<option value="">salon</option>
-							<option value="">chambre</option>
-							<option value="">cuisine</option>
+							<option value="">Ajouter à une pièce</option>
+							{% for room in user.rooms_collection %}
+								<option value="{{room._id}}">{{room.name}}</option>
+							{% endfor %}
 						</select>
+						<button type="submit">valider le choix</button>
 					</form>
 				</article>
 			{% endfor %}
@@ -48,4 +50,3 @@
 		</div>
 	</aside>
 </section>
-

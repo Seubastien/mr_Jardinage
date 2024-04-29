@@ -1,14 +1,19 @@
 {% extends "base.html.twig" %}
-
+{% if title == "AddRoom" %}
 {% block style %}
+	<link rel="stylesheet" href="/css/addRoom.css">
+{% endblock %}
+{% else %}
+	{% block style %}
 	<link rel="stylesheet" href="/css/room.css">
 {% endblock %}
+{% endif %}
 
 {% block main %}
-	{% if room %}
+	{% if title == "Room" %}
 		{% include "room/_room.html.twig" %}
 	{% else %}
-		{% include "room/_editRoom.html.twig" %}
+		{% include "room/_addRoom.html.twig" %}
 	{% endif %}
 
 {% endblock %}

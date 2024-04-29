@@ -13,6 +13,33 @@
 				{% if error %}
 					<p class="error">{{error.errors.sunlight}}</p>
 				{% endif %}
+				<fieldset class="NameField">
+					<legend>type de pièce:</legend>
+					<div>
+						<input id="living" type="radio" name="type" value="living">
+						<label for="living">Salon</label>
+					</div>
+					<div>
+						<input id="room" type="radio" name="type" value="room">
+						<label for="room">Chambre</label>
+					</div>
+					<div>
+						<input id="kitchen" type="radio" name="type" value="kitchen">
+						<label for="kitchen">Cuisine</label>
+					</div>
+					<div>
+						<input id="bathroom" type="radio" name="type" value="bathroom">
+						<label for="bathroom">Salle de bain</label>
+					</div>
+					<div>
+						<input id="parking" type="radio" name="type" value="parking">
+						<label for="parking">Garage</label>
+					</div>
+					<div>
+						<input id="outSide" type="radio" name="type" value="outSide">
+						<label for="outSide">Extérieur</label>
+					</div>
+				</fieldset>
 				<fieldset class="sunField">
 					<legend>Eclairage de la pièce:</legend>
 					<div>
