@@ -6,86 +6,92 @@
 	<div id="editRoomForm">
 		<form action="/editRoom" method="post">
 			<div id="editRoomFormcontent">
-				{% if error %}
-					<p class="error">{{error.errors.name}}</p>
-				{% endif %}
-				<input id="name" type="text" name="name" placeholder="Nom de la pièce">
-				{% if error %}
-					<p class="error">{{error.errors.sunlight}}</p>
-				{% endif %}
-				<fieldset class="NameField">
-					<legend>type de pièce:</legend>
-					<div>
-						<input id="living" type="radio" name="type" value="living">
-						<label for="living">Salon</label>
-					</div>
-					<div>
-						<input id="room" type="radio" name="type" value="room">
-						<label for="room">Chambre</label>
-					</div>
-					<div>
-						<input id="kitchen" type="radio" name="type" value="kitchen">
-						<label for="kitchen">Cuisine</label>
-					</div>
-					<div>
-						<input id="bathroom" type="radio" name="type" value="bathroom">
-						<label for="bathroom">Salle de bain</label>
-					</div>
-					<div>
-						<input id="parking" type="radio" name="type" value="parking">
-						<label for="parking">Garage</label>
-					</div>
-					<div>
-						<input id="outSide" type="radio" name="type" value="outSide">
-						<label for="outSide">Extérieur</label>
-					</div>
-				</fieldset>
-				<fieldset class="sunField">
-					<legend>Eclairage de la pièce:</legend>
-					<div>
-						<input id="full_sun" type="radio" name="sunlight" value="full_sun">
-						<label for="full_sun">Très éclairée</label>
-					</div>
-					<div>
-						<input id="part_shade" type="radio" name="sunlight" value="part_shade">
-						<label for="part_shade">Partiellement éclairée/ombragée</label>
-					</div>
-					<div>
-						<input id="full_shade" type="radio" name="sunlight" value="full_shade">
-						<label for="full_shade">Totalement Ombragée</label>
-					</div>
-				</fieldset>
-				{% if error %}
-					<p class="error">{{error.errors.humidity}}</p>
-				{% endif %}
-				<fieldset class="hygroField">
-					<legend>Hygromètrie de la pièce:</legend>
-					<div>
-						<input id="wet" type="radio" name="humidity" value="wet">
-						<label for="wet">Humide</label>
-					</div>
-					<div>
-						<input id="averageHumidity" type="radio" name="humidity" value="averageHumidity">
-						<label for="averageHumidity">Humidité moyenne</label>
-					</div>
-					<div>
-						<input id="dry" type="radio" name="humidity" value="dry">
-						<label for="dry">Sec</label>
-					</div>
-				</fieldset>
-				<fieldset class="placeField">
-					<legend>Lieu de la pièce:</legend>
-					<div>
-						<input id="interior" type="radio" name="is_interior" value="{{false}}">
-						<label for="interior">Intérieur</label>
-					</div>
-					<div>
-						<input id="exterior" type="radio" name="is_interior" value="{{true}}">
-						<label for="exterior">Extérieur</label>
-					</div>
-				</fieldset>
+				<div id="firstBlockform">
+					{% if error %}
+						<p class="error">{{error.errors.name}}</p>
+					{% endif %}
+					<input id="name" type="text" name="name" placeholder="Nom de la pièce">
+					{% if error %}
+						<p class="error">{{error.errors.sunlight}}</p>
+					{% endif %}
+					<fieldset class="NameField">
+						<legend>type de pièce:</legend>
+						<div>
+							<input id="living" type="radio" name="type" value="living">
+							<label for="living">Salon</label>
+						</div>
+						<div>
+							<input id="room" type="radio" name="type" value="room">
+							<label for="room">Chambre</label>
+						</div>
+						<div>
+							<input id="kitchen" type="radio" name="type" value="kitchen">
+							<label for="kitchen">Cuisine</label>
+						</div>
+						<div>
+							<input id="bathroom" type="radio" name="type" value="bathroom">
+							<label for="bathroom">Salle de bain</label>
+						</div>
+						<div>
+							<input id="parking" type="radio" name="type" value="parking">
+							<label for="parking">Garage</label>
+						</div>
+						<div>
+							<input id="outSide" type="radio" name="type" value="outSide">
+							<label for="outSide">Extérieur</label>
+						</div>
+					</fieldset>
+					<fieldset class="placeField">
+						<legend>Lieu de la pièce:</legend>
+						<div>
+							<input id="interior" type="radio" name="is_interior" value="{{false}}">
+							<label for="interior">Intérieur</label>
+						</div>
+						<div>
+							<input id="exterior" type="radio" name="is_interior" value="{{true}}">
+							<label for="exterior">Extérieur</label>
+						</div>
+					</fieldset>
+				</div>
+				<div id="secondBlockform">
+					<fieldset class="sunField">
+						<legend>Eclairage de la pièce:</legend>
+						<div>
+							<input id="full_sun" type="radio" name="sunlight" value="full_sun">
+							<label for="full_sun">Très éclairée</label>
+						</div>
+						<div>
+							<input id="part_shade" type="radio" name="sunlight" value="part_shade">
+							<label for="part_shade">Partiellement éclairée/ombragée</label>
+						</div>
+						<div>
+							<input id="full_shade" type="radio" name="sunlight" value="full_shade">
+							<label for="full_shade">Totalement Ombragée</label>
+						</div>
+					</fieldset>
+					{% if error %}
+						<p class="error">{{error.errors.humidity}}</p>
+					{% endif %}
+					<fieldset class="hygroField">
+						<legend>Hygromètrie de la pièce:</legend>
+						<div>
+							<input id="wet" type="radio" name="humidity" value="wet">
+							<label for="wet">Humide</label>
+						</div>
+						<div>
+							<input id="averageHumidity" type="radio" name="humidity" value="averageHumidity">
+							<label for="averageHumidity">Humidité moyenne</label>
+						</div>
+						<div>
+							<input id="dry" type="radio" name="humidity" value="dry">
+							<label for="dry">Sec</label>
+						</div>
+					</fieldset>
+				</div>
 			</div>
-			<button id="button" type="submit">Créer</button>
+			<button id="button" type="submit">Valider Modifications</button>
 		</form>
+		<a href="javascript:void(0)" onclick="togglePopup()" id="popup-exit">&#x2716</a>
 	</div>
+
 </section>

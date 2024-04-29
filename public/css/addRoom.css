@@ -2,15 +2,15 @@
 } */
 /* FORMULAIRE EDIT ROOM */
 .editRoomContainer {
-    margin: auto;
+    max-width: 600px;
+    width: 100%;
     padding: 15px;
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 400px;
-    gap: 20px;
-    background-color: #000000ab;
+    box-sizing: border-box;
+    background: #0000007d;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .editRoomContainer h2 {
@@ -20,6 +20,20 @@
     font-weight: 300;
     letter-spacing: 0.1em;
 }
+#firstBlockform{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+#secondBlockform{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+}
+#editRoomForm{
+    margin: 20px;
+}
 #editRoomForm form{
     display: flex;
     flex-direction: column;
@@ -28,8 +42,7 @@
 }
 #editRoomFormcontent{
     display: flex;
-    flex-direction: column;
-    gap: 15px;
+    gap: 50px;
 }
 
 fieldset {
@@ -54,7 +67,9 @@ legend {
     font-size: 1.2em;
     font-weight: bold;
 }
-
+#name{
+    height: 30px;
+}
 input[type="radio"] {
     display: none;
 }
@@ -72,4 +87,3 @@ input[type="radio"]:checked+label {
     color: #0EEBCA;
     border-color: #0EEBCA;
 }
-
