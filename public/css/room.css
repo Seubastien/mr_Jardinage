@@ -1,5 +1,5 @@
 /* FORMULAIRE CREATION ROOM */
-.editRoomContainer {
+.addRoomContainer {
     max-width: 600px;
     width: 100%;
     padding: 15px;
@@ -11,7 +11,7 @@
     transform: translate(-50%, -50%);
 }
 
-.editRoomContainer h2 {
+.addRoomContainer h2 {
 
     text-align: center;
     color: #0EEBCA;
@@ -29,16 +29,16 @@
     justify-content: center;
     gap: 40px;
 }
-#editRoomForm{
+#addRoomForm{
     margin: 20px;
 }
-#editRoomForm form{
+#addRoomForm form{
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
 }
-#editRoomFormcontent{
+#addRoomFormcontent{
     display: flex;
     gap: 50px;
 }
@@ -56,7 +56,7 @@ fieldset {
 }
 
 fieldset label {
-    width: 100%;
+    width: calc(100% - 20px);
     background-color: white;
 }
 
@@ -116,19 +116,19 @@ input[type="radio"]:checked+label {
 }
 
 .room {
-    background-image: url("/images/saloon-managed.png");
+    background-image: url("/images/room_two 1.png")
 }
 
 .kitchen {
-    background-image: url("/images/saloon-managed.png");
+    background-image: url("/images/kitchen_three 1.png");
 }
 
 .bathroom {
-    background-image: url("/images/saloon-managed.png");
+    background-image: url("/images/bathroom.png");
 }
 
 .parking {
-    background-image: url("/images/saloon-managed.png");
+    background-image: url("/images/garage_three 1.png");
 }
 
 .outSide {

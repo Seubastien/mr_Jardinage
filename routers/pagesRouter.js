@@ -11,4 +11,5 @@ pagesRouter.get('/plantDetails/:plantid', pagesController.displayPlantDetails)
 pagesRouter.get('/collection', authguard(), pagesController.displayCollection )
 pagesRouter.get('/room',authguard(), pagesController.displayAddRoom)//ne pas oublier le authguard
 pagesRouter.get('/room/:roomid', authguard(), pagesController.displayRoom)
+pagesRouter.get('/dataPlant/:plantid', pagesController.displayDataPlant)
 module.exports = pagesRouter

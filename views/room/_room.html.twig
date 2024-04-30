@@ -10,7 +10,8 @@
 						<h3>{{plant.common_name}}</h3>
 						<a href="/plantDelete/{{plant.id}}"><img src="/images/compost.png" alt="plant_delete"></a>
 					</div>
-					<a id="imgContainer" href="/plantUserData"><img id="plant" src="{{plant.default_image.thumbnail}}" alt="plant_picture"></a>
+					<p>{{plant.date|date('d-m-Y')}}</p>
+					<a id="imgContainer" href="/dataPlant/{{plant.id}}"><img id="plant" src="{{plant.default_image.thumbnail}}" alt="plant_picture"></a>
 				</article>
 			{% endfor %}
 		</div>
@@ -30,13 +31,14 @@
 				<a href="/collection">Ma collection</a>
 			</div>
 			<div class="roomContainer">
-				<form action="/plantAddToRoom/{{plant.id}}" method="POST">
+				<form action="/plantAddToRoom" method="POST">
 					<select name="plant" id="plant">
 						<option value="">Ma collection</option>
-						{% for plant in collection %}
-							<option value="{{plant._id}}">{{plant.common_name}}</option>
+						{% for plant in userCollection %}
+							<option value="{{plant.id}}">{{plant.common_name}}</option>
 						{% endfor %}
 					</select>
+					<input type="hidden" value="{{room.id}}" name="room">
 					<button type="submit">Ajouter à la pièce</button>
 				</form>
 
@@ -44,14 +46,14 @@
 			</div>
 		</aside>
 		<div id="popup-overlay">
-			<div class="editRoomContainer" class="popup-content">
+			<div class="addRoomContainer" class="popup-content">
 				<div>
 					<h2>Modifier la pièce</h2>
 				</div>
 
-				<div id="editRoomForm">
-					<form action="/editRoom" method="post">
-						<div id="editRoomFormcontent">
+				<div id="addRoomForm">
+					<form action="/roomUpdate/{{room.id}}" method="post">
+						<div id="addRoomFormcontent">
 							<div id="firstBlockform">
 								{% if error %}
 									<p class="error">{{error.errors.name}}</p>
@@ -61,7 +63,7 @@
 									<p class="error">{{error.errors.sunlight}}</p>
 								{% endif %}
 								<fieldset class="NameField">
-									<legend>type de pièce:</legend>
+									<legend>Type de pièce:</legend>
 									<div>
 										<input id="living" type="radio" name="type" value="living">
 										<label for="living">Salon</label>
@@ -137,7 +139,7 @@
 						</div>
 						<button id="button" type="submit">Valider Modifications</button>
 					</form>
-	
+					<a href="javascript:void(0)" onclick="togglePopup()" id="popup-exit">&#x2716</a>
 				</div>
 
 			</div>

@@ -63,7 +63,7 @@ exports.displayPlants = async (req, res) => {
 
             const response = await fetch(`https://perenual.com/api/species-list?key=sk-36pu66263ce98512c5214&page=${randomPage}`)
             const data = await response.json()
-
+            console.log(data)
             res.render("./plants/index.html.twig", {
                 homeButton: true,
                 headerFooter: true,
@@ -96,7 +96,6 @@ exports.displayPlantDetails = async (req, res) => {
 
         const response = await fetch(`https://perenual.com/api/species/details/${req.params.plantid}?key=sk-36pu66263ce98512c5214`)
         const data = await response.json()
-
         res.render("./plantDetails/index.html.twig", {
             homeButton: true,
             headerFooter: true,
@@ -145,25 +144,46 @@ exports.displayAddRoom = async (req, res) => {
 exports.displayRoom = async (req, res) => {
     try {
         const room = await roomModel.findById({ _id: req.params.roomid })//.populate('plante_collection')
-        let collections = room.plants_collection.map(async (plantid) => {//on utilise map car probleme au niveau de l'asyncronicité avec une foreach
+        let collections = room.plants_collection.map(async (plant) => {//on utilise map car probleme au niveau de l'asyncronicité avec une foreach
+            let response = await fetch(`https://perenual.com/api/species/details/${plant.plantid}?key=sk-36pu66263ce98512c5214`)
+            let data = await response.json()
+            data.date = plant.dateAdd//On fait passer aux data un .date qu'on crée, plant.dateAdd donc la date stockée dans la base de données
+            return data
+
+        });
+        collections = await Promise.all(collections)
+     
+        const user = await userModel.findOne({ _id: req.session.user._id })//.populate('rooms_collection')//va chercher dans _id l'id
+        let userCollections = user.plants_collection.map(async (plantid) => {//on utilise map car probleme au niveau de l'asyncronicité avec une foreach
             let response = await fetch(`https://perenual.com/api/species/details/${plantid}?key=sk-36pu66263ce98512c5214`)
             let data = await response.json()
             return data
         });
-        collections = await Promise.all(collections)
-        
+        userCollections = await Promise.all(userCollections)
+        console.log(userCollections);
         res.render("./room/index.html.twig", {
             homeButton: true,//Permet de donner des conditions selon les éléments que l'on veut afficher dans notre vue
             headerFooter: true,
             title: "Room",
+            userCollection: userCollections,
+
             room : room,
             collection: collections,
             
         })
-        console.log(collections);
     } catch (error) {
         res.send(error)
-
+        console.log(error)
     }
    
+}
+exports.displayDataPlant = async (req, res) =>{
+    try {
+        res.render("./dataPlant/index.html.twig", {
+            homeButton: true,//Permet de donner des conditions selon les éléments que l'on veut afficher dans notre vue
+            title: "InfoPlant"
+        })
+    } catch (error) {
+        res.send(error)
+    }
 }

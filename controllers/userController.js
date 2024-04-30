@@ -1,13 +1,14 @@
 const userModel = require('../models/userModel')
 const bcrypt = require('bcrypt')
 const fs = require('fs')//permet de supprimer des fichiers 
+const roomModel = require('../models/roomModel')
 
 exports.createUser = async (req, res) => {
     try {
         const confirmpassword = req.body.password
         if (confirmpassword === req.body.confirmPassword) {
             const newUser = new userModel(req.body)
-       
+
             if (req.file) {
                 if (req.multerError) {
                     throw { errorUpload: "le fichier n'est pas valide" }
@@ -121,7 +122,7 @@ exports.loginUser = async (req, res) => {
             homeButton: true,
             error: error
         })
-        
+
     }
 
 }
@@ -152,7 +153,11 @@ exports.deletePlantCollection = async (req, res) => {
     try {
         const deletePlant = await userModel.updateOne(
             { _id: req.session.user._id },
-            { $pull: { plants_collection: req.params.plantid }});
+            { $pull: { plants_collection: req.params.plantid } });
+        await roomModel.updateMany(
+            { "plants_collection.plantid": req.params.plantid },
+            { $pull: { plants_collection: { plantid: req.params.plantid } } }
+        );
         res.redirect('/collection')
     } catch (error) {
         res.send(error.message)

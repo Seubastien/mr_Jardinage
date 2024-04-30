@@ -19,8 +19,9 @@ const roomSchema = mongoose.Schema({
         required: [true, "Le niveau d'humidité de la pièce est requis"]
     },
     plants_collection: [{
-
-        type: Number,
+      
+            plantid:{ type: Number},
+            dateAdd : {type: Date}
     }],
     user: {
         type: mongoose.Schema.Types.ObjectId,
