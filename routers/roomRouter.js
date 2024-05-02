@@ -7,7 +7,9 @@ roomRouter.post('/addRoom', authguard(), roomController.createRoom )//ne pas oub
 roomRouter.get('/roomDelete/:roomid', authguard(), roomController.deleteRoom)
 roomRouter.post('/plantAddToRoom/:plantid', authguard(), roomController.addPlantToRoom)
 roomRouter.post('/plantAddToRoom', authguard(), roomController.addPlantToRoom)
-
-roomRouter.get('/plantDelete/:plantid', authguard(), roomController.deletePlantRoom)
+roomRouter.get('/plantDeleteToRoom/:roomid/plant/:id', authguard(), roomController.deletePlantRoom)
 roomRouter.post('/roomUpdate/:roomid', authguard(), roomController.updatedRoom)
+
+
+
 module.exports = roomRouter

@@ -51,7 +51,7 @@ exports.addPlantToRoom = async (req, res) => {
             { $addToSet: { plants_collection: {plantid : plantid, dateAdd: Date.now()} } }
         )
         
-        res.redirect('/room/'+ req.body.room)// permet de rediriger vers la piece.
+        res.redirect('/collection')
     } catch (error) {
         res.send(error.message)
         console.log(error)
@@ -59,10 +59,12 @@ exports.addPlantToRoom = async (req, res) => {
 }
 exports.deletePlantRoom = async (req, res) => {
     try {
+        
         const deletePlant = await roomModel.updateOne(
-            { _id: req.body.room._id },
-            { $pull: { plants_collection: {plantid : req.params.plantid }} });
-        res.redirect('/collection')
+            { _id: req.params.roomid },
+            { $pull: { plants_collection: {_id: req.params.id }} });
+        res.redirect('/room/'+ req.params.roomid)// permet de rediriger vers la piece.
+        
     } catch (error) {
         res.send(error.message)
     }

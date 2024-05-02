@@ -8,10 +8,10 @@
 				<article>
 					<div class="articleTitle">
 						<h3>{{plant.common_name}}</h3>
-						<a href="/plantDelete/{{plant.id}}"><img src="/images/compost.png" alt="plant_delete"></a>
+						<a href="/plantDeleteToRoom/{{room.id}}/plant/{{plant.idPLantRoom}}"><img src="/images/compost.png" alt="plant_delete"></a>
 					</div>
-					<p>{{plant.date|date('d-m-Y')}}</p>
-					<a id="imgContainer" href="/dataPlant/{{plant.id}}"><img id="plant" src="{{plant.default_image.thumbnail}}" alt="plant_picture"></a>
+					<p id="date">Date d'ajout à la pièce: {{plant.date|date('d-m-Y')}}</p>
+					<a id="imgContainer" href="/dataPlant/{{plant.idPLantRoom}}/room/{{room.id}}"><img id="plant" src="{{plant.default_image.thumbnail}}" alt="plant_picture"></a>
 				</article>
 			{% endfor %}
 		</div>
