@@ -186,16 +186,21 @@ exports.displayDataPlant = async (req, res) => {
     //  console.log(room.plants_collection);
         let plant = room.plants_collection.find(e => e._id == req.params.plantid);
         // console.log(new mongoose.Types.ObjectId (req.params.plantid);
-        console.log(plant);
+        const response = await fetch(`https://perenual.com/api/species/details/${plant.plantid}?key=sk-36pu66263ce98512c5214`)
+        const data = await response.json()
+        // console.log(plant);
+        // console.log(room)
+        console.log(data)
           
        
         res.render("./dataPlant/index.html.twig", {
             homeButton: true,//Permet de donner des conditions selon les éléments que l'on veut afficher dans notre vue
-            title: "InfoPlant",
+            title: "Room",
             homeButton: true,//Permet de donner des conditions selon les éléments que l'on veut afficher dans notre vue
             headerFooter: true,
             room : room,
-            plant: plant
+            plant: plant,
+            data: data
 
         })
     } catch (error) {

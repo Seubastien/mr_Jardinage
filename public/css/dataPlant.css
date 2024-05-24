@@ -1,0 +1,140 @@
+.living {
+    background-image: url("/images/saloon-managed.png");
+}
+
+.room {
+    background-image: url("/images/room_two 1.png")
+}
+
+.kitchen {
+    background-image: url("/images/kitchen_three 1.png");
+}
+
+.bathroom {
+    background-image: url("/images/bathroom.png");
+}
+
+.parking {
+    background-image: url("/images/garage_three 1.png");
+}
+
+.outSide {
+    background-image: url("/images/saloon-managed.png");
+}
+.collectionContainer{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.underCollectionContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #000000ac;
+    width: 60%;
+    max-height: 80%;
+    padding: 20px;
+    border-radius: 3px;
+    gap: 20px;
+}
+article {
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #0000009c;
+    border-radius: 3px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+#imgPlant{
+    text-align: center;
+    margin-top: 10px;
+}
+#plant{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.aside {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 12%;
+    background-color: #000000ac;
+    gap: 20px;
+}
+
+#sideBarTitle {
+    color: #0EEBCA;
+    font-size: 2em;
+    letter-spacing: 0.2em;
+    text-align: center;
+    margin: 10px 0;
+}
+
+#welcome {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #004a3fb7;
+    color: #0EEBCA;
+    font-size: 1em;
+    letter-spacing: 0.1em;
+    height: 30px;
+    width: 100%;
+    margin: 10px 0;
+
+}
+.aside {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 12%;
+    background-color: #000000ac;
+    gap: 20px;
+}
+
+#sideBarTitle {
+    color: #0EEBCA;
+    font-size: 2em;
+    letter-spacing: 0.2em;
+    text-align: center;
+    margin: 10px 0;
+}
+#allSideButton {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.sideButtonContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+.aside a {
+    text-decoration: none;
+    text-align: center;
+    width: 70%;
+    height: fit-content;
+    padding: 2px;
+    background-color: #000000b4;
+    box-shadow: -3px -3px 8px #0EEBCA;
+    color: #0EEBCA;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#homeButton {
+    align-self: center;
+}
+
+.aside a:hover {
+    color: #666;
+}

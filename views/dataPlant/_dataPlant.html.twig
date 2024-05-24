@@ -1,55 +1,37 @@
-<section class="gardenContainer">
+<section class="collectionContainer">
 	<div></div>
-	<div class="articlePlantContainer">
-		{% for plant in data %}
-			<article>
-				<div>
-					<h3>{{plant.common_name}}</h3>
-				</div>
-				<a href="/plantDetails/{{plant.id}}" id="imgPlant">
-					<img id="plant" {% if plant.default_image.thumbnail %} src="{{plant.default_image.thumbnail}}" {% else %} src="/images/mr_green_thumb.jpg" {% endif %} alt="plant_picture">
-				</a>
-				<p>Nom scientifique:
-					{{plant.scientific_name[0]}}
-				</p>
-				<p>Autre Nom:
-					{{plant.other_name[0]}}
-				</p>
-				<p>Besoin en eau:
-					{{plant.watering}}
-				</p>
-				<p>Exposition:
-					{{plant.sunlight}}
-				</p>
-				{% if session.user %}
-					<div class="checkButtoncontainer">
-						<a class="getButton" href="/addPlantToCollection/{{plant.id}}">Ajouter à ma collection</a>
-						<a class="getButton" href="/addPlantToRoom/{{plant.id}}">Ajouter à une pièce</a>
-
-
-					</div>
-				{% endif %}
-
-			</article>
-		{% endfor %}
+	<div class="underCollectionContainer">
+		<article>
+			<div>
+				<h3>{{data.common_name}}</h3>
+			</div>
+			<a href="/plantDetails/{{data.id}}" id="imgPlant">
+				<img id="plant" {% if data.default_image.thumbnail %} src="{{data.default_image.thumbnail}}" {% else %} src="/images/mr_green_thumb.jpg" {% endif %} alt="plant_picture">
+			</a>
+			<p>Besoin en eau:
+				{{data.watering}}
+			</p>
+			<p>Exposition:
+				{{data.sunlight}}
+			</p>
+		</article>
 	</div>
 	<aside class="aside">
 		<p id="sideBarTitle">Mr Green
-			<br>Thumb</p>
-
+			<br>Thumb
+		</p>
 		{% if session.user %}
 
-			<p>Bienvenue dans notre jardin
-				{{session.user.userName}}</p>
-
-			<div class="sideButtonContainer">
-				<a href="/logout">Déconnexion</a>
-				<a href="/collection">Mes plantes</a>
+			<p id="welcome">Bienvenue
+				{{session.user.userName}}
+			</p>
+			<div id="allSideButton">
+				<div class="sideButtonContainer">
+					<a href="/logout">Déconnexion</a>
+					<a href="/plants">Notre Jardin</a>
+					<a href="/collection">Ma collection</a>
+				</div>
 			</div>
-
-		{% else %}
-			<a id="homeButton" href="/home">Accueil</a>
-			<h2 class="sideUnderTitle">Notre Jardin</h2>
 		{% endif %}
 
 	</aside>
