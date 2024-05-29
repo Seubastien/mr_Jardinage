@@ -1,12 +1,10 @@
 <section class="gardenContainer">
 	<div></div>
 	<div class="underGardenContainer">
-		<div id="uperGardenContainer">
-
-			<form action="/plants" method="GET">
-
+		<form id="uperGardenContainer" action="/plants" method="GET">
+			<div id="selectContainer">
 				<select name="expo" id="expo-select">
-					<option value="">choisissez une exposition</option>
+					<option value="">Exposition</option>
 					<option value="full_sun">Full sun</option>
 
 					<option value="part_shade">Part shade</option>
@@ -14,7 +12,7 @@
 				</select>
 				<select name="water" id="water-select">
 
-					<option value="">choisissez une fréquence d'arrosage</option>
+					<option value="">Fréquence d'arrosage</option>
 					<option value="minimum">Minimum</option>
 					<option value="average">Average</option>
 					<option value="frequent">Frequent</option>
@@ -22,18 +20,17 @@
 
 				</select>
 				<select name="millieu" id="env-select">
-					<option value="">choisissez un de vos millieux</option>
+					<option value="">Mon milieux</option>
 					<option value="envOne">Env 1</option>
 					<option value="envTwo">Env 2</option>
 
 				</select>
+			</div>
+			<div>
 				<input id="searchBarrPlant" type="search" name="search" placeholder="Chercher">
 				<button class="searchButton" type="submit"><img class="imgButton" src="images/magnifier.png" alt="search"></button>
-
-			</form>
-
-
-		</div>
+			</div>
+		</form>
 		<div class="articlePlantContainer">
 			{% for plant in data %}
 				<article>
@@ -43,18 +40,20 @@
 					<a href="/plantDetails/{{plant.id}}" id="imgPlant">
 						<img id="plant" {% if plant.default_image.thumbnail %} src="{{plant.default_image.thumbnail}}" {% else %} src="/images/mr_green_thumb.jpg" {% endif %} alt="plant_picture">
 					</a>
-					<p>Nom scientifique:
-						{{plant.scientific_name[0]}}
-					</p>
-					<p>Autre Nom:
-						{{plant.other_name[0]}}
-					</p>
-					<p>Besoin en eau:
-						{{plant.watering}}
-					</p>
-					<p>Exposition:
-						{{plant.sunlight}}
-					</p>
+					<div id="underArticle">
+						<p>Nom scientifique:
+							<span class="data">{{plant.scientific_name[0]}}</span>
+						</p>
+						<p>Autre Nom:
+							<span class="data">{{plant.other_name[0]}}</span>
+						</p>
+						<p>Besoin en eau:
+							<span class="data">{{plant.watering}}</span>
+						</p>
+						<p>Exposition:
+							<span class="data">{{plant.sunlight}}</span>
+						</p>
+					</div>
 					{% if session.user %}
 						<div class="checkButtoncontainer">
 							<a class="getButton" href="/addPlantToCollection/{{plant.id}}">Ajouter à ma collection</a>
@@ -75,17 +74,17 @@
 
 		{% if session.user %}
 
-			<p>Bienvenue dans notre jardin
+			<p id="welcome">Bienvenue dans notre jardin
 				{{session.user.userName}}</p>
 
 			<div class="sideButtonContainer">
 				<a href="/logout">Déconnexion</a>
 				<a href="/collection">Mes plantes</a>
 			</div>
-			
+
 		{% else %}
 			<a id="homeButton" href="/home">Accueil</a>
-			<h2 class="sideUnderTitle">Notre Jardin</h2>
+			<p class="sideUnderTitle">Notre Jardin</p>
 		{% endif %}
 
 	</aside>

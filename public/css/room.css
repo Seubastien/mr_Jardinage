@@ -135,14 +135,14 @@ input[type="radio"]:checked+label {
     background-image: url("/images/saloon-managed.png");
 }
 
-.collectionContainer {
+.roomContainer {
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
 /* Style pour chaque colonne dans dashboardContainer */
-.underCollectionContainer {
+.underRoomContainer{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -155,7 +155,7 @@ input[type="radio"]:checked+label {
 
 }
 
-.underCollectionContainer h2 {
+.underRoomContainer h2 {
     margin-bottom: 20px;
     text-align: center;
     color: #0EEBCA;
@@ -163,7 +163,7 @@ input[type="radio"]:checked+label {
     letter-spacing: 0.1em;
 }
 
-.articleCollectionContainer {
+.articleRoomContainer {
     display: flex;
     flex-wrap: wrap;
     max-height: 80vh;
@@ -291,7 +291,7 @@ article h3 {
     background-color: #004A3F;
 }
 
-.roomContainer {
+.roomContain {
 
     display: flex;
     flex-direction: column;

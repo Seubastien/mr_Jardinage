@@ -8,6 +8,7 @@
 			<a href="/plantDetails/{{data.id}}" id="imgPlant">
 				<img id="plant" {% if data.default_image.thumbnail %} src="{{data.default_image.thumbnail}}" {% else %} src="/images/mr_green_thumb.jpg" {% endif %} alt="plant_picture">
 			</a>
+			<p>Vous avez cette plante depuis: date/Fellicitation</p>
 			<p>Besoin en eau:
 				{{data.watering}}
 			</p>
@@ -15,6 +16,11 @@
 				{{data.sunlight}}
 			</p>
 		</article>
+		<div id="wateringData">
+			<p>Dernier Arrosage:</p>
+			<p>Prochain Arrosage:</p>
+			<div>Niveau:</div>
+		</div>
 	</div>
 	<aside class="aside">
 		<p id="sideBarTitle">Mr Green
@@ -29,7 +35,7 @@
 				<div class="sideButtonContainer">
 					<a href="/logout">Déconnexion</a>
 					<a href="/plants">Notre Jardin</a>
-					<a href="/collection">Ma collection</a>
+					<a href="/room/{{room.id}}" id="roomLink">Retour Pièce</a>
 				</div>
 			</div>
 		{% endif %}

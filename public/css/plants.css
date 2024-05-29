@@ -1,6 +1,7 @@
 body {
     background-image: url("/images/buttercups-managed.png");
 }
+
 /* PLANTS */
 .gardenContainer {
     display: flex;
@@ -15,31 +16,26 @@ body {
     width: 60%;
     max-height: 80%;
     padding: 20px;
-    border-radius: 3px;
-    gap: 20px;
-    
-}
-#uperGardenContainer{
-    display: flex;
-    gap: 20px;
+   gap: 20px;
+
 }
 
-.gardenContainer form {
+#uperGardenContainer {
     display: flex;
+    gap: 20px;
+    align-items: end;
 }
 
 /* Style pour le formulaire de recherche */
 #searchBarrPlant {
-
+    width: 400px;
     padding: 10px;
     border-radius: 3px;
     font-size: 16px;
-    margin-bottom: 10px;
 
 }
 
 .searchButton {
-
     padding: 10px 15px;
     box-shadow: 3px 3px 3px #ffffff42;
     background-color: transparent;
@@ -50,14 +46,21 @@ body {
     cursor: pointer;
 
 }
-select{
+#selectContainer{
+    gap: 10px;
+    display: flex;
+}
+
+select {
     color: #0EEBCA;
     background-color: #0000008e;
+    height: 42px;
 }
-select option{
+
+select option {
     background-color: rgb(255, 255, 255);
     color: #004A3F;
-    
+
 }
 
 .searchButton .imgButton {
@@ -73,12 +76,42 @@ select option{
     max-height: 80vh;
     gap: 20px;
     overflow-y: scroll;
-    scrollbar-width: none; /* Masquer la barre de défilement Firefox */
-    -ms-overflow-style: none; /* Masquer la barre de défilement IE/Edge */
+    scrollbar-width: none;
+    /* Masquer la barre de défilement Firefox */
+    -ms-overflow-style: none;
+    /* Masquer la barre de défilement IE/Edge */
 }
 
 /* Style pour chaque article */
 article {
+    box-sizing: border-box;
+    width: 275px;
+    height: 400px;
+    background: #0000009c;
+    border: 1px solid #004a3f;
+    backdrop-filter: blur(6px);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.5s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    user-select: none;
+    font-weight: bolder;
+    color: black;
+}
+
+article:hover {
+    border: 1px solid black;
+    transform: scale(1.05);
+}
+
+article:active {
+    transform: scale(0.95) rotateZ(1.7deg);
+}
+
+/* article {
 
     display: flex;
     flex-direction: column;
@@ -87,20 +120,30 @@ article {
     border-radius: 3px;
     padding: 20px;
     margin-bottom: 20px;
-}
+} */
 
 article h3 {
     text-align: center;
-    
     color: #ffffff;
     margin-top: 0;
     margin-bottom: 10px;
+}
+
+#underArticle {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    max-width: 257.54px;
 }
 
 article p {
     margin: 5px 0;
     font-size: 16px;
     color: #ffffff;
+}
+
+.data {
+    font-weight: 200;
 }
 
 #imgPlant {
@@ -119,6 +162,7 @@ article p {
     display: flex;
     gap: 15px;
     margin-top: 10px;
+    margin-bottom: 7px;
     align-self: center;
 }
 
@@ -130,9 +174,11 @@ article p {
     border: none;
     border-radius: 5px;
     padding: 8px 16px;
-    font-size: 16px;
+    font-size: 0.7em;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    width: 75px;
+    font-weight: 400;
 }
 
 .getButton:hover {
@@ -147,33 +193,57 @@ article p {
     height: 100vh;
     width: 12%;
     background-color: #000000ac;
-    padding: 20px;
     gap: 20px;
+    text-align: center;
 
 }
-#sideBarTitle{
-    font-size:2em;
+
+#sideBarTitle {
+    font-size: 2em;
     letter-spacing: 0.2em;
     text-align: center;
 }
 
-.sideUnderTitle{
+#welcome {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: #004a3fb7;
     color: #0EEBCA;
+    font-size: 1em;
     letter-spacing: 0.1em;
+    height: 45px;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.sideUnderTitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #004a3fb7;
+    color: #0EEBCA;
+    font-size: 1em;
+    letter-spacing: 0.1em;
+    height: 30px;
+    width: 100%;
+    margin: 10px 0;
 
 }
+
 .aside p {
     font-size: 1em;
     color: #0EEBCA;
     margin: 10px 0;
 }
-.sideButtonContainer{
+
+.sideButtonContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap:10px;
+    gap: 10px;
 }
+
 .aside a {
     text-decoration: none;
     text-align: center;
@@ -188,9 +258,11 @@ article p {
     border-radius: 5px;
     cursor: pointer;
 }
-#homeButton{
+
+#homeButton {
     align-self: center;
 }
+
 .aside a:hover {
     color: #666;
 }

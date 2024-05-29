@@ -1,9 +1,9 @@
-<section class="collectionContainer">
+<section class="roomContainer">
 	<div></div>
-	<div class="underCollectionContainer">
+	<div class="underRoomContainer">
 
 		<h2>{{room.name}}</h2>
-		<div class="articleCollectionContainer">
+		<div class="articleRoomContainer">
 			{% for plant in collection %}
 				<article>
 					<div class="articleTitle">
@@ -30,7 +30,7 @@
 				<a href="/plants">Notre Jardin</a>
 				<a href="/collection">Ma collection</a>
 			</div>
-			<div class="roomContainer">
+			<div class="roomContain">
 				<form action="/plantAddToRoom" method="POST">
 					<select name="plant" id="plant">
 						<option value="">Ma collection</option>
