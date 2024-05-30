@@ -97,3 +97,18 @@ exports.updatedRoom = async (req, res) => {
 
     }
 }
+exports.addWatering = async (req, res) => {
+    try {
+
+        let addWatering = await roomModel.updateOne(
+            { _id: req.body.room, plants_collection: req.body.plantid },
+            { $addToSet: { watering_collection: { date: req.body.date } } }
+        );
+
+        res.redirect("/dataPlant/")
+        console.log(req.body)
+    } catch (error) {
+        res.send(error.message)
+        console.log(error)
+    }
+}

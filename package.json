@@ -17,6 +17,7 @@
     "express-session": "^1.18.0",
     "express-static": "^1.2.6",
     "fs": "^0.0.1-security",
+    "fullcalendar": "^6.1.13",
     "mongoose": "^8.3.1",
     "multer": "^1.4.5-lts.1",
     "twig": "^1.17.1"

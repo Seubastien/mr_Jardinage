@@ -153,3 +153,84 @@ article {
 .aside a:hover {
     color: #666;
 }
+/* CSS POPUP FORMULAIRE D'AJOUT D'ARROSAGE */
+
+
+#watering-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.89);
+    z-index: 1;
+    display: none;
+}
+
+.open {
+    display:flex !important;
+    align-items: center;
+    justify-content: center;
+}
+#watering-popup-exit {
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-decoration: none;
+    color: #0EEBCA;
+}
+/* CSS FORMULAIRE D'AJOUT D'ARROSAGE */
+  
+  .addWateringContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 300px;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.662);
+    border-radius: 3px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    text-align: center;
+  }
+  
+  .addWateringContainer h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    color: #0EEBCA;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+  }
+  
+  #addWateringForm input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+  }
+  
+  #addWateringForm button {
+    width: 70%;
+    height: 50px;
+    padding: 10px;
+    background-color: #004a3fb7;
+    box-shadow: -3px -3px 8px #0EEBCA;
+    color: #fff;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  #watering-popup-exit {
+    width: auto;
+    color: #0EEBCA;
+    font-size: 1.5em;
+    text-decoration: none;
+    margin-top: 15px;
+    align-self: flex-end;
+    cursor: pointer;
+    box-shadow: none;
+  }

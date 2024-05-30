@@ -38,7 +38,35 @@
 					<a href="/room/{{room.id}}" id="roomLink">Retour Pièce</a>
 				</div>
 			</div>
+
+
+			<button onclick="wateringTogglePopup()">Programmer un arrosage</button>
+			<div id="watering-popup-overlay">
+				<div class="addWateringContainer" >
+					
+						<h2>Programmer un arrosage</h2>
+					
+
+					<div id="addWateringForm">
+						<form action="/addWatering/{{plant._id}}" method="post">
+							<div id="addWateringFormContent">
+								{% if error %}
+									<p class="error">{{error.errors.date}}</p>
+								{% endif %}
+								<input type="datetime-local" name="date" id="date">
+								<button id="button" type="submit">Valider</button>
+							</div>
+						</form>
+						
+					</div>
+					<a href="javascript:void(0)" onclick="wateringTogglePopup()" id="watering-popup-exit">&#x2716</a>
+				</div>
+			</div>
+
 		{% endif %}
 
 	</aside>
+	{% block script %}
+	<script src="/script/main.js"></script>
+	{% endblock %}
 </section>

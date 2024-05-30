@@ -6,9 +6,9 @@ const roomSchema = mongoose.Schema({
         type: String,
         required: [true, "le nom est requis"]
     },
-    type:{
+    type: {
         type: String,
-        required:[true, "Le type de la pièce est requis"]
+        required: [true, "Le type de la pièce est requis"]
     },
     sunlight: {
         type: String,
@@ -19,9 +19,16 @@ const roomSchema = mongoose.Schema({
         required: [true, "Le niveau d'humidité de la pièce est requis"]
     },
     plants_collection: [{
-      
-            plantid:{ type: Number},
-            dateAdd : {type: Date}
+
+        plantid: { type: Number },
+        dateAdd: { type: Date },
+        watering_collection: [{
+            date: {
+                type: Date,
+            }
+        }]
+
+
     }],
     user: {
         type: mongoose.Schema.Types.ObjectId,
@@ -39,16 +46,16 @@ const roomSchema = mongoose.Schema({
 roomSchema.pre("save", async function (next) {
 
     await userModel.updateOne(
-        { _id: this.user},
+        { _id: this.user },
         { $addToSet: { rooms_collection: this._id } }//addToset permet de rajouter la piece si cette derniere n'est pas deja présente dans la collection
-        
+
     );
-   
+
     next();
 })
-roomSchema.post("deleteOne", async function(doc,next){// ne pas oublier doc, meme si non utilisé.
+roomSchema.post("deleteOne", async function (doc, next) {// ne pas oublier doc, meme si non utilisé.
     const deletedRoomId = this.getQuery()._id;
-    await userModel.updateOne({rooms_collection: {$in:[deletedRoomId]}}, {$pull: {rooms_collection: deletedRoomId}});
+    await userModel.updateOne({ rooms_collection: { $in: [deletedRoomId] } }, { $pull: { rooms_collection: deletedRoomId } });
     next();
 })
 

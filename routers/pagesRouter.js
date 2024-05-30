@@ -12,5 +12,6 @@ pagesRouter.get('/collection', authguard(), pagesController.displayCollection)
 pagesRouter.get('/room', authguard(), pagesController.displayAddRoom)//ne pas oublier le authguard
 pagesRouter.get('/room/:roomid', authguard(), pagesController.displayRoom)
 pagesRouter.get('/dataPlant/:plantid/room/:roomid', authguard(), pagesController.displayDataPlant)
+// pagesRouter.get('/fullCalendar', authguard(), pagesController.displayCalendar)
 
 module.exports = pagesRouter

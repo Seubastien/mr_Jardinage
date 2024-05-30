@@ -183,22 +183,22 @@ exports.displayRoom = async (req, res) => {
 exports.displayDataPlant = async (req, res) => {
     try {
         const room = await roomModel.findById({ _id: req.params.roomid })//.populate('plante_collection')
-    
+
         let plant = room.plants_collection.find(e => e._id == req.params.plantid);
-      
+
         const response = await fetch(`https://perenual.com/api/species/details/${plant.plantid}?key=sk-36pu66263ce98512c5214`)
         const data = await response.json()
-        // console.log(plant);
+        console.log(plant);
         // console.log(room)
-        console.log(data)
-          
-       
+        // console.log(data)
+
+
         res.render("./dataPlant/index.html.twig", {
             homeButton: true,//Permet de donner des conditions selon les éléments que l'on veut afficher dans notre vue
             title: "Room",
             homeButton: true,//Permet de donner des conditions selon les éléments que l'on veut afficher dans notre vue
             headerFooter: true,
-            room : room,
+            room: room,
             plant: plant,
             data: data
 

@@ -9,6 +9,8 @@ roomRouter.post('/plantAddToRoom/:plantid', authguard(), roomController.addPlant
 roomRouter.post('/plantAddToRoom', authguard(), roomController.addPlantToRoom)
 roomRouter.get('/plantDeleteToRoom/:roomid/plant/:id', authguard(), roomController.deletePlantRoom)
 roomRouter.post('/roomUpdate/:roomid', authguard(), roomController.updatedRoom)
+roomRouter.post('/addWatering/:plantId', authguard(), roomController.addWatering)
+
 
 
 
