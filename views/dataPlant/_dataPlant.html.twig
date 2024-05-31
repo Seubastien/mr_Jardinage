@@ -2,13 +2,20 @@
 	<div></div>
 	<div class="underCollectionContainer">
 		<article>
+			{% if filteredNextDates.length == 0 %}
+				<a href=""><img id="notif" src="/images/notification.png" alt="img_notification"></a>
+			{% else %}
+				<div id="counter">{{filteredNextDates.length}}</div>
+				<a href=""><img id="notif" src="/images/notification.png" alt="img_notification"></a>
+			{% endif %}
 			<div>
 				<h3>{{data.common_name}}</h3>
 			</div>
 			<a href="/plantDetails/{{data.id}}" id="imgPlant">
 				<img id="plant" {% if data.default_image.thumbnail %} src="{{data.default_image.thumbnail}}" {% else %} src="/images/mr_green_thumb.jpg" {% endif %} alt="plant_picture">
 			</a>
-			<p>Vous avez cette plante depuis: date/Fellicitation</p>
+			<p>Vous avez cette plante depuis:
+				{{plant.date|date('d-m-Y')}}</p>
 			<p>Besoin en eau:
 				{{data.watering}}
 			</p>
@@ -17,9 +24,11 @@
 			</p>
 		</article>
 		<div id="wateringData">
-			<p>Dernier Arrosage:</p>
-			<p>Prochain Arrosage:</p>
-			<div>Niveau:</div>
+			<p>Dernier Arrosage:
+				{{filteredPassedDates[filteredPassedDates.length - 1]|date('d-m-Y')}}</p>
+			<p>Prochain Arrosage:
+				{{filteredNextDates[0]|date('d-m-Y')}}</p>
+			{# <div>Niveau:</div> #}
 		</div>
 	</div>
 	<aside class="aside">
@@ -40,15 +49,15 @@
 			</div>
 
 
-			<button onclick="wateringTogglePopup()">Programmer un arrosage</button>
+			<button id="pWB" onclick="wateringTogglePopup()">Programmer un arrosage</button>
 			<div id="watering-popup-overlay">
-				<div class="addWateringContainer" >
-					
-						<h2>Programmer un arrosage</h2>
-					
+				<div class="addWateringContainer">
+
+					<h2>Programmer un arrosage</h2>
+
 
 					<div id="addWateringForm">
-						<form action="/addWatering/{{plant._id}}" method="post">
+						<form action="/addWatering/{{plant._id}}/room/{{room.id}}" method="post">
 							<div id="addWateringFormContent">
 								{% if error %}
 									<p class="error">{{error.errors.date}}</p>
@@ -57,7 +66,7 @@
 								<button id="button" type="submit">Valider</button>
 							</div>
 						</form>
-						
+
 					</div>
 					<a href="javascript:void(0)" onclick="wateringTogglePopup()" id="watering-popup-exit">&#x2716</a>
 				</div>
@@ -67,6 +76,6 @@
 
 	</aside>
 	{% block script %}
-	<script src="/script/main.js"></script>
+		<script src="/script/main.js"></script>
 	{% endblock %}
 </section>

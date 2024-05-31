@@ -99,14 +99,25 @@ exports.updatedRoom = async (req, res) => {
 }
 exports.addWatering = async (req, res) => {
     try {
+        const roomid = req.params.roomid
+        const plantId = req.params.plantId
+        const wateringDate = req.body
+        const room = await roomModel.findById(roomid) 
+        const now = new Date()
+       
+if (wateringDate > now){
+        const addWatering = await roomModel.updateOne(
+            { _id: roomid, 'plants_collection._id': plantId},
+            { $addToSet: { 'plants_collection.$.watering_collection': wateringDate} }
+        
+        )
+    };
+    // rajouter un else message d'erreur si la date est anterieure à la date du jour
 
-        let addWatering = await roomModel.updateOne(
-            { _id: req.body.room, plants_collection: req.body.plantid },
-            { $addToSet: { watering_collection: { date: req.body.date } } }
-        );
-
-        res.redirect("/dataPlant/")
-        console.log(req.body)
+        res.redirect('/dataPlant/' + plantId + '/room/'+ roomid)
+    
+       
+        // console.log(req)
     } catch (error) {
         res.send(error.message)
         console.log(error)

@@ -185,14 +185,25 @@ exports.displayDataPlant = async (req, res) => {
         const room = await roomModel.findById({ _id: req.params.roomid })//.populate('plante_collection')
 
         let plant = room.plants_collection.find(e => e._id == req.params.plantid);
+        let dates = plant.watering_collection
+        let dateArray = dates.map(e => new Date(e.date) )
+        let test = dateArray.sort((a,b)=> a - b)
+        let now = new Date()
+        let futurDates = dateArray.map(date => {
+            if(date.getTime() > now.getTime()){
+                return date
+            }
+        });
+        let filteredNextDates = futurDates.filter(date => date !== undefined)
+        let passedDates = dateArray.map(date => {
+            if(date.getTime() < now.getTime()){
+                return date
+            }
+        });
+        let filteredPassedDates = passedDates.filter(date => date !== undefined)
 
         const response = await fetch(`https://perenual.com/api/species/details/${plant.plantid}?key=sk-36pu66263ce98512c5214`)
         const data = await response.json()
-        console.log(plant);
-        // console.log(room)
-        // console.log(data)
-
-
         res.render("./dataPlant/index.html.twig", {
             homeButton: true,//Permet de donner des conditions selon les éléments que l'on veut afficher dans notre vue
             title: "Room",
@@ -200,8 +211,9 @@ exports.displayDataPlant = async (req, res) => {
             headerFooter: true,
             room: room,
             plant: plant,
-            data: data
-
+            data: data,
+            filteredNextDates: filteredNextDates,
+            filteredPassedDates: filteredPassedDates
         })
     } catch (error) {
         res.send(error.message)
