@@ -40,17 +40,17 @@ exports.addPlantToRoom = async (req, res) => {
         let plantid = null//A COMMENTER
         if (req.params.plantid) {
             plantid = req.params.plantid
-        }else if(req.body.plant){
+        } else if (req.body.plant) {
             plantid = req.body.plant
-        }else{
+        } else {
             throw new Error('Aucun id de plante')
         }
         let addPlant = await roomModel.updateOne(
 
             { _id: req.body.room },
-            { $addToSet: { plants_collection: {plantid : plantid, dateAdd: Date.now()} } }
+            { $addToSet: { plants_collection: { plantid: plantid, dateAdd: Date.now() } } }
         )
-        
+
         res.redirect('/collection')
     } catch (error) {
         res.send(error.message)
@@ -59,12 +59,12 @@ exports.addPlantToRoom = async (req, res) => {
 }
 exports.deletePlantRoom = async (req, res) => {
     try {
-        
+
         const deletePlant = await roomModel.updateOne(
             { _id: req.params.roomid },
-            { $pull: { plants_collection: {_id: req.params.id }} });
-        res.redirect('/room/'+ req.params.roomid)// permet de rediriger vers la piece.
-        
+            { $pull: { plants_collection: { _id: req.params.id } } });
+        res.redirect('/room/' + req.params.roomid)// permet de rediriger vers la piece.
+
     } catch (error) {
         res.send(error.message)
     }
@@ -79,12 +79,12 @@ exports.updatedRoom = async (req, res) => {
             return data
         });
         collections = await Promise.all(collections)
-        
+
         res.render("./room/index.html.twig", {
             homeButton: true,//Permet de donner des conditions selon les éléments que l'on veut afficher dans notre vue
             headerFooter: true,
             title: "Room",
-            room : room,
+            room: room,
             collection: collections,
         })
 
@@ -102,21 +102,22 @@ exports.addWatering = async (req, res) => {
         const roomid = req.params.roomid
         const plantId = req.params.plantId
         const wateringDate = req.body
-        const room = await roomModel.findById(roomid) 
+        const room = await roomModel.findById(roomid)
         const now = new Date()
-       
-if (wateringDate > now){
-        const addWatering = await roomModel.updateOne(
-            { _id: roomid, 'plants_collection._id': plantId},
-            { $addToSet: { 'plants_collection.$.watering_collection': wateringDate} }
-        
-        )
-    };
-    // rajouter un else message d'erreur si la date est anterieure à la date du jour
 
-        res.redirect('/dataPlant/' + plantId + '/room/'+ roomid)
-    
-       
+        if (wateringDate > now) {
+            const addWatering = await roomModel.updateOne(
+                { _id: roomid, 'plants_collection._id': plantId },
+                { $addToSet: { 'plants_collection.$.watering_collection': wateringDate } }
+
+            )
+
+        };
+        // rajouter un else message d'erreur si la date est anterieure à la date du jour
+
+        res.redirect('/dataPlant/' + plantId + '/room/' + roomid)
+
+
         // console.log(req)
     } catch (error) {
         res.send(error.message)
