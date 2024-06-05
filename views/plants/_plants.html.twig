@@ -42,10 +42,20 @@
 					</a>
 					<div id="underArticle">
 						<p>Nom scientifique:
-							<span class="data">{{plant.scientific_name[0]}}</span>
+							<span class="data">
+								{% if plant.scientific_name[0] %}
+									{{plant.scientific_name[0]}}
+									{% else %}"Not specified"
+								{% endif %}
+							</span>
 						</p>
 						<p>Autre Nom:
-							<span class="data">{{plant.other_name[0]}}</span>
+							<span class="data">
+								{% if plant.other_name[0] %}
+									{{plant.other_name[0]}}
+									{% else %}"Not specified"
+								{% endif %}
+							</span>
 						</p>
 						<p>Besoin en eau:
 							<span class="data">{{plant.watering}}</span>

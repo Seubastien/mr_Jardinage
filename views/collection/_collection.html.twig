@@ -12,14 +12,14 @@
 					</div>
 
 					<a id="imgContainer" href=""><img id="plant" src="{{plant.default_image.thumbnail}}" alt="plant_picture"></a>
-					<form action="/plantAddToRoom/{{plant.id}}" method="POST">
-						<select name="room" id="room">
+					<form id="addToRoomForm"action="/plantAddToRoom/{{plant.id}}" method="POST">
+						<select name="room" id="selectRoom">
 							<option value="">Ajouter à une pièce</option>
 							{% for room in user.rooms_collection %}
 								<option value="{{room._id}}">{{room.name}}</option>
 							{% endfor %}
 						</select>
-						<button type="submit">valider le choix</button>
+						<button id="addToRoomButton" type="submit">valider</button>
 					</form>
 				</article>
 			{% endfor %}

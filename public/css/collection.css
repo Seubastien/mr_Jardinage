@@ -53,22 +53,31 @@ article {
     border-radius: 3px;
     padding: 20px;
     margin-bottom: 20px;
-    width:calc(33.33% - 54px);
+    width: calc(33.33% - 54px);
 }
-@media screen and (max-width:1024px){
-    article{
-        padding:10px;
-        width:calc(50% - 30px);
+
+@media screen and (max-width:1024px) {
+    article {
+        padding: 10px;
+        width: calc(50% - 30px);
     }
 }
-@media screen and (max-width:768px){
-    article{
-        padding:10px;
-        width:100%;
+
+@media screen and (max-width:768px) {
+    article {
+        padding: 10px;
+        width: 100%;
     }
+
     .articleCollectionContainer {
         flex-direction: column;
     }
+}
+
+#addToRoomForm {
+    display: flex;
+    gap: 10px;
+
 }
 
 .articleTitle {
@@ -95,6 +104,26 @@ article h3 {
     object-fit: cover;
 }
 
+#selectRoom {
+    border-radius: 20px;
+    color: #0EEBCA;
+    background-color: #000000;
+    cursor: pointer;
+}
+
+#addToRoomButton {
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+    background-color: #000000;
+    color: #0EEBCA;
+    font-size: 1em;
+   height:25px;
+}
+#addToRoomButton :hover{
+    background-color: #004A3F;
+}
+
 /* Style pour la section aside */
 .aside {
     display: flex;
@@ -111,6 +140,7 @@ article h3 {
     letter-spacing: 0.2em;
     text-align: center;
     margin: 10px 0;
+    padding-top: 30px;
 }
 
 #welcome {
@@ -177,6 +207,9 @@ article h3 {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    max-height: 200px;
+    overflow-y: scroll;
+    scrollbar-width: none;
 }
 
 .linkContainer {
@@ -186,6 +219,7 @@ article h3 {
 
 #roomLink {
     display: flex;
+    justify-content: center;
     height: 29px;
     align-items: center;
     width: 100%;

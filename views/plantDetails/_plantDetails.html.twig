@@ -5,7 +5,7 @@
 			<h2 id="postTilte">Post</h2>
 		</div>
 		<div id="posts"></div>
-		<a class="AddPost" href="/post">Ajouter un post</a>
+		<a class="AddPost" href="">Ajouter un post</a>
 
 	</div>
 	<article class="articleContainer">
@@ -14,22 +14,34 @@
 	</article>
 	<aside class="aside">
 		<p id="sideBarTitle">Mr Green
-			<br>Thumb</p>
-		{% if session.user %}
-			<p>Bienvenue
-				{{session.user.userName}}</p>
-			<div class="sideButtonContainer">
-				<a href="/logout">Déconnexion</a>
-				<a href="">Mes plantes</a>
-				<a href="/plants">Notre Jardin</a>
-				<h2 class="sideUnderTitle">{{data.common_name}}</h2>
+			<br>Thumb
+		</p>
+		<div class ="blockContainer">
+			<div class="firstBlock">
+				{% if session.user %}
+					<p id="welcome">Bienvenue
+						{{session.user.userName}}
+					</p>
+					<div class="sideButtonContainer">
+						<a href="/logout">Déconnexion</a>
+						<a href="/collection">Mes plantes</a>
+						<a href="/plants">Notre Jardin</a>
+					</div>
+				{% else %}
+					<a class="disconnectedButton" href="/home">Accueil</a>
+					<a class="disconnectedButton" href="/plants">Notre Jardin</a>
+				{% endif %}
+			</div>
+			<div class="secondBlock">
+				<h2 id="sideUnderTitle">{{data.common_name}}</h2>
 				<div class="blockLevelOne">
-					<div class="itemsContainer"><img class="items" src="/images/sun.png" alt="sunlight"></div>
+					<div class="itemsContainer"><img class="items" src="/images/sun.png" alt="sunlight">
+					</div>
 					<div class="levelContainer">
 						{% for level in data.sunlight %}
-							{% if level == "full sun" or level == "part shade" or level == "full shade" or level == "Full sun" or  level == "part sun/part shade" %}
+							{% if level == "full sun" or level == "sun" or level == "Sun" or level == "part shade" or level == "full shade" or level == "Full sun" or  level == "part sun/part shade" %}
 								<div class="levelSunlight">
-									<div {% if level == "full sun" or level == "Full sun" %} class="hightLevelSunlight" {% elseif level == "part shade" or level == "part sun/part shade" %} class="averageLevelSunlight" {% elseif level == "full shade" %} class="lowLevelSunlight" {% endif %}></div>
+									<div {% if level == "full sun" or level == "Full sun" or level == "sun" or level == "Sun" %} class="hightLevelSunlight" {% elseif level == "part shade" or level == "part sun/part shade" %} class="averageLevelSunlight" {% elseif level == "full shade" %} class="lowLevelSunlight" {% endif %}></div>
 								</div>
 							{% endif %}
 						{% endfor %}
@@ -39,37 +51,23 @@
 					<div class="itemsContainer"><img class="items" src="/images/drop.png" alt="watering"></div>
 					<div class="levelContainer">
 
-						{% if data.watering %}
+						{% if data.watering == "Minimum" or data.watering == "Average" or data.watering == "Frequent" %}
 							<div class="levelSunlight">
 								<div {% if data.watering == "Frequent" %} class="hightLevelSunlight" {% elseif data.watering == "Average" %} class="averageLevelSunlight" {% elseif data.watering == "Minimum" %} class="lowLevelSunlight" {% endif %}></div>
 							</div>
 						{% endif %}
-					
+
+					</div>
 				</div>
-			</div>
+				{% if session.user %}
 
-			<div class="checkButtoncontainer">
-				<a class="getButton" href="/addPlantToCollection/{{plant.id}}">Ajouter à ma collection</a>
-				<a class="getButton" href="/addPlantToRoom/{{plant.id}}">Ajouter à une pièce</a>
-			</div>
-		</div>
-	{% else %}
-		<a class="disconnectedButton" href="/home">Accueil</a>
-		<a class="disconnectedButton" href="/plants">Notre Jardin</a>
-		<h2 class="sideUnderTitle">{{data.common_name}}</h2>
-		<div class="blockLevelOne">
-			<div class="itemsContainer"><img class="items" src="/images/sun.png" alt="sunlight"></div>
-			<div class="levelContainer">
-				{% for level in data.sunlight %}
-					{% if level == "full sun" or level == "part shade" or level == "full shade" or level == "Full sun" or  level == "part sun/part shade" %}
-						<div class="levelSunlight">
-							<div {% if level == "full sun" or level == "Full sun" %} class="hightLevelSunlight" {% elseif level == "part shade" or level == "part sun/part shade" %} class="averageLevelSunlight" {% elseif level == "full shade" %} class="lowLevelSunlight" {% endif %}></div>
-						</div>
-
-					{% endif %}
-
-				{% endfor %}
+					<div class="checkButtoncontainer">
+						<a class="getButton" href="/addPlantToCollection/{{plant.id}}">Ajouter à ma collection</a>
+						<a class="getButton" href="/addPlantToRoom/{{plant.id}}">Ajouter à une pièce</a>
+					</div>
+				{% endif %}
 			</div>
 		</div>
-	{% endif %}
-</aside></section>
+
+	</aside>
+</section>

@@ -43,7 +43,7 @@ body {
     padding: 40px;
     background-color: #000000ac;
 }
-
+/* CSS DES POSTS */
 #postContainer {
     display: flex;
     flex-direction: column;
@@ -84,17 +84,17 @@ body {
     background-color: #004A3F;
 
 }
-
+/* CSS SIDEBAR */
 .checkButtoncontainer {
     display: flex;
     gap: 15px;
     margin-top: 10px;
-    align-self: center;
+  align-items: center;
+  flex-direction: column;
 }
-
 .getButton {
     background-color: #000000b4;
-    color: #0EEBCA;
+    color: #0EEBCA!important;
     box-shadow: -3px -3px 8px #0EEBCA;
     text-decoration: none;
     border: none;
@@ -104,26 +104,51 @@ body {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
-
 .getButton:hover {
     background-color: #004A3F;
 }
 
+.blockContainer{
+    display: flex;
+    flex-direction: column;
+    gap:  50px;
+}
+.firstBlock{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.secondBlock{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+
+}
 .itemsContainer {
     display: flex;
     align-items: center;
     color: #0EEBCA;
-
 }
-
-.sideUnderTitle {
+#sideUnderTitle {
+    text-align: center;
     background-color: #004a3fb7;
     color: #0EEBCA;
     letter-spacing: 0.1em;
     font-weight: 300;
-
 }
-
+#welcome {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #004a3fb7;
+    color: #0EEBCA;
+    font-size: 1em;
+    letter-spacing: 0.1em;
+    height: 45px;
+    width: 100%;
+    margin: 10px 0;
+}
 .items {
     width: 30px;
 }
@@ -183,6 +208,7 @@ body {
     font-size: 2em;
     letter-spacing: 0.2em;
     text-align: center;
+    padding-top: 30px;
 }
 
 .aside p {

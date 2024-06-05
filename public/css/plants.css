@@ -68,6 +68,7 @@ select {
     color: #0EEBCA;
     background-color: #0000008e;
     height: 42px;
+    cursor: pointer;
 }
 
 select option {
@@ -87,6 +88,7 @@ select option {
     display: flex;
     justify-content: center;
     padding-top: 20px;
+    padding-bottom: 20px;
     flex-wrap: wrap;
     max-height: 80vh;
     gap: 20px;
@@ -101,7 +103,7 @@ select option {
 article {
     box-sizing: border-box;
     width: 275px;
-    height: 400px;
+    height: 450px;
     background: #0000009c;
     border: 1px solid #004a3f;
     backdrop-filter: blur(6px);
@@ -217,6 +219,7 @@ article p {
     font-size: 2em;
     letter-spacing: 0.2em;
     text-align: center;
+    
 }
 
 #welcome {
