@@ -97,7 +97,7 @@ exports.displayPlantDetails = async (req, res) => {
 
         const response = await fetch(`https://perenual.com/api/species/details/${req.params.plantid}?key=sk-36pu66263ce98512c5214`)
         const data = await response.json()
-        console.log(data.sunlight);
+        console.log(data.watering);
         res.render("./plantDetails/index.html.twig", {
             homeButton: true,
             headerFooter: true,
