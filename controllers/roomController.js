@@ -87,6 +87,7 @@ exports.updatedRoom = async (req, res) => {
             room: room,
             collection: collections,
         })
+       
 
     } catch (error) {
         res.render('room/index.html.twig',

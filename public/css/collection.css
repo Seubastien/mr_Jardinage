@@ -15,7 +15,8 @@ body {
     align-items: center;
     background-color: #000000ac;
     width: 60%;
-    max-height: 80%;
+    max-height: 708.67px;
+    min-height: 708.67px;
     padding: 20px;
     border-radius: 3px;
     gap: 20px;
@@ -54,6 +55,7 @@ article {
     padding: 20px;
     margin-bottom: 20px;
     width: calc(33.33% - 54px);
+    min-width: calc(277.17px - 54px);
 }
 
 @media screen and (max-width:1024px) {
@@ -120,7 +122,7 @@ article h3 {
     font-size: 1em;
    height:25px;
 }
-#addToRoomButton :hover{
+#addToRoomButton:hover{
     background-color: #004A3F;
 }
 

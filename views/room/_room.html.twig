@@ -10,7 +10,7 @@
 						<h3>{{plant.common_name}}</h3>
 						<a href="/plantDeleteToRoom/{{room.id}}/plant/{{plant.idPLantRoom}}"><img src="/images/compost.png" alt="plant_delete"></a>
 					</div>
-					<p id="date">Date d'ajout à la pièce: {{plant.date|date('d-m-Y')}}</p>
+					<p id="date">Date d'ajout à la pièce: <span class="data">{{plant.date|date('d-m-Y')}} </span> </p>
 					<a id="imgContainer" href="/dataPlant/{{plant.idPLantRoom}}/room/{{room.id}}"><img id="plant" src="{{plant.default_image.thumbnail}}" alt="plant_picture"></a>
 				</article>
 			{% endfor %}
@@ -32,17 +32,17 @@
 			</div>
 			<div class="roomContain">
 				<form action="/plantAddToRoom" method="POST">
-					<select name="plant" id="plant">
-						<option value="">Ma collection</option>
+					<select name="plant" id="selectPlant">
+						<option value="">Ajouter depuis ma collection</option>
 						{% for plant in userCollection %}
 							<option value="{{plant.id}}">{{plant.common_name}}</option>
 						{% endfor %}
 					</select>
 					<input type="hidden" value="{{room.id}}" name="room">
-					<button type="submit">Ajouter à la pièce</button>
+					<button id="addToRoomCheck" type="submit"><img src="/images/check.png" alt="img_check"></button>
 				</form>
 
-				<button onclick="togglePopup()">Modifier la pièce</button>
+				<button id="upDateRoomButton" onclick="togglePopup()">Modifier la pièce</button>
 			</div>
 		</aside>
 		<div id="popup-overlay">
