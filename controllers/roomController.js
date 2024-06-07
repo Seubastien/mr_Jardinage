@@ -87,7 +87,7 @@ exports.updatedRoom = async (req, res) => {
             room: room,
             collection: collections,
         })
-       
+
 
     } catch (error) {
         res.render('room/index.html.twig',
@@ -106,22 +106,20 @@ exports.addWatering = async (req, res) => {
         const room = await roomModel.findById(roomid)
         const now = new Date()
 
-        if (wateringDate > now) {
-            const addWatering = await roomModel.updateOne(
-                { _id: roomid, 'plants_collection._id': plantId },
-                { $addToSet: { 'plants_collection.$.watering_collection': wateringDate } }
+        // if (wateringDate > now) {
+        const addWatering = await roomModel.updateOne(
+            { _id: roomid, 'plants_collection._id': plantId },
+            { $addToSet: { 'plants_collection.$.watering_collection': wateringDate } },
+        )
+            // };
+            // rajouter un else message d'erreur si la date est anterieure à la date du jour
 
-            )
-
-        };
-        // rajouter un else message d'erreur si la date est anterieure à la date du jour
-
-        res.redirect('/dataPlant/' + plantId + '/room/' + roomid)
+            res.redirect('/dataPlant/' + plantId + '/room/' + roomid)
 
 
-        // console.log(req)
-    } catch (error) {
-        res.send(error.message)
-        console.log(error)
+            // console.log(req)
+        } catch (error) {
+            res.send(error.message)
+            console.log(error)
+        }
     }
-}

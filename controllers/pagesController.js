@@ -215,6 +215,9 @@ exports.displayDataPlant = async (req, res) => {
             filteredNextDates: filteredNextDates,
             filteredPassedDates: filteredPassedDates
         })
+console.log(filteredNextDates)
+console.log(filteredPassedDates)
+
     } catch (error) {
         res.send(error.message)
     }

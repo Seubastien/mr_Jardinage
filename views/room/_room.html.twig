@@ -10,7 +10,7 @@
 						<h3>{{plant.common_name}}</h3>
 						<a href="/plantDeleteToRoom/{{room.id}}/plant/{{plant.idPLantRoom}}"><img src="/images/compost.png" alt="plant_delete"></a>
 					</div>
-					<p id="date">Date d'ajout à la pièce: <span class="data">{{plant.date|date('d-m-Y')}} </span> </p>
+					<p id="date">Dans cette pièce depuis le: <span class="data">{{plant.date|date('d-m-Y')}} </span> </p>
 					<a id="imgContainer" href="/dataPlant/{{plant.idPLantRoom}}/room/{{room.id}}"><img id="plant" src="{{plant.default_image.thumbnail}}" alt="plant_picture"></a>
 				</article>
 			{% endfor %}

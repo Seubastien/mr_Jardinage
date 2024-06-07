@@ -3,10 +3,17 @@
 	<div class="underCollectionContainer">
 		<article>
 			{% if filteredNextDates.length == 0 %}
-				<a href=""><img id="notif" src="/images/notification.png" alt="img_notification"></a>
+				<a href=""><img class="notif" src="/images/notification.png" alt="img_notification"></a>
 			{% else %}
 				<div id="counter">{{filteredNextDates.length}}</div>
-				<a href=""><img id="notif" src="/images/notification.png" alt="img_notification"></a>
+				<a href="javascript:void(0)"><img class="notif" src="/images/notification.png" alt="img_notification"></a>
+				<div class="nextWaterings">
+				<p id="waterNotif">Arrosages Prévus</p>
+					{% for wateringDate in filteredNextDates %}
+						<p>{{wateringDate|date('d-m-Y')}}</p>
+					{% endfor %}
+					<a href="javascript:void(0)" id="popup-exit">&#x2716</a>
+				</div>
 			{% endif %}
 			<div>
 				<h3>{{data.common_name}}</h3>
@@ -14,20 +21,43 @@
 			<a href="/plantDetails/{{data.id}}" id="imgPlant">
 				<img id="plant" {% if data.default_image.thumbnail %} src="{{data.default_image.thumbnail}}" {% else %} src="/images/mr_green_thumb.jpg" {% endif %} alt="plant_picture">
 			</a>
+
+		</article>
+		<div id="DataBlock">
 			<p>Vous avez cette plante depuis:
-				{{plant.date|date('d-m-Y')}}</p>
+				<span class="data">
+					{{plant.date|date('d-m-Y')}}
+				</span>
+			</p>
+
 			<p>Besoin en eau:
-				{{data.watering}}
+				<span class="data">
+					{{data.watering}}
+				</span>
 			</p>
 			<p>Exposition:
-				{{data.sunlight}}
+				<span class="data">
+					{{data.sunlight}}
+				</span>
 			</p>
-		</article>
+		</div>
 		<div id="wateringData">
 			<p>Dernier Arrosage:
-				{{filteredPassedDates[filteredPassedDates.length - 1]|date('d-m-Y')}}</p>
+				<span class="data">
+					{% if filteredPassedDates.length == 0 %}Pas de dernier arrosage enregistré
+					{% else %}
+						{{filteredPassedDates[filteredPassedDates.length - 1]|date('d-m-Y')}}
+					</span>
+				</p>
+			{% endif %}
 			<p>Prochain Arrosage:
-				{{filteredNextDates[0]|date('d-m-Y')}}</p>
+				<span class="data">
+					{% if filteredNextDates.length == 0 %}Pas d'arrosage prévu
+					{% else %}
+						{{filteredNextDates[0]|date('d-m-Y')}}
+					</span>
+				</p>
+			{% endif %}
 			{# <div>Niveau:</div> #}
 		</div>
 	</div>
@@ -40,16 +70,16 @@
 			<p id="welcome">Bienvenue
 				{{session.user.userName}}
 			</p>
-			<div id="allSideButton">
-				<div class="sideButtonContainer">
-					<a href="/logout">Déconnexion</a>
-					<a href="/plants">Notre Jardin</a>
-					<a href="/room/{{room.id}}" id="roomLink">Retour Pièce</a>
+			<div id="blockContainer">
+				<div id="allSideButton">
+					<div class="sideButtonContainer">
+						<a href="/logout">Déconnexion</a>
+						<a href="/plants">Notre Jardin</a>
+						<a href="/room/{{room.id}}" id="roomLink">Retour Pièce</a>
+					</div>
 				</div>
+				<button id="pWB" onclick="wateringTogglePopup()">Programmer un arrosage</button>
 			</div>
-
-
-			<button id="pWB" onclick="wateringTogglePopup()">Programmer un arrosage</button>
 			<div id="watering-popup-overlay">
 				<div class="addWateringContainer">
 
