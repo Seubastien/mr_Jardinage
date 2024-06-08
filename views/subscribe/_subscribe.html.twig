@@ -1,7 +1,8 @@
 <section class="subscribeContainer">
 	{% if user %}
-		<div>
+		<div id="titleDiv">
 			<h2>Modification</h2>
+			<a href="/dashboard"id="exit">&#x2716</a>
 		</div>
 
 		<div>
@@ -29,11 +30,13 @@
 
 
 				<button type="submit">Modifier</button>
+				
 			</form>
 		</div>
 	{% else %}
-		<div>
+		<div id="titleDiv">
 			<h2>Inscrivez-vous</h2>
+			<a href="/home"id="exit">&#x2716</a>
 		</div>
 
 		<div>

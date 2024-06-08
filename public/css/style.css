@@ -53,11 +53,12 @@ body {
   font-size: 3em;
 
 }
-.slogan{
+
+.slogan {
   font-family: "Cinzel";
   font-size: 2em;
   font-weight: 700;
-  
+
 }
 
 .homeContent div {
@@ -152,7 +153,16 @@ button {
   font-weight: 300;
   letter-spacing: 0.1em;
 }
-
+#titleDiv{
+  position: relative;
+}
+#exit {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  text-decoration: none;
+  color:#ffffff;
+}
 #inputSubscribe {
   background-color: #00000000;
 }
@@ -177,7 +187,8 @@ button {
   border-radius: 8px;
   cursor: pointer;
 }
-button:hover{
+
+button:hover {
   background-color: #004a3fb7;
 }
 
@@ -189,6 +200,7 @@ button:hover{
 }
 
 
+
 /* FOOTER */
 footer {
   display: flex;
@@ -197,10 +209,12 @@ footer {
   height: 80px;
   background-color: rgba(0, 0, 0, 0.712);
 }
-footer img{
+
+footer img {
   width: 100px;
   align-self: end;
 }
+
 footer p {
   font-size: 1em;
   color: #0EEBCA;

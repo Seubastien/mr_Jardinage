@@ -58,7 +58,7 @@
 								{% if error %}
 									<p class="error">{{error.errors.name}}</p>
 								{% endif %}
-								<input id="name" type="text" name="name" placeholder="Nom de la pièce">
+								<input id="name" type="text" name="name" placeholder="Nom de la pièce" value="{{room.name}}">
 								{% if error %}
 									<p class="error">{{error.errors.sunlight}}</p>
 								{% endif %}

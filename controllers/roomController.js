@@ -78,8 +78,10 @@ exports.updatedRoom = async (req, res) => {
             let data = await response.json()
             return data
         });
+        console.log(req.params.roomid)
         collections = await Promise.all(collections)
-
+        
+        // res.redirect('/collection')
         res.render("./room/index.html.twig", {
             homeButton: true,//Permet de donner des conditions selon les éléments que l'on veut afficher dans notre vue
             headerFooter: true,
@@ -111,15 +113,15 @@ exports.addWatering = async (req, res) => {
             { _id: roomid, 'plants_collection._id': plantId },
             { $addToSet: { 'plants_collection.$.watering_collection': wateringDate } },
         )
-            // };
-            // rajouter un else message d'erreur si la date est anterieure à la date du jour
+        // };
+        // rajouter un else message d'erreur si la date est anterieure à la date du jour
 
-            res.redirect('/dataPlant/' + plantId + '/room/' + roomid)
+        res.redirect('/dataPlant/' + plantId + '/room/' + roomid)
 
 
-            // console.log(req)
-        } catch (error) {
-            res.send(error.message)
-            console.log(error)
-        }
+        // console.log(req)
+    } catch (error) {
+        res.send(error.message)
+        console.log(error)
     }
+}

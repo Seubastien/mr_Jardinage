@@ -1,19 +1,20 @@
 <section class="collectionContainer">
 	<div></div>
 	<div class="underCollectionContainer">
+		<div class="nextWaterings">
+			<p id="waterNotif">Arrosages Prévus</p>
+			{% for wateringDate in filteredNextDates %}
+				<p>{{wateringDate|date('d-m-Y')}}</p>
+			{% endfor %}
+			<a href="javascript:void(0)" id="popup-exit">&#x2716</a>
+		</div>
 		<article>
 			{% if filteredNextDates.length == 0 %}
 				<a href=""><img class="notif" src="/images/notification.png" alt="img_notification"></a>
 			{% else %}
 				<div id="counter">{{filteredNextDates.length}}</div>
 				<a href="javascript:void(0)"><img class="notif" src="/images/notification.png" alt="img_notification"></a>
-				<div class="nextWaterings">
-				<p id="waterNotif">Arrosages Prévus</p>
-					{% for wateringDate in filteredNextDates %}
-						<p>{{wateringDate|date('d-m-Y')}}</p>
-					{% endfor %}
-					<a href="javascript:void(0)" id="popup-exit">&#x2716</a>
-				</div>
+
 			{% endif %}
 			<div>
 				<h3>{{data.common_name}}</h3>
