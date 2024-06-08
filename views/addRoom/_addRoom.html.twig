@@ -12,9 +12,6 @@
 						<p class="error">{{error.errors.name}}</p>
 					{% endif %}
 					<input id="name" type="text" name="name" placeholder="Nom de la pièce">
-					{% if error %}
-						<p class="error">{{error.errors.sunlight}}</p>
-					{% endif %}
 					<fieldset class="NameField">
 						<legend>Type de pièce:</legend>
 						<div>
@@ -56,6 +53,9 @@
 				</div>
 				<div id="secondBlockform">
 					<fieldset class="sunField">
+                    {% if error %}
+						<p class="error">{{error.errors.sunlight}}</p>
+					{% endif %}
 						<legend>Eclairage de la pièce:</legend>
 						<div>
 							<input id="full_sun" type="radio" name="sunlight" value="full_sun">
@@ -70,10 +70,11 @@
 							<label for="full_shade">Totalement Ombragée</label>
 						</div>
 					</fieldset>
-					{% if error %}
+					
+					<fieldset class="hygroField">
+                    {% if error %}
 						<p class="error">{{error.errors.humidity}}</p>
 					{% endif %}
-					<fieldset class="hygroField">
 						<legend>Hygromètrie de la pièce:</legend>
 						<div>
 							<input id="wet" type="radio" name="humidity" value="wet">

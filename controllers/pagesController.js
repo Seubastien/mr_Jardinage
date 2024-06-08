@@ -132,7 +132,7 @@ exports.displayCollection = async (req, res) => {
 }
 exports.displayAddRoom = async (req, res) => {
     try {
-        res.render("./room/index.html.twig", {
+        res.render("./addRoom/index.html.twig", {
             homeButton: true,//Permet de donner des conditions selon les éléments que l'on veut afficher dans notre vue
             title: "AddRoom",
 
