@@ -59,18 +59,57 @@ exports.displayPlants = async (req, res) => {
                 title: "Plants",
                 data: data.data,
             })
-
+           
         } else {
-            const randomPage = Math.floor(Math.random() * (50 - 1 + 1)) + 1;
 
-            const response = await fetch(`https://perenual.com/api/species-list?key=sk-36pu66263ce98512c5214&page=${randomPage}`)
-            const data = await response.json()
-            res.render("./plants/index.html.twig", {
-                homeButton: true,
-                headerFooter: true,
-                title: "Plants",
-                data: data.data,
-            })
+            const randomPage = Math.floor(Math.random() * (50 - 1 + 1)) + 1;
+            let currentPage = randomPage;
+
+            if (req.query.frontPage) {
+                 let page = currentPage;
+                
+
+                    const response = await fetch(`https://perenual.com/api/species-list?key=sk-36pu66263ce98512c5214&page=${page + 1}`)
+                    const data = await response.json()
+                    res.render("./plants/index.html.twig", {
+                        homeButton: true,
+                        headerFooter: true,
+                        title: "Plants",
+                        data: data.data,
+                    })
+                   
+                
+            } else if (req.query.nextPage) {
+                
+                    const response = await fetch(`https://perenual.com/api/species-list?key=sk-36pu66263ce98512c5214&page=${page}`)
+                    const data = await response.json()
+                    res.render("./plants/index.html.twig", {
+                        homeButton: true,
+                        headerFooter: true,
+                        title: "Plants",
+                        data: data.data,
+                    })
+
+
+            } else {
+                const response = await fetch(`https://perenual.com/api/species-list?key=sk-36pu66263ce98512c5214&page=${randomPage}`)
+                const data = await response.json()
+
+                res.render("./plants/index.html.twig", {
+                    homeButton: true,
+                    headerFooter: true,
+                    title: "Plants",
+                    data: data.data,
+                })
+                console.log(data)
+                console.log(currentPage)
+               
+            }
+
+            // console.log(randomPage)
+
+            // console.log(nextPage)
+
         }
 
 
@@ -186,17 +225,17 @@ exports.displayDataPlant = async (req, res) => {
 
         let plant = room.plants_collection.find(e => e._id == req.params.plantid);
         let dates = plant.watering_collection
-        let dateArray = dates.map(e => new Date(e.date) )
-        let test = dateArray.sort((a,b)=> a - b)
+        let dateArray = dates.map(e => new Date(e.date))
+        let test = dateArray.sort((a, b) => a - b)
         let now = new Date()
         let futurDates = dateArray.map(date => {
-            if(date.getTime() > now.getTime()){
+            if (date.getTime() > now.getTime()) {
                 return date
             }
         });
         let filteredNextDates = futurDates.filter(date => date !== undefined)
         let passedDates = dateArray.map(date => {
-            if(date.getTime() < now.getTime()){
+            if (date.getTime() < now.getTime()) {
                 return date
             }
         });
@@ -215,8 +254,8 @@ exports.displayDataPlant = async (req, res) => {
             filteredNextDates: filteredNextDates,
             filteredPassedDates: filteredPassedDates
         })
-console.log(filteredNextDates)
-console.log(filteredPassedDates)
+        console.log(filteredNextDates)
+        console.log(filteredPassedDates)
 
     } catch (error) {
         res.send(error.message)

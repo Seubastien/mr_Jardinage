@@ -18,7 +18,7 @@ body {
     max-height: 708.67px;
     min-height: 708.67px;
     padding: 20px;
-    border-radius: 3px;
+    border-radius: 10px;
     gap: 20px;
 
 }
@@ -51,7 +51,7 @@ article {
     flex-direction: column;
     gap: 20px;
     background-color: #0000009c;
-    border-radius: 3px;
+    border-radius: 5px;
     padding: 20px;
     margin-bottom: 20px;
     width: calc(33.33% - 54px);

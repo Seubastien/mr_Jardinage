@@ -38,18 +38,18 @@ body {
 #searchBarrPlant {
     width: 400px;
     padding: 10px;
-   border: none;
+    border: none;
     font-size: 16px;
     background-color: rgba(255, 255, 255, 0);
 
 }
 
 .searchButton {
-   
+
     box-shadow: none;
     background-color: transparent;
     width: 50px;
-   
+
     border-radius: 50%;
     border: none;
     cursor: pointer;
@@ -210,7 +210,7 @@ article p {
     background-color: #000000ac;
     gap: 20px;
     text-align: center;
-
+    
 }
 
 #sideBarTitle {
@@ -218,7 +218,7 @@ article p {
     letter-spacing: 0.2em;
     text-align: center;
     padding-top: 30px;
-    
+
 }
 
 #welcome {
@@ -282,4 +282,29 @@ article p {
 
 .aside a:hover {
     color: #666;
+}
+
+#changePageContainer {
+    display: flex;
+    gap: 20px;
+    padding: 5px;
+    align-self: center;
+}
+
+.changePageButton {
+    border-radius: 50% !important;
+    width: 50px !important;
+    height: 50px !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+.changePageButton:hover{
+    transform: scale(1.2);
+    transition-duration: 0.5s;
+}
+
+.arrow {
+    width: 40px;
+    height: 70px;
 }

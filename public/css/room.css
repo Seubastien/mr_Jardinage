@@ -149,7 +149,7 @@ input[type="radio"]:checked+label {
     align-items: center;
 }
 
-/* Style pour chaque colonne dans dashboardContainer */
+
 .underRoomContainer {
     display: flex;
     flex-direction: column;
@@ -159,7 +159,7 @@ input[type="radio"]:checked+label {
     max-height: 708.67px;
     min-height: 708.67px;
     padding: 20px;
-    border-radius: 3px;
+    border-radius: 10px;
     gap: 20px;
 
 }
@@ -193,7 +193,7 @@ article {
     flex-direction: column;
     gap: 20px;
     background-color: #0000009c;
-    border-radius: 3px;
+    border-radius: 5px;
     padding: 20px;
     margin-bottom: 20px;
     width: calc(33.33% - 54px);
@@ -311,12 +311,18 @@ article h3 {
 }
 
 #addToRoomCheck {
-    box-shadow: none;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #00000000;
-    width: fit-content;
     padding: 0;
+    border-radius: 50%;
 }
-
+#addToRoomCheck:hover{
+    background-color: #004A3F;
+}
 #addToRoomCheck img {
     width: 20px;
 }
@@ -360,7 +366,7 @@ article h3 {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    gap: 5px;
+    gap: 10px;
 }
 
 .linkContainer {
