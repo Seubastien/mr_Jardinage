@@ -46,18 +46,25 @@ body {
 
 }
 
-#homeTitle {
-  text-align: center;
-  letter-spacing: .1em;
-  color: white;
-  font-size: 3em;
+.homeTitle {
+  width: 45vw;
 
 }
-
+#sloganContainer{
+  background-color: unset;
+  line-height: 1.5em;
+    width: 48vw;
+    letter-spacing: 0.1em;
+    color: white;
+    display: flex;
+    font-size: 3em;
+    text-align: center;
+}
 .slogan {
   font-family: "Cinzel";
   font-size: 2em;
   font-weight: 700;
+  vertical-align: middle;
 
 }
 

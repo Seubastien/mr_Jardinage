@@ -4,25 +4,31 @@
 
 		<h2>Ma collection</h2>
 		<div class="articleCollectionContainer">
-			{% for plant in collection %}
-				<article>
-					<div class="articleTitle">
-						<h3>{{plant.common_name}}</h3>
-						<a href="/plantDelete/{{plant.id}}"><img src="/images/compost.png" alt="plant_delete"></a>
-					</div>
+			{% if collection.length == 0 %}
+				<p id="Empty">Votre collection est vide, veuillez aller dans notre jardin pour en ajouter.</p>
+			{% else %}
+				{% for plant in collection %}
 
-					<a id="imgContainer" href=""><img id="plant" src="{{plant.default_image.thumbnail}}" alt="plant_picture"></a>
-					<form id="addToRoomForm"action="/plantAddToRoom/{{plant.id}}" method="POST">
-						<select name="room" id="selectRoom">
-							<option value="">Ajouter à une pièce</option>
-							{% for room in user.rooms_collection %}
-								<option value="{{room._id}}">{{room.name}}</option>
-							{% endfor %}
-						</select>
-						<button id="addToRoomButton" type="submit">valider</button>
-					</form>
-				</article>
-			{% endfor %}
+					<article>
+						<div class="articleTitle">
+							<h3>{{plant.common_name}}</h3>
+							<a href="/plantDelete/{{plant.id}}"><img src="/images/compost.png" alt="plant_delete"></a>
+						</div>
+
+						<a id="imgContainer" href=""><img id="plant" src="{{plant.default_image.thumbnail}}" alt="plant_picture"></a>
+						<form id="addToRoomForm" action="/plantAddToRoom/{{plant.id}}" method="POST">
+							<select name="room" id="selectRoom">
+								<option value="">Ajouter à une pièce</option>
+								{% for room in user.rooms_collection %}
+									<option value="{{room._id}}">{{room.name}}</option>
+								{% endfor %}
+							</select>
+							<button id="addToRoomButton" type="submit">valider</button>
+						</form>
+					</article>
+
+				{% endfor %}
+			{% endif %}
 		</div>
 
 	</div>

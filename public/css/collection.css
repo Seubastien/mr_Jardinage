@@ -42,7 +42,12 @@ body {
     -ms-overflow-style: none;
     /* Masquer la barre de défilement IE/Edge */
 }
-
+#Empty{
+    color: white;
+    font-size: 3em;
+    text-align: center;
+    padding-top: 25%;
+}
 /* Style pour chaque article */
 article {
 

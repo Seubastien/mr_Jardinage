@@ -17,32 +17,29 @@ body {
     padding: 20px;
     border: 1px solid #004a3f;
     background-color: #004a3f37;
-    border-radius: 3px;
+    border-radius: 10px;
     gap: 40px;
 
 }
 
 .articleContainer img {
     width: 400px;
-    /* Largeur de l'image */
     border-radius: 50%;
-    /* Forme ronde */
     object-fit: cover;
-    /* Redimensionnement de l'image pour remplir le conteneur */
     margin-bottom: 10px;
-    /* Marge en bas de l'image */
+
 }
 
 .articleContainer p {
     font-size: 1.03em;
     line-height: 1.5;
-    /* Hauteur de ligne */
     color: #ffffff;
-    /* Couleur du texte */
     max-width: 500px;
     padding: 40px;
     background-color: #000000ac;
+    border-radius: 5px;
 }
+
 /* CSS DES POSTS */
 #postContainer {
     display: flex;
@@ -62,9 +59,11 @@ body {
     font-weight: 300;
     letter-spacing: 0.1em;
 }
-#posts{
+
+#posts {
     height: 400px;
 }
+
 .AddPost {
     background-color: #000000b4;
     color: #0EEBCA;
@@ -84,17 +83,19 @@ body {
     background-color: #004A3F;
 
 }
+
 /* CSS SIDEBAR */
 .checkButtoncontainer {
     display: flex;
     gap: 15px;
     margin-top: 10px;
-  align-items: center;
-  flex-direction: column;
+    align-items: center;
+    flex-direction: column;
 }
+
 .getButton {
     background-color: #000000b4;
-    color: #0EEBCA!important;
+    color: #0EEBCA !important;
     box-shadow: -3px -3px 8px #0EEBCA;
     text-decoration: none;
     border: none;
@@ -104,32 +105,36 @@ body {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
+
 .getButton:hover {
     background-color: #004A3F;
 }
 
-.blockContainer{
+.blockContainer {
     display: flex;
     flex-direction: column;
-    gap:  50px;
+    gap: 50px;
 }
-.firstBlock{
+
+.firstBlock {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
-.secondBlock{
+
+.secondBlock {
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 15px;
 
 }
+
 .itemsContainer {
     display: flex;
     align-items: center;
     color: #0EEBCA;
 }
+
 #sideUnderTitle {
     text-align: center;
     background-color: #004a3fb7;
@@ -137,6 +142,7 @@ body {
     letter-spacing: 0.1em;
     font-weight: 300;
 }
+
 #welcome {
     display: flex;
     align-items: center;
@@ -149,6 +155,7 @@ body {
     width: 100%;
     margin: 10px 0;
 }
+
 .items {
     width: 30px;
 }
@@ -157,6 +164,7 @@ body {
     display: flex;
     align-items: center;
     gap: 5px;
+    align-self: center;
 
 }
 
@@ -193,6 +201,7 @@ body {
     background-color: #0EEBCA;
     width: 100%;
     height: 100%;
+
 }
 
 .aside {

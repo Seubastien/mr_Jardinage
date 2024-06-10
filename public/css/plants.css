@@ -16,7 +16,7 @@ body {
     max-height: 80%;
     padding: 20px;
     gap: 20px;
-
+    min-height: 850px;
 }
 
 #uperGardenContainer {
@@ -49,11 +49,13 @@ body {
     box-shadow: none;
     background-color: transparent;
     width: 50px;
-
     border-radius: 50%;
     border: none;
     cursor: pointer;
 
+}
+.searchButton:hover{
+    background-color: unset;
 }
 
 #selectContainer {
@@ -111,10 +113,12 @@ article {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content:space-around;
     user-select: none;
     font-weight: bolder;
     color: black;
+    /* padding-top: 20px; */
+   
 }
 
 article:hover {
@@ -210,7 +214,7 @@ article p {
     background-color: #000000ac;
     gap: 20px;
     text-align: center;
-    
+
 }
 
 #sideBarTitle {
@@ -299,7 +303,8 @@ article p {
     justify-content: center !important;
     align-items: center !important;
 }
-.changePageButton:hover{
+
+.changePageButton:hover {
     transform: scale(1.2);
     transition-duration: 0.5s;
 }

@@ -34,6 +34,7 @@ exports.displayPlants = async (req, res) => {
                 headerFooter: true,
                 title: "Plants",
                 data: data.data,
+                current_page: data.current_page
             })
 
         } else if (req.query.expo) {
@@ -46,9 +47,12 @@ exports.displayPlants = async (req, res) => {
                 headerFooter: true,
                 title: "Plants",
                 data: data.data,
+                current_page: data.current_page
             })
 
-        } else if (req.query.search) {
+        }
+
+        else if (req.query.search) {
 
             const response = await fetch(`https://perenual.com/api/species-list?key=sk-36pu66263ce98512c5214&q=${req.query.search}`)
             const data = await response.json()
@@ -58,61 +62,45 @@ exports.displayPlants = async (req, res) => {
                 headerFooter: true,
                 title: "Plants",
                 data: data.data,
+                current_page: data.current_page
             })
-           
+        } else if (req.query.frontPage) {
+            const response = await fetch(`https://perenual.com/api/species-list?key=sk-36pu66263ce98512c5214&page=${Number(req.query.frontPage - 1)}`)
+            const data = await response.json()
+
+            res.render("./plants/index.html.twig", {
+                homeButton: true,
+                headerFooter: true,
+                title: "Plants",
+                data: data.data,
+                current_page: data.current_page
+            })
+
+        } else if (req.query.nextPage) {
+            const response = await fetch(`https://perenual.com/api/species-list?key=sk-36pu66263ce98512c5214&page=${Number(req.query.nextPage + 1)}`)
+            const data = await response.json()
+
+            res.render("./plants/index.html.twig", {
+                homeButton: true,
+                headerFooter: true,
+                title: "Plants",
+                data: data.data,
+                current_page: data.current_page
+            })
+
         } else {
+            const randomPage = Math.floor(Math.random() * (337 - 1 + 1)) + 1;
+            const response = await fetch(`https://perenual.com/api/species-list?key=sk-36pu66263ce98512c5214&page=${randomPage}`)
+            const data = await response.json()
 
-            const randomPage = Math.floor(Math.random() * (50 - 1 + 1)) + 1;
-            let currentPage = randomPage;
-
-            if (req.query.frontPage) {
-                 let page = currentPage;
-                
-
-                    const response = await fetch(`https://perenual.com/api/species-list?key=sk-36pu66263ce98512c5214&page=${page + 1}`)
-                    const data = await response.json()
-                    res.render("./plants/index.html.twig", {
-                        homeButton: true,
-                        headerFooter: true,
-                        title: "Plants",
-                        data: data.data,
-                    })
-                   
-                
-            } else if (req.query.nextPage) {
-                
-                    const response = await fetch(`https://perenual.com/api/species-list?key=sk-36pu66263ce98512c5214&page=${page}`)
-                    const data = await response.json()
-                    res.render("./plants/index.html.twig", {
-                        homeButton: true,
-                        headerFooter: true,
-                        title: "Plants",
-                        data: data.data,
-                    })
-
-
-            } else {
-                const response = await fetch(`https://perenual.com/api/species-list?key=sk-36pu66263ce98512c5214&page=${randomPage}`)
-                const data = await response.json()
-
-                res.render("./plants/index.html.twig", {
-                    homeButton: true,
-                    headerFooter: true,
-                    title: "Plants",
-                    data: data.data,
-                })
-                console.log(data)
-                console.log(currentPage)
-               
-            }
-
-            // console.log(randomPage)
-
-            // console.log(nextPage)
-
+            res.render("./plants/index.html.twig", {
+                homeButton: true,
+                headerFooter: true,
+                title: "Plants",
+                data: data.data,
+                current_page: data.current_page
+            })
         }
-
-
     } catch (error) {
         console.log(error);
         res.send(error)

@@ -140,7 +140,7 @@ input[type="radio"]:checked+label {
 }
 
 .outSide {
-    background-image: url("/images/saloon-managed.png");
+    background-image: url("/images/swing-2206260_1920.jpg");
 }
 
 .roomContainer {
@@ -163,7 +163,12 @@ input[type="radio"]:checked+label {
     gap: 20px;
 
 }
-
+#Empty{
+    color: white;
+    font-size: 3em;
+    text-align: center;
+    padding-top: 25%;
+}
 .underRoomContainer h2 {
     margin-bottom: 20px;
     text-align: center;
@@ -184,6 +189,7 @@ input[type="radio"]:checked+label {
     -ms-overflow-style: none;
     /* Masquer la barre de défilement IE/Edge */
 }
+
 
 /* Style pour chaque article */
 article {
@@ -241,6 +247,7 @@ article h3 {
     width: 12%;
     background-color: #000000ac;
     gap: 20px;
+    align-items: center;
 }
 
 #sideBarTitle {

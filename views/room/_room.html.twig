@@ -4,16 +4,23 @@
 
 		<h2>{{room.name}}</h2>
 		<div class="articleRoomContainer">
-			{% for plant in collection %}
-				<article>
-					<div class="articleTitle">
-						<h3>{{plant.common_name}}</h3>
-						<a href="/plantDeleteToRoom/{{room.id}}/plant/{{plant.idPLantRoom}}"><img src="/images/compost.png" alt="plant_delete"></a>
-					</div>
-					<p id="date">Dans cette pièce depuis le: <span class="data">{{plant.date|date('d-m-Y')}} </span> </p>
-					<a id="imgContainer" href="/dataPlant/{{plant.idPLantRoom}}/room/{{room.id}}"><img id="plant" src="{{plant.default_image.thumbnail}}" alt="plant_picture"></a>
-				</article>
-			{% endfor %}
+			{% if collection.length == 0 %}
+				<p id="Empty">La pièce est vide, veuillez ajouter des plantes depuis la pièce ou depuis votre collection.</p>
+			{% else %}
+				{% for plant in collection %}
+					<article>
+						<div class="articleTitle">
+							<h3>{{plant.common_name}}</h3>
+							<a href="/plantDeleteToRoom/{{room.id}}/plant/{{plant.idPLantRoom}}"><img src="/images/compost.png" alt="plant_delete"></a>
+						</div>
+						<p id="date">Dans cette pièce depuis le:
+							<span class="data">{{plant.date|date('d-m-Y')}}
+							</span>
+						</p>
+						<a id="imgContainer" href="/dataPlant/{{plant.idPLantRoom}}/room/{{room.id}}"><img id="plant" src="{{plant.default_image.thumbnail}}" alt="plant_picture"></a>
+					</article>
+				{% endfor %}
+			{% endif %}
 		</div>
 
 	</div>

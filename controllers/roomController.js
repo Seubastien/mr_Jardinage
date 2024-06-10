@@ -55,75 +55,78 @@ exports.addPlantToRoom = async (req, res) => {
         } else {
             res.redirect('/room/' + req.body.room)
         }
-        } catch (error) {
-            res.send(error.message)
-            console.log(error)
-        }
+    } catch (error) {
+        res.send(error.message)
+        console.log(error)
     }
+}
 exports.deletePlantRoom = async (req, res) => {
-        try {
+    try {
 
-            const deletePlant = await roomModel.updateOne(
-                { _id: req.params.roomid },
-                { $pull: { plants_collection: { _id: req.params.id } } });
-            res.redirect('/room/' + req.params.roomid)// permet de rediriger vers la piece.
+        const deletePlant = await roomModel.updateOne(
+            { _id: req.params.roomid },
+            { $pull: { plants_collection: { _id: req.params.id } } });
+        res.redirect('/room/' + req.params.roomid)// permet de rediriger vers la piece.
 
-        } catch (error) {
-            res.send(error.message)
-        }
+    } catch (error) {
+        res.send(error.message)
     }
-    exports.updatedRoom = async (req, res) => {
-        try {
-            const room = await roomModel.findById({ _id: req.params.roomid })
-            await roomModel.updateOne({ _id: req.params.roomid }, req.body)
-            let collections = room.plants_collection.map(async (plantid) => {//on utilise map car probleme au niveau de l'asyncronicité avec une foreach
-                let response = await fetch(`https://perenual.com/api/species/details/${plantid}?key=sk-36pu66263ce98512c5214`)
-                let data = await response.json()
-                return data
-            });
-            collections = await Promise.all(collections)
-            console.log(req.params.roomid)
-            // res.redirect('/collection')
-            res.redirect('/room/' + req.params.roomid)
-            // res.render("./room/index.html.twig", {
-            //     homeButton: true,//Permet de donner des conditions selon les éléments que l'on veut afficher dans notre vue
-            //     headerFooter: true,
-            //     title: "Room",
-            //     room: room,
-            //     collection: collections,
-            // })
+}
+exports.updatedRoom = async (req, res) => {
+    try {
+        const room = await roomModel.findById({ _id: req.params.roomid })
+        await roomModel.updateOne({ _id: req.params.roomid }, req.body)
+        let collections = room.plants_collection.map(async (plantid) => {//on utilise map car probleme au niveau de l'asyncronicité avec une foreach
+            let response = await fetch(`https://perenual.com/api/species/details/${plantid}?key=sk-36pu66263ce98512c5214`)
+            let data = await response.json()
+            return data
+        });
 
-        } catch (error) {
-            res.render('room/index.html.twig',
-                {
-                    errorDelete: "probleme survenue",
-                    // enterprise: await enterpriseModel.findById(req.session.enterprise._id)
-                })
+        collections = await Promise.all(collections)
+        console.log(req.params.roomid)
+        // res.redirect('/collection')
+        res.redirect('/room/' + req.params.roomid)
 
-        }
+
+        // res.render("./room/index.html.twig", {
+        //     homeButton: true,//Permet de donner des conditions selon les éléments que l'on veut afficher dans notre vue
+        //     headerFooter: true,
+        //     title: "Room",
+        //     room: room,
+        //     collection: collections,
+        // })
+
+    } catch (error) {
+        res.render('room/index.html.twig',
+            {
+                errorDelete: "probleme survenue",
+                // enterprise: await enterpriseModel.findById(req.session.enterprise._id)
+            })
+
     }
-    exports.addWatering = async (req, res) => {
-        try {
-            const roomid = req.params.roomid
-            const plantId = req.params.plantId
-            const wateringDate = req.body
-            const room = await roomModel.findById(roomid)
-            const now = new Date()
+}
+exports.addWatering = async (req, res) => {
+    try {
+        const roomid = req.params.roomid
+        const plantId = req.params.plantId
+        const wateringDate = req.body
+        const room = await roomModel.findById(roomid)
+        const now = new Date()
 
-            // if (wateringDate > now) {
-            const addWatering = await roomModel.updateOne(
-                { _id: roomid, 'plants_collection._id': plantId },
-                { $addToSet: { 'plants_collection.$.watering_collection': wateringDate } },
-            )
-            // };
-            // rajouter un else message d'erreur si la date est anterieure à la date du jour
+        // if (wateringDate > now) {
+        const addWatering = await roomModel.updateOne(
+            { _id: roomid, 'plants_collection._id': plantId },
+            { $addToSet: { 'plants_collection.$.watering_collection': wateringDate } },
+        )
+        // };
+        // rajouter un else message d'erreur si la date est anterieure à la date du jour
 
-            res.redirect('/dataPlant/' + plantId + '/room/' + roomid)
+        res.redirect('/dataPlant/' + plantId + '/room/' + roomid)
 
 
-            // console.log(req)
-        } catch (error) {
-            res.send(error.message)
-            console.log(error)
-        }
+        // console.log(req)
+    } catch (error) {
+        res.send(error.message)
+        console.log(error)
     }
+}
