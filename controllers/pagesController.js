@@ -65,9 +65,8 @@ exports.displayPlants = async (req, res) => {
                 current_page: data.current_page
             })
         } else if (req.query.frontPage) {
-            const response = await fetch(`https://perenual.com/api/species-list?key=sk-36pu66263ce98512c5214&page=${Number(req.query.frontPage - 1)}`)
-            const data = await response.json()
-
+            const response = await fetch(`https://perenual.com/api/species-list?key=sk-36pu66263ce98512c5214&page=${req.query.frontPage - 1}`)
+            const data = await response.json();
             res.render("./plants/index.html.twig", {
                 homeButton: true,
                 headerFooter: true,
@@ -77,7 +76,9 @@ exports.displayPlants = async (req, res) => {
             })
 
         } else if (req.query.nextPage) {
-            const response = await fetch(`https://perenual.com/api/species-list?key=sk-36pu66263ce98512c5214&page=${Number(req.query.nextPage + 1)}`)
+            const page = Number(req.query.nextPage) + 1
+            const url = "https://perenual.com/api/species-list?key=sk-36pu66263ce98512c5214&page=" + page
+            const response = await fetch(url)
             const data = await response.json()
 
             res.render("./plants/index.html.twig", {
@@ -124,7 +125,7 @@ exports.displayPlantDetails = async (req, res) => {
 
         const response = await fetch(`https://perenual.com/api/species/details/${req.params.plantid}?key=sk-36pu66263ce98512c5214`)
         const data = await response.json()
-        console.log(data.watering);
+       
         res.render("./plantDetails/index.html.twig", {
             homeButton: true,
             headerFooter: true,
@@ -209,6 +210,7 @@ exports.displayRoom = async (req, res) => {
 }
 exports.displayDataPlant = async (req, res) => {
     try {
+       
         const room = await roomModel.findById({ _id: req.params.roomid })//.populate('plante_collection')
 
         let plant = room.plants_collection.find(e => e._id == req.params.plantid);
@@ -220,6 +222,7 @@ exports.displayDataPlant = async (req, res) => {
             if (date.getTime() > now.getTime()) {
                 return date
             }
+           
         });
         let filteredNextDates = futurDates.filter(date => date !== undefined)
         let passedDates = dateArray.map(date => {

@@ -264,7 +264,13 @@ article {
     border-radius: 8px;
     cursor: pointer;
 }
-
+.dateError{
+    color: red;
+}
+.disable{
+    pointer-events: none;
+    background-color: rgba(128, 128, 128, 0.554)!important;
+}
 #watering-popup-exit {
     width: auto;
     color: #0EEBCA;

@@ -81,19 +81,16 @@
 				</div>
 				<button id="pWB" onclick="wateringTogglePopup()">Programmer un arrosage</button>
 			</div>
+			
 			<div id="watering-popup-overlay">
 				<div class="addWateringContainer">
 
 					<h2>Programmer un arrosage</h2>
 
-
 					<div id="addWateringForm">
 						<form action="/addWatering/{{plant._id}}/room/{{room.id}}" method="post">
 							<div id="addWateringFormContent">
-								{% if error %}
-									<p class="error">{{error.errors.date}}</p>
-								{% endif %}
-								<input type="datetime-local" name="date" id="date">
+								<input type="datetime-local" name="date" id="date" onchange="checkDateWatering(this.value)">
 								<button id="button" type="submit">Valider</button>
 							</div>
 						</form>
