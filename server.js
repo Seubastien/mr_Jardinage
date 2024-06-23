@@ -17,8 +17,8 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
 }))
-app.use((req,res,next)=>{
-    res.locals.session = req.session;
+app.use((req,res,next)=>{ 
+    res.locals.session = req.session;//res.local est un conteneur qui permet de passer des données à toutes les vues rendues pendant la requête actuelle. En assignant req.session à res.locals.session, tu rends la session disponible pour toutes les vues rendues durant cette requête.
     next()
 })
 app.use(pagesRouter)

@@ -17,20 +17,24 @@ const checkDateWatering = (setDate) => {
     const dateError = document.createElement('p')
     const button = document.querySelector('#button')
     dateError.classList.add('dateError')
-    if (selectedDate < dateNow) {
-        addWateringFormContent.appendChild(dateError)
-        dateError.textContent = "Veuillez programmer une date postérieure à aujourd'hui"
-        button.classList.add('disable')
-
-    } else {
-        dateError.textContent = ""
-        button.classList.remove('disable')
-        
-        
+    if (!dateError) {
+        dateError = document.createElement('p');
+        dateError.classList.add('dateError');
     }
-    // addWateringFormContent.removeChild(dateError)
-    // dateError.textContent = ""
-}
+    if (selectedDate < dateNow) {
+        dateError.textContent = "Veuillez programmer une date postérieure à aujourd'hui";
+        if (!addWateringFormContent.contains(dateError)) {
+            addWateringFormContent.appendChild(dateError);
+        }
+        button.classList.add('disable');
+    } else {
+        if (addWateringFormContent.contains(dateError)) {
+            addWateringFormContent.removeChild(dateError);
+        }
+        button.classList.remove('disable');
+    }
+};
+
 
 const wateringPopup = document.querySelector('.notif')
 wateringPopup.addEventListener('click', () => {

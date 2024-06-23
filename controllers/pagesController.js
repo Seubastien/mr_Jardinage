@@ -11,7 +11,7 @@ exports.displayHome = (req, res) => {
             title: "Accueil"
         })
     } catch (error) {
-        res.send(error)
+        res.send(error.message)
     }
 }
 exports.displaySubscribe = (req, res) => {
@@ -20,7 +20,7 @@ exports.displaySubscribe = (req, res) => {
             title: "Inscription"
         })
     } catch (error) {
-        res.send(error)
+        res.send(error.message)
     }
 }
 exports.displayPlants = async (req, res) => {
@@ -104,7 +104,7 @@ exports.displayPlants = async (req, res) => {
         }
     } catch (error) {
         console.log(error);
-        res.send(error)
+        res.send(error.message)
     }
 }
 // .data[0].default_image.original_url
@@ -117,7 +117,7 @@ exports.displayDashboard = async (req, res) => {
             title: "Dashboard"
         })
     } catch (error) {
-        res.send(error)
+        res.send(error.message)
     }
 }
 exports.displayPlantDetails = async (req, res) => {
@@ -134,7 +134,7 @@ exports.displayPlantDetails = async (req, res) => {
         })
 
     } catch (error) {
-        res.send(error)
+        res.send(error.message)
     }
 }
 exports.displayCollection = async (req, res) => {
@@ -155,7 +155,7 @@ exports.displayCollection = async (req, res) => {
         })
 
     } catch (error) {
-        res.send(error)
+        res.send(error.message)
     }
 }
 exports.displayAddRoom = async (req, res) => {
@@ -203,7 +203,7 @@ exports.displayRoom = async (req, res) => {
 
 
     } catch (error) {
-        res.send(error)
+        res.send(error.message)
         console.log(error)
     }
 

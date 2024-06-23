@@ -13,6 +13,9 @@
 					{% endif %}
 					<input id="name" type="text" name="name" placeholder="Nom de la pièce">
 					<fieldset class="NameField">
+					{% if error %}
+						<p class="error">{{error.errors.type}}</p>
+					{% endif %}
 						<legend>Type de pièce:</legend>
 						<div>
 							<input id="living" type="radio" name="type" value="living">

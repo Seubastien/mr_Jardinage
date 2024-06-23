@@ -6,7 +6,7 @@ const moment = require('moment')
 exports.createRoom = async (req, res) => {
     try {
         const newRoom = new roomModel(req.body)
-        newRoom.user = req.session.user._id
+        newRoom.user = req.session.user._id // Assigne l'ID de l'utilisateur actuel (stocké dans la session) à la propriété user de la nouvelle room
         newRoom.validateSync()
         await newRoom.save()
         res.redirect('/collection')
