@@ -81,7 +81,7 @@
 				</div>
 				<button id="pWB" onclick="wateringTogglePopup()">Programmer un arrosage</button>
 			</div>
-			
+
 			<div id="watering-popup-overlay">
 				<div class="addWateringContainer">
 
@@ -92,6 +92,7 @@
 							<div id="addWateringFormContent">
 								<input type="datetime-local" name="date" id="date" onchange="checkDateWatering(this.value)">
 								<button id="button" type="submit">Valider</button>
+								<p id="dateError" class='dateError'></p>
 							</div>
 						</form>
 

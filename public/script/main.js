@@ -14,23 +14,15 @@ const checkDateWatering = (setDate) => {
     const dateNow = new Date()
     const selectedDate = new Date(setDate)
     const addWateringFormContent = document.querySelector('#addWateringFormContent')
-    const dateError = document.createElement('p')
+    let dateError = document.querySelector('#dateError')
     const button = document.querySelector('#button')
-    dateError.classList.add('dateError')
-    if (!dateError) {
-        dateError = document.createElement('p');
-        dateError.classList.add('dateError');
-    }
+  
     if (selectedDate < dateNow) {
         dateError.textContent = "Veuillez programmer une date postérieure à aujourd'hui";
-        if (!addWateringFormContent.contains(dateError)) {
-            addWateringFormContent.appendChild(dateError);
-        }
         button.classList.add('disable');
     } else {
-        if (addWateringFormContent.contains(dateError)) {
-            addWateringFormContent.removeChild(dateError);
-        }
+       
+            dateError.textContent = ''
         button.classList.remove('disable');
     }
 };
