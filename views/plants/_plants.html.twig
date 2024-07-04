@@ -20,11 +20,11 @@
 
 				</select>
 				{# <select name="millieu" id="env-select">
-					<option value="">Mon milieux</option>
-					<option value="envOne">Env 1</option>
-					<option value="envTwo">Env 2</option>
-
-				</select> #}
+													<option value="">Mon milieux</option>
+													<option value="envOne">Env 1</option>
+													<option value="envTwo">Env 2</option>
+								
+												</select> #}
 			</div>
 			<div id="searchContainer">
 				<input id="searchBarrPlant" type="search" name="search" placeholder="Chercher">
@@ -95,11 +95,19 @@
 			<a id="homeButton" href="/home">Accueil</a>
 			<p class="sideUnderTitle">Notre Jardin</p>
 		{% endif %}
-		<p>Page: {{current_page}}</p>
-		<form id="changePageContainer" action="/plants" method="GET">
-			<button class="changePageButton" type="submit" value = "{{current_page}}" name="frontPage"><img class="arrow" src="/images/Flèche-gauche-64.png" alt="search"></button>
-			<button class="changePageButton" type="submit" value = "{{current_page}}" name="nextPage"><img class="arrow" src="/images/Flèche-droite-64.png" alt="search"></button>
-			
-		</form>
+
 	</aside>
+	<div id="bottomContainer">
+		<div></div>
+		<div id="centerBottomDiv">
+			<p>Page:
+				{{current_page}}</p>
+			<form id="changePageContainer" action="/plants" method="GET">
+				<button class="changePageButton" type="submit" value="{{current_page}}" name="frontPage"><img class="arrow" src="/images/Flèche-gauche-64.png" alt="search"></button>
+				<button class="changePageButton" type="submit" value="{{current_page}}" name="nextPage"><img class="arrow" src="/images/Flèche-droite-64.png" alt="search"></button>
+
+			</form>
+		</div>
+		<div id="rightBottomDiv"></div>
+	</div>
 </section>

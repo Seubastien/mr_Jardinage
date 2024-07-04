@@ -54,7 +54,8 @@ body {
     cursor: pointer;
 
 }
-.searchButton:hover{
+
+.searchButton:hover {
     background-color: unset;
 }
 
@@ -113,12 +114,12 @@ article {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content:space-around;
+    justify-content: space-around;
     user-select: none;
     font-weight: bolder;
     color: black;
     /* padding-top: 20px; */
-   
+
 }
 
 article:hover {
@@ -312,4 +313,28 @@ article p {
 .arrow {
     width: 40px;
     height: 70px;
+}
+
+/* Style pour la section bottom */
+
+#bottomContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: white;
+    height: 15%;
+    bottom: 0;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.66);
+    width: 100%;
+    
+}
+#rightBottomDiv{
+width: 11%;
+}
+#centerBottomDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 }
