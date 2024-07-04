@@ -90,8 +90,8 @@ exports.displayPlants = async (req, res) => {
             })
 
         } else {
-            const randomPage = Math.floor(Math.random() * (337 - 1 + 1)) + 1;
-            const response = await fetch(`https://perenual.com/api/species-list?key=sk-36pu66263ce98512c5214&page=${randomPage}`)
+            // const randomPage = Math.floor(Math.random() * (337 - 1 + 1)) + 1;
+            const response = await fetch("https://perenual.com/api/species-list?key=sk-36pu66263ce98512c5214&page=1")
             const data = await response.json()
 
             res.render("./plants/index.html.twig", {

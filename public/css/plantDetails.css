@@ -41,7 +41,7 @@ body {
 }
 
 /* CSS DES POSTS */
-#postContainer {
+/* #postContainer {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -58,9 +58,9 @@ body {
     color: #0EEBCA;
     font-weight: 300;
     letter-spacing: 0.1em;
-}
+} */
 
-#posts {
+/* #posts {
     height: 400px;
 }
 
@@ -82,7 +82,7 @@ body {
 .AddPost:hover {
     background-color: #004A3F;
 
-}
+} */
 
 /* CSS SIDEBAR */
 .checkButtoncontainer {
@@ -125,7 +125,7 @@ body {
 .secondBlock {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 25px;
 
 }
 

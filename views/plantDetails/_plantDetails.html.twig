@@ -1,11 +1,11 @@
 <section class="plantDetailsContainer">
 	<div id="postContainer">
 
-		<div>
+		{# <div>
 			<h2 id="postTilte">Post</h2>
 		</div>
 		<div id="posts"></div>
-		<a class="AddPost" href="">Ajouter un post</a>
+		<a class="AddPost" href="">Ajouter un post</a> #}
 
 	</div>
 	<article class="articleContainer">
@@ -62,8 +62,8 @@
 				{% if session.user %}
 
 					<div class="checkButtoncontainer">
-						<a class="getButton" href="/addPlantToCollection/{{plant.id}}">Ajouter à ma collection</a>
-						<a class="getButton" href="">Ajouter à une pièce</a>
+						<a class="getButton" href="/addPlantToCollection/{{data.id}}">Ajouter à ma collection</a>
+						{# <a class="getButton" href="">Ajouter à une pièce</a> #}
 					</div>
 				{% endif %}
 			</div>

@@ -139,12 +139,12 @@ exports.logOut = (req, res) => {
 }
 exports.addPlantToCollection = async (req, res) => {
     try {
-
         let addPlant = await userModel.updateOne(
             { _id: req.session.user._id },
             { $addToSet: { plants_collection: req.params.plantid } }
         )
         res.redirect('/plants')
+        res.status(200)
     } catch (error) {
         res.send(error.message)
     }
