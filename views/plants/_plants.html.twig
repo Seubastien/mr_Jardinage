@@ -1,102 +1,123 @@
-<section class="gardenContainer">
-	<div></div>
-	<div class="underGardenContainer">
-		<form id="uperGardenContainer" action="/plants" method="GET">
-			<div id="selectContainer">
-				<select name="expo" id="expo-select">
-					<option value="">Exposition</option>
-					<option value="full_sun">Full sun</option>
-
-					<option value="part_shade">Part shade</option>
-					<option value="full_shade">Full shade</option>
-				</select>
-				<select name="water" id="water-select">
-
-					<option value="">Fréquence d'arrosage</option>
-					<option value="minimum">Minimum</option>
-					<option value="average">Average</option>
-					<option value="frequent">Frequent</option>
-
-
-				</select>
-				{# <select name="millieu" id="env-select">
-													<option value="">Mon milieux</option>
-													<option value="envOne">Env 1</option>
-													<option value="envTwo">Env 2</option>
-								
-												</select> #}
-			</div>
-			<div id="searchContainer">
-				<input id="searchBarrPlant" type="search" name="search" placeholder="Chercher">
-				<button class="searchButton" type="submit"><img class="imgButton" src="images/loupe.png" alt="search"></button>
-			</div>
-		</form>
-		<div class="articlePlantContainer">
-			{% for plant in data %}
-				<article>
-					<div>
-						<h3>{{plant.common_name}}</h3>
-					</div>
-					<a href="/plantDetails/{{plant.id}}" id="imgPlant">
-						<img id="plant" {% if plant.default_image.thumbnail %} src="{{plant.default_image.thumbnail}}" {% else %} src="/images/mr_green_thumb.jpg" {% endif %} alt="plant_picture">
-					</a>
-					<div id="underArticle">
-						<p>Nom scientifique:
-							<span class="data">
-								{% if plant.scientific_name[0] %}
-									{{plant.scientific_name[0]}}
-									{% else %}"Not specified"
-								{% endif %}
-							</span>
-						</p>
-						<p>Autre Nom:
-							<span class="data">
-								{% if plant.other_name[0] %}
-									{{plant.other_name[0]}}
-									{% else %}"Not specified"
-								{% endif %}
-							</span>
-						</p>
-						<p>Besoin en eau:
-							<span class="data">{{plant.watering}}</span>
-						</p>
-						<p>Exposition:
-							<span class="data">{{plant.sunlight}}</span>
-						</p>
-					</div>
-					{% if session.user %}
-						<div class="checkButtoncontainer">
-							<a class="getButton" href="/addPlantToCollection/{{plant.id}}">Ajouter à ma collection</a>
-
-
-						</div>
-					{% endif %}
-
-				</article>
-			{% endfor %}
-		</div>
-
-	</div>
-	<aside class="aside">
-		<p id="sideBarTitle">Mr Green
-			<br>Thumb</p>
-
+<section class="firstGardenContainer">
+	<div id="header" class="hidden">
+		<p id="title">Mr Green Thumb</p>
+		<div></div>
+		<div id="burger"><img id="burgerImg" src="images/burger-menu.png" alt="burger_menu"></div>
 		{% if session.user %}
 
-			<p id="welcome">Bienvenue dans notre jardin
-				{{session.user.userName}}</p>
-
-			<div class="sideButtonContainer">
+			<div class="newMenu" id="hidd">
 				<a href="/logout">Déconnexion</a>
 				<a href="/collection">Mes plantes</a>
 			</div>
 
 		{% else %}
-			<a id="homeButton" href="/home">Accueil</a>
-			<p class="sideUnderTitle">Notre Jardin</p>
+			<div class="newMenu" id="hidd">
+				<a id="homeButton" href="/home">Accueil</a>
+				{# <p class="sideUnderTitle">Notre Jardin</p> #}
+			</div>
 		{% endif %}
 
-	</aside>
+	</div>
+	<div class="secondGardenContainer">
+		<div></div>
+		<div class="underGardenContainer">
+			<form id="uperGardenContainer" action="/plants" method="GET">
+				<div id="selectContainer">
+					<select name="expo" id="expo-select">
+						<option value="">Exposition</option>
+						<option value="full_sun">Full sun</option>
+
+						<option value="part_shade">Part shade</option>
+						<option value="full_shade">Full shade</option>
+					</select>
+					<select name="water" id="water-select">
+
+						<option value="">Fréquence d'arrosage</option>
+						<option value="minimum">Minimum</option>
+						<option value="average">Average</option>
+						<option value="frequent">Frequent</option>
+
+
+					</select>
+					{# <select name="millieu" id="env-select">
+																																									<option value="">Mon milieux</option>
+																																									<option value="envOne">Env 1</option>
+																																									<option value="envTwo">Env 2</option>
+																																				
+																																								</select> #}
+				</div>
+				<div id="searchContainer">
+					<input id="searchBarrPlant" type="search" name="search" placeholder="Chercher">
+					<button class="searchButton" type="submit"><img class="imgButton" src="images/loupe.png" alt="search"></button>
+				</div>
+			</form>
+			<div class="articlePlantContainer">
+				{% for plant in data %}
+					<article>
+						<div>
+							<h3>{{plant.common_name}}</h3>
+						</div>
+						<a href="/plantDetails/{{plant.id}}" id="imgPlant">
+							<img id="plant" {% if plant.default_image.thumbnail %} src="{{plant.default_image.thumbnail}}" {% else %} src="/images/mr_green_thumb.jpg" {% endif %} alt="plant_picture">
+						</a>
+						<div id="underArticle">
+							<p>Nom scientifique:
+								<span class="data">
+									{% if plant.scientific_name[0] %}
+										{{plant.scientific_name[0]}}
+										{% else %}"Not specified"
+									{% endif %}
+								</span>
+							</p>
+							<p>Autre Nom:
+								<span class="data">
+									{% if plant.other_name[0] %}
+										{{plant.other_name[0]}}
+										{% else %}"Not specified"
+									{% endif %}
+								</span>
+							</p>
+							<p>Besoin en eau:
+								<span class="data">{{plant.watering}}</span>
+							</p>
+							<p>Exposition:
+								<span class="data">{{plant.sunlight}}</span>
+							</p>
+						</div>
+						{% if session.user %}
+							<div class="checkButtoncontainer">
+								<a class="getButton" href="/addPlantToCollection/{{plant.id}}">Ajouter à ma collection</a>
+
+
+							</div>
+						{% endif %}
+
+					</article>
+				{% endfor %}
+			</div>
+
+		</div>
+		<aside class="aside" id="hidden">
+			<p id="sideBarTitle">Mr Green
+				<br>Thumb</p>
+
+			{% if session.user %}
+
+				<p id="welcome">Bienvenue dans notre jardin
+					{{session.user.userName}}</p>
+
+				<div class="sideButtonContainer">
+					<a href="/logout">Déconnexion</a>
+					<a href="/collection">Mes plantes</a>
+				</div>
+
+			{% else %}
+				<a id="homeButton" href="/home">Accueil</a>
+				<p class="sideUnderTitle">Notre Jardin</p>
+			{% endif %}
+
+		</aside>
+	</div>
 	<div id="bottomContainer">
 		<div></div>
 		<div id="centerBottomDiv">
@@ -110,4 +131,7 @@
 		</div>
 		<div id="rightBottomDiv"></div>
 	</div>
+	{% block script %}
+		<script src="/script/main.js"></script>
+	{% endblock %}
 </section>
