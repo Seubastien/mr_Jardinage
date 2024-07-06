@@ -11,29 +11,32 @@
 			{% for user in users %}
 				<article>
 					<div>
-						<h3>{{user.userName}}</h3>
+						<div>
+							<h3>{{user.userName}}</h3>
+						</div>
+
+
+						<p>Nom:
+							{{user.name}}
+						</p>
+						<p>Prénom:
+							{{user.firstName}}
+						</p>
+						<p>E-mail:
+							{{user.mail}}
+						</p>
+						<p>Rôle:
+							{{user.is_admin}}
+						</p>
+
+						<div class="checkButtoncontainer">
+							<a class="updateButton" href="/userUpdate/{{user.id}}">Modifier</a>
+							<a class="deleteButton" href="/userDelete/{{user.id}}">Supprimer</a>
+
+						</div>
 					</div>
-					
 					<div id="imgContainer">
 						<img id="img" src="/images/uploads/{{user.picture}}" alt="user_picture">
-					</div>
-					<p>Nom:
-						{{user.name}}
-					</p>
-					<p>Prénom:
-						{{user.firstName}}
-					</p>
-					<p>E-mail:
-						{{user.mail}}
-					</p>
-					<p>Rôle:
-						{{user.is_admin}}
-					</p>
-
-					<div class="checkButtoncontainer">
-						<a class="updateButton" href="/userUpdate/{{user.id}}">Modifier</a>
-						<a class="deleteButton" href="/userDelete/{{user.id}}">Supprimer</a>
-
 					</div>
 				</article>
 			{% endfor %}

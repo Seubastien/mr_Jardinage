@@ -8,8 +8,12 @@ body {
     align-items: center;
 }
 
+
 @media screen and (max-width:1100px) {
     .gardenContainer {
+        justify-content: center;
+    }
+    .secondGardenContainer{
         justify-content: center;
     }
 }
@@ -22,7 +26,7 @@ body {
     max-height: 80%;
     padding: 20px;
     gap: 20px;
-    min-height: 850px;
+    /* min-height: 850px; */
 }
 
 #uperGardenContainer {
@@ -123,7 +127,27 @@ select option {
     -ms-overflow-style: none;
     /* Masquer la barre de défilement IE/Edge */
 }
-
+@media screen and (max-width:1345px) {
+    .articlePlantContainer {
+       
+        max-height: 78vh;
+       
+    }
+}
+@media screen and (max-width:1100px) {
+    .articlePlantContainer {
+       
+        max-height: 70vh;
+       
+    }
+}
+@media screen and (max-width:426px) {
+    .articlePlantContainer {
+       
+        max-height: 66vh;
+       
+    }
+}
 /* Style pour chaque article */
 article {
     box-sizing: border-box;
@@ -292,7 +316,17 @@ article p {
 
 @media screen and (max-width:1100px) {
     #welcome {
+        font-size: 0.9em;
+        background-color: unset;
+        margin: 0;
+        height: unset;
+
+    }
+}
+@media screen and (max-width:780px) {
+    #welcome {
         font-size: 0.7em;
+       
 
     }
 }
@@ -309,6 +343,15 @@ article p {
     width: 100%;
     margin: 10px 0;
 
+}
+@media screen and (max-width:1100px) {
+    .sideUnderTitle {
+       
+        background-color: unset;
+        height: unset;
+        margin: 0;
+    
+    }
 }
 
 .aside p {
@@ -347,7 +390,15 @@ article p {
 
 #homeButton {
     align-self: center;
+    
 }
+@media screen and (max-width:1100px) {
+    #homeButton {
+       
+        padding-top: inherit;
+    }
+}
+
 
 .aside a:hover {
     color: #666;
@@ -420,15 +471,24 @@ article p {
     background: #00000052;
     color: #0EEBCA;
     display: none;
-   
+    min-height: 70px;
 }
 #title{
     font-size: 1.8em;
     letter-spacing: 0.2em;
     font-weight: 300;
-    padding: 20px;
+    padding-left: 5px;
 }
-
+@media screen and (max-width:426px) {
+    #title{
+        font-size: 1.3em;
+        
+    }
+}
+#welcomeContainer{
+    display: flex;
+    flex-direction: column;
+}
 #burgerImg {
     width: 50px;
 
@@ -443,7 +503,9 @@ article p {
 
 }
 #burger{
-    padding: 5px;
+    display: flex;
+    padding-right: 5px;
+    gap: 10px;
 }
 .newMenu {
     position: absolute;
